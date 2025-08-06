@@ -1,20 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to SUMIKA SHINJUKU</title>
+  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary: #0d9488;   /* teal */
+      --accent:  #f97316;   /* orange */
+      --bg:      #f8fafc;   /* slate‑50 */
+      --text:    #1e293b;   /* slate‑800 */
+      --surface: #ffffff;   /* white */
+      --radius:  1rem;
+      --shadow:  0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ---------- HERO ---------- */
+    header {
+      background: url('hero.jpg') center/cover no-repeat; /* replace with a real image path */
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker { display: none; }
+
+    summary i { color: var(--primary); transition: transform .2s ease; }
+
+    details[open] summary i { transform: rotate(90deg); }
+
+    .content { padding: 0 1.5rem 1.5rem; }
+    .content h3 { margin: 1rem 0 .5rem; font-size: 1.125rem; color: var(--primary); }
+    ul { margin-left: 1.25rem; }
+    ol { margin-left: 1.25rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---------- DARK MODE ---------- */
+    @media (prefers-color-scheme: dark) {
+      body { background: #0f172a; color: #e2e8f0; }
+      details { background: #1e293b; }
+      summary i { color: var(--accent); }
+      a { color: var(--primary); }
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; padding: 2rem;">
-  <h1>Welcome to your stay!</h1>
-  <p>📍 Address: 〇〇〇〇</p>
-  <p>🔐 Entrance Code: <strong>7382</strong></p>
-  <p>🧾 Please read the check-in instructions below:</p>
-  <ul>
-    <li>Self check-in is available after 3PM.</li>
-    <li>Wi-Fi: network: <code>Airbnb-Home</code> / password: <code>12345678</code></li>
-    <li>Trash collection: leave bags outside by 8AM.</li>
-  </ul>
-  <p>🗺️ <a href="https://maps.google.com?q=Shinjuku">Open Google Map</a></p>
+<body>
+  <header>
+    <h1>Welcome to SUMIKA SHINJUKU</h1>
+  </header>
+
+  <div class="container">
+    <!-- Check‑in Guide -->
+    <details>
+      <summary><i class="fa-solid fa-door-open"></i> Check‑in Guide</summary>
+      <div class="content">
+        <ol>
+          <li>当日 <strong>15:00</strong> 以降にご到着いただけます。</li>
+          <li>エントランス横のキーパッドで暗証番号 <strong>XXXX#</strong> を入力。</li>
+          <li>右下の <span style="font-weight:600">解除ボタン</span> を押してドアを開けてください。</li>
+          <li>お部屋は <strong>301</strong> 号室です。同じ暗証番号で入室できます。</li>
+        </ol>
+        <p>暗証番号は予約確認メッセージにも記載しています。</p>
+      </div>
+    </details>
+
+    <!-- Check‑out Procedure -->
+    <details>
+      <summary><i class="fa-solid fa-door-closed"></i> Check‑out Procedure</summary>
+      <div class="content">
+        <ol>
+          <li><strong>11:00</strong> までに退室をお願いします。</li>
+          <li>電気・エアコン・照明をオフに。</li>
+          <li>ゴミは室内の分別ボックスへ。</li>
+          <li>ドアを閉めると自動でロックされます。鍵の返却は不要です。</li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- House Rules -->
+    <details>
+      <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
+      <div class="content">
+        <ul>
+          <li>禁煙（バルコニー含む）。発見時は清掃費 <strong>¥20,000</strong> を請求します。</li>
+          <li>ペット不可。</li>
+          <li>22:00 以降は静かにお過ごしください。</li>
+          <li>パーティー・イベント禁止。</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Access & Map -->
+    <details>
+      <summary><i class="fa-solid fa-map-location-dot"></i> Access & Map</summary>
+      <div class="content">
+        <p>最寄り駅：<strong>JR 下落合駅</strong>（徒歩 2 分）</p>
+        <p>東京駅まで：地下鉄で約 35 分<br>成田空港まで：電車で約 1 時間</p>
+        <p><a href="https://goo.gl/maps/t6GAG8WgRQSqBwpY7" target="_blank">Google マップで開く</a> または下記 QR コードをスキャンしてください。</p>
+        <img src="map_qr.png" alt="Google Map QR" style="width:120px;border-radius:12px;"/>
+      </div>
+    </details>
+
+    <!-- Facilities & Amenities -->
+    <details>
+      <summary><i class="fa-solid fa-toolbox"></i> Facilities & Amenities</summary>
+      <div class="content">
+        <h3>キッチン</h3>
+        <ul>
+          <li>電子レンジ・冷蔵庫・IHコンロ</li>
+          <li>コーヒーメーカー（ドリップバッグ付）</li>
+        </ul>
+        <h3>バスルーム</h3>
+        <ul>
+          <li>シャンプー・コンディショナー・ボディソープ</li>
+          <li>タオル（人数分）・ヘアドライヤー</li>
+        </ul>
+        <h3>その他</h3>
+        <ul>
+          <li>無料 Wi‑Fi：SSID <strong>SUMIKA_WIFI</strong> ／ PW <strong>Tokyo2025</strong></li>
+          <li>洗濯機＆洗剤</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Emergency Contacts -->
+    <details>
+      <summary><i class="fa-solid fa-triangle-exclamation"></i> Emergency Contacts</summary>
+      <div class="content">
+        <ul>
+          <li><strong>消防・救急・警察（24h）:</strong> 110 / 119</li>
+          <li><strong>24h ホスト直通:</strong> +81-90-1234-5678</li>
+          <li><strong>最寄り病院:</strong> 東京医科大学病院（03‑3342‑6111）</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Neighborhood Guide -->
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
+      <div class="content">
+        <ul>
+          <li><strong>高田馬場ラーメン</strong>（徒歩 5 分）— 醤油ベースの人気店。</li>
+          <li><strong>ファミリーマート</strong>（徒歩 1 分）— 24 時間営業。</li>
+          <li><strong>新宿御苑</strong>（電車 10 分）— 四季折々の庭園散策。</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Contact & Support -->
+    <details>
+      <summary><i class="fa-solid fa-comment-dots"></i> Contact & Support</summary>
+      <div class="content">
+        <p>何かお困りの際は Airbnb メッセージまたは上記ホスト直通番号までお気軽にご連絡ください。</p>
+        <p>快適なご滞在をお楽しみください！</p>
+      </div>
+    </details>
+
+    <footer style="text-align:center; margin: 4rem 0 2rem; font-size: .875rem;">
+      &copy; 2025 SUMIKA SHINJUKU
+    </footer>
+  </div>
+
+  <!-- Optional JS: auto‑close other sections for cleaner UX -->
+  <script>
+    document.querySelectorAll('details').forEach((d) => {
+      d.addEventListener('toggle', (e) => {
+        if (d.open) {
+          document.querySelectorAll('details').forEach((o) => {
+            if (o !== d) o.removeAttribute('open');
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
