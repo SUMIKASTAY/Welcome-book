@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to SUMIKASTAY OCHIAI</title>
+  <title>Welcome to SUMIKASTAY NAKANO</title>
   <!-- Google Fonts & Font Awesome for modern typography & icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -303,22 +303,7 @@
       opacity: .85
     }
 
-    /* ---------- DARK MODE ADJUSTMENTS ---------- */
-    @media(prefers-color-scheme:dark) {
-      :root {
-        --bg-overlay: rgba(0, 0, 0, 0.6);
-        --surface: #1e293b;
-        --text: #e2e8f0;
-      }
 
-      summary i {
-        color: var(--accent);
-      }
-
-      a {
-        color: var(--primary);
-      }
-    }
 
     /* ---- Appliance detail layout ---- */
     .row-2 {
@@ -398,12 +383,54 @@
     .emergency-numbers {
       margin-left: 1.25rem
     }
+
+    .content h4 {
+      margin: .75rem 0 .25rem;
+      font-size: 1rem;
+      font-weight: 700
+    }
+
+    .washlet-guide ol {
+      margin-left: 1.25rem
+    }
+
+    .washlet-guide ol li {
+      margin: .25rem 0
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        min-height: 60vh;
+        /* 40vh → 60vh に拡大 */
+        padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Welcome to SUMIKASTAY OCHIAI</h1>
+    <h1>Welcome to SUMIKASTAY NAKANO</h1>
     <p class="subheading">Here’s everything you need to know about your stay with us.</p>
   </header>
 
@@ -414,8 +441,8 @@
       <summary><i class="fa-solid fa-map-signs"></i> How to get here (Access & Map)</summary>
       <div class="content">
         <h3 class="badge">Address</h3>
-        <p>1-14-2, Kamiochiai, Shinjuku-ku, Tokyo <strong>〒161-0034</strong></p>
-        <p><a href="https://maps.app.goo.gl/JDoG7xWB8pV2RkDi7" target="_blank">Open in Google Maps</a></p>
+        <p>4-1-9, Yayoicho, Nakano-ku, Tokyo <strong>〒164-0013</strong></p>
+        <p><a href="https://maps.app.goo.gl/PQRaTDRJeWGf2q566" target="_blank">Open in Google Maps</a></p>
 
         <h3 class="badge">Landmarks</h3>
         <div class="grid-2">
@@ -430,10 +457,10 @@
           </figure>
         </div>
         <ul style="margin-top:1rem">
-          <li>**White dust box** in the parking lot</li>
-          <li>We are the <strong>1st building from the left</strong></li>
-          <li>Name plate on mailbox: <strong>SUMIKA STAY</strong></li>
-          <li>Registration number: <strong>M130041997</strong></li>
+          <li>**Silver dust box** in the parking lot</li>
+
+          <li>Name plate on mailbox: <strong>SUMIKA HOUSE NAKANO</strong></li>
+          <li>Registration number: <strong>M130046978</strong></li>
         </ul>
 
         <h3 class="badge">From Narita &amp; Haneda Airport</h3>
@@ -471,12 +498,10 @@
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-train"></i>
-            <p><strong>JR Yamanote Line</strong> to <strong>Takadanobaba</strong></p>
+            <p><strong>Tokyo Metro Marunouchi Line</strong> to <strong>Nakano-Shimbashi</strong></p>
             <ol class="sub-steps">
-              <li><strong>Step 4:</strong> Transfer to the <strong>Seibu Shinjuku Line</strong> (for <em>Haijima /
-                  Hon-Kawagoe</em>).</li>
-              <li><strong>Step 5:</strong> Get off at <strong>Shimoochiai</strong> and walk <strong>2–3 min</strong>.
-              </li>
+              <li><strong>Step 4:</strong> Get off at <strong>Nakano-Shimbashi</strong> &amp; walk <strong>8–11
+                  min</strong>.</li>
             </ol>
           </div>
 
@@ -484,10 +509,10 @@
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-bus"></i>
-            <p><strong>Shuku 02 (宿02) bus</strong> bound for <strong>Maruyama Eigyousho</strong></p>
+            <p><strong>Shuku 33 (宿33) bus</strong> bound for <strong>Eifukuchō</strong></p>
             <ol class="sub-steps">
-              <li><strong>Step 4:</strong> Get off at <strong>Ochiai Chuo Park</strong> &amp; walk <strong>2–3
-                  min</strong>.</li>
+              <li><strong>Step 4:</strong> Get off at <strong>Todai Fuzoku</strong> &amp; walk <strong>2–3 min</strong>.
+              </li>
             </ol>
           </div>
 
@@ -496,12 +521,13 @@
             <span class="step-num">3</span>
             <i class="fa-solid fa-taxi"></i>
             <p><strong>Taxi directly</strong> to our place</p>
-            <p class="sub">≈ <strong>1,920 JPY</strong> / <strong>12.63 USD</strong></p>
+            <p class="sub">≈ <strong>1,700 JPY</strong> / <strong>15 USD</strong></p>
           </div>
         </div>
 
         <p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from
             Shinjuku</strong> is the easiest option.</p>
+
 
       </div>
     </details>
@@ -511,27 +537,25 @@
     <details>
       <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
       <div class="content">
-        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
+        <p style="font-style:italic;margin-bottom:.5rem">KEY is placed in this mailbox</p>
         <div class="grid-2 check-photos">
           <figure>
             <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
-            <figcaption class="caption">Entrance location</figcaption>
+            <figcaption class="caption">Mailbox location at entrance</figcaption>
           </figure>
           <figure>
             <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
-            <figcaption class="caption">Enter passcode</figcaption>
+            <figcaption class="caption">Mailbox label: <strong>SUMIKA STAY</strong></figcaption>
           </figure>
         </div>
 
         <h3>Access Code</h3>
-        <div class="access-code">1122</div>
+        <div class="access-code">→ 9 → 9 ← 5</div>
         <ul class="sub-steps">
-          <li>Press the "Unlock" button at the bottom right
-            and Enter the building.</li>
-
+          <li>Turn the dial <strong>→</strong> (clockwise) to <strong>9</strong> <strong>two times</strong>.</li>
+          <li>Then turn the dial <strong>←</strong> (anti‑clockwise) to <strong>5</strong>.</li>
         </ul>
         <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
-
         <h3>Check-in</h3>
         <ol>
           <ol>
@@ -588,8 +612,8 @@
           <div>
             <p>There are <strong>1 Wi‑Fi's</strong> available in the house. Please refer to the following:</p>
             <ul class="wifi-list">
-              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Rakuten Turbo-FE28 - 2.4&5GHz</strong><br>PW:
-                <strong>RLQ8P288LGPAKK3S</strong>
+              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Rakuten-B640</strong><br>PW:
+                <strong>THS8EJ6RNT6VRAPG</strong>
               </li>
 
             </ul>
@@ -647,7 +671,7 @@
           <figure>
             <!-- 例: 2Fバルコニーへ出られるリビングの写真 -->
             <img src="drying-living.jpg" alt="2F balcony for open-air drying">
-            <figcaption class="caption">2F balcony — open-air drying</figcaption>
+            <figcaption class="caption">3rd-floor balcony — open-air drying</figcaption>
           </figure>
           <figure>
             <!-- 例: 浴室の写真（室内干し推奨） -->
@@ -678,35 +702,42 @@
           <figure class="appliance-figure">
             <!-- 例: 乾燥モードのボタンを赤丸で示したパネル写真 -->
             <img src="bath-drying-panel.jpg" alt="Bathroom drying panel — press the left yellow button">
-            <figcaption class="caption">Press the left yellow button to start Dry mode</figcaption>
+            <figcaption class="caption">Press the button to start Dry mode</figcaption>
           </figure>
         </div>
         <!-- WASHLET -->
-        <h3 class="badge">How to Use the Washlet</h3>
+        <h3 class="badge">How to Use the Washlet (Main function)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="washlet_panel.jpg" alt="Washlet control panel">
+            <figcaption class="caption">Washlet control panel</figcaption>
+          </figure>
 
-        <figure class="appliance-figure">
-          <img src="washlet_panel.jpg" alt="Washlet control panel">
-          <figcaption class="caption">Washlet control panel</figcaption>
-        </figure>
-
-        <div>
-          <ul>
-            <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the
-              toilet.</li>
-            <li><strong>Bidet (ビデ・ワイド・スーパ)</strong> — For feminine cleaning. This is a gentler spray.</li>
-            <li><strong>Turbo (おしりターボ)</strong> — A stronger wash for your rear. Use if you want extra cleaning power.
-            </li>
-            <li><strong>Cleaning (ノズルそうじ)</strong> — Cleans the spray nozzle itself. Use this occasionally for hygiene.
-            </li>
-            <li><strong>Seat Temp (便座温度)</strong> — Adjust the seat temperature.</li>
-            <li><strong>Water Temp (温水温度)</strong> — Adjust the temperature of the spray water.</li>
-            <li><strong>Eco / Eco Mode (節電 ECO)</strong> — Saves energy by reducing power consumption.</li>
-          </ul>
-
-          <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try
-            different settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and
-            hygienic!</p>
+          <div class="washlet-guide">
+            <h4>Top Row – Flushing &amp; Lid Control</h4>
+            <ol>
+              <li><strong>Full Flush (流す大)</strong> — For solid waste.</li>
+              <li><strong>Small Flush (流す小)</strong> — For liquid waste.</li>
+              <li><strong>Eco Flush (eco小)</strong> — Eco-friendly small flush.</li>
+              <li><strong>Seat Open/Close (便座開閉)</strong> — Opens or closes the seat.</li>
+              <li><strong>Lid Open/Close (便ふた開閉)</strong> — Opens or closes the toilet lid.</li>
+            </ol>
+          </div>
         </div>
+        <h4>Main Functions</h4>
+        <ol>
+          <li><strong>Stop (止)</strong> — Stops any running function (spray, dryer, etc.).</li>
+          <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the
+            toilet.</li>
+          <li><strong>Soft Wash (やわらか)</strong> — A gentler spray than standard rear wash.</li>
+          <li><strong>Bidet (ビデ)</strong> — For feminine cleaning. This is a gentler spray.</li>
+        </ol>
+
+        <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try
+          different
+          settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and hygienic!</p>
+
+
 
 
         <!-- BATHTUB PANEL -->
@@ -755,7 +786,7 @@
       </div>
     </details>
 
-    
+
     <!-- House Rules -->
     <details>
       <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
@@ -838,31 +869,28 @@
       </div>
     </details>
 
-    <!-- Neighborhood Guide (Ochiai) -->
+    <!-- Neighborhood Guide (Nakano Yayoicho) -->
     <details>
       <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
       <div class="content">
         <ul>
           <li>
             <i class="fa-solid fa-store"></i>
-            <strong>Lawson Shinjuku Kamiochiai 1-chome</strong> — convenience store<br>
-            1-16-3 Kamiochiai, Shinjuku-ku
-            <a href="https://www.google.com/maps/search/?api=1&query=Lawson+Shinjuku+Kamiochiai+1-chome" target="_blank"
-              rel="noopener">Map</a>
+            <strong>7-Eleven Nakano Yayoicho 5-chome</strong> — convenience store<br>
+            5-1-12 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/LTEWgDBuPt77B5cTA" target="_blank" rel="noopener">Map</a>
           </li>
           <li>
             <i class="fa-solid fa-cart-shopping"></i>
-            <strong>Maruetsu Petit Naka-Ochiai</strong> — supermarket<br>
-            1-6-13 Naka-Ochiai, Shinjuku-ku
-            <a href="https://www.google.com/maps/search/?api=1&query=Maruetsu+Petit+Naka-Ochiai" target="_blank"
-              rel="noopener">Map</a>
+            <strong>Olympic Nakano Yayoicho</strong> — supermarket<br>
+            3-12-14 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/AP1upWGvnxUt5KNJ8" target="_blank" rel="noopener">Map</a>
           </li>
           <li>
             <i class="fa-solid fa-wine-glass"></i>
-            <strong>Yakitori Hidaka (Nakai Ekimae)</strong> — izakaya<br>
-            1-20-15 Naka-Ochiai, Shinjuku-ku
-            <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Hidaka+Nakai+Ekimae" target="_blank"
-              rel="noopener">Map</a>
+            <strong>Torikihana Nakanoshimbashi</strong> — izakaya<br>
+            2-28-7 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/9wHAzYTGHsEXj86j7" target="_blank" rel="noopener">Map</a>
           </li>
         </ul>
         <p class="note">* Walking times vary; all are within a short stroll from the address.</p>
