@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to SUMIKA SHINJUKU</title>
+  <title>Welcome to SUMIKA SHIMO-OCHIAI</title>
   <!-- Google Fonts & Font Awesome for modern typography & icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -301,22 +301,7 @@ header .subheading{
       opacity: .85
     }
 
-    /* ---------- DARK MODE ADJUSTMENTS ---------- */
-    @media(prefers-color-scheme:dark) {
-      :root {
-        --bg-overlay: rgba(0, 0, 0, 0.6);
-        --surface: #1e293b;
-        --text: #e2e8f0;
-      }
-
-      summary i {
-        color: var(--accent);
-      }
-
-      a {
-        color: var(--primary);
-      }
-    }
+    
 
     /* ---- Appliance detail layout ---- */
     .row-2 {
@@ -395,6 +380,34 @@ header .subheading{
 
     .emergency-numbers {
       margin-left: 1.25rem
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        min-height: 60vh;
+        /* 40vh → 60vh に拡大 */
+        padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
     }
   </style>
 </head>
