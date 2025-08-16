@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to SUMIKA SHINJUKU</title>
+  <title>Welcome to SUMIKASTAY OCHIAI</title>
   <!-- Google Fonts & Font Awesome for modern typography & icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -58,34 +58,36 @@
     }
 
     /* ---------- HERO ---------- */
-header {
-  background: url('hero.jpg') center/cover no-repeat;
-  min-height: 40vh;
-  display: flex;
-  /* ここを追加 ↓ */
-  flex-direction: column;       /* ← 縦並びにする */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  gap: .35rem;                  /* （任意）タイトルとサブの間隔 */
-}
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      /* ここを追加 ↓ */
+      flex-direction: column;
+      /* ← 縦並びにする */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+      /* （任意）タイトルとサブの間隔 */
+    }
 
-header h1{
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color:#fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,.3);
-  font-weight:800;
-  margin:0;
-}
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+      margin: 0;
+    }
 
-header .subheading{
-  color:#fff;
-  font-size:1.2rem;
-  font-weight:300;
-  text-shadow: 1px 1px 4px rgba(0,0,0,.7);
-  margin:0;
-}
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+      margin: 0;
+    }
 
     /* ---------- LAYOUT ---------- */
     .container {
@@ -401,7 +403,7 @@ header .subheading{
 
 <body>
   <header>
-    <h1>Welcome to SUMIKA SHINJUKU</h1>
+    <h1>Welcome to SUMIKASTAY OCHIAI</h1>
     <p class="subheading">Here’s everything you need to know about your stay with us.</p>
   </header>
 
@@ -412,8 +414,8 @@ header .subheading{
       <summary><i class="fa-solid fa-map-signs"></i> How to get here (Access & Map)</summary>
       <div class="content">
         <h3 class="badge">Address</h3>
-        <p>1-8-7, Kita-shinjuku, Shinjuku-ku, Tokyo <strong>169-0074</strong></p>
-        <p><a href="https://goo.gl/maps/t6GAG8WgRQSqBwpY7" target="_blank">Open in Google Maps</a></p>
+        <p>1-14-2, Kamiochiai, Shinjuku-ku, Tokyo <strong>〒161-0034</strong></p>
+        <p><a href="https://maps.app.goo.gl/JDoG7xWB8pV2RkDi7" target="_blank">Open in Google Maps</a></p>
 
         <h3 class="badge">Landmarks</h3>
         <div class="grid-2">
@@ -424,55 +426,83 @@ header .subheading{
           </figure>
           <figure>
             <img src="howtoget here2.jpg" alt="Silver dust box">
-            <figcaption style="text-align:center;font-size:.85rem">Huge silver dust box in front</figcaption>
+            <figcaption style="text-align:center;font-size:.85rem">Look for the mailpost SUMIKA STAY.</figcaption>
           </figure>
         </div>
         <ul style="margin-top:1rem">
-          <li>**Silver dust box** in the parking lot</li>
-          <li>We are the <strong>2nd building from the right</strong> once you turn into the alley</li>
+          <li>**White dust box** in the parking lot</li>
+          <li>We are the <strong>1st building from the left</strong></li>
           <li>Name plate on mailbox: <strong>SUMIKA STAY</strong></li>
-          <li>Registration number: <strong>M130004224</strong></li>
+          <li>Registration number: <strong>M130041997</strong></li>
         </ul>
 
         <h3 class="badge">From Narita &amp; Haneda Airport</h3>
-        <!-- Unified step flow → branch options -->
+
+        <!-- Step 1 → Step 2（西口） -->
         <div class="steps-flow">
-          <div class="step-box"><span class="step-num">1</span><i class="fa-solid fa-bus"></i>
-            <p>Airport Limousine Bus<br><small>Narita / Haneda → Shinjuku<br><a
-                  href="https://www.limousinebus.co.jp/en/timetable/">You can see the timetable from here</a></small>
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <i class="fa-solid fa-bus"></i>
+            <p>
+              Airport Limousine Bus<br>
+              <small>
+                <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank" rel="noopener">
+                  Timetable
+                </a>
+              </small>
             </p>
           </div>
           <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
-          <div class="step-box"><span class="step-num">2</span><i class="fa-solid fa-train-subway"></i>
-            <p>Arrive <br><strong>Shinjuku Station</strong></p>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <i class="fa-solid fa-train-subway"></i>
+            <p>
+              Get off at <strong>Shinjuku Station (West Exit)</strong><br>
+              <small>新宿駅西口</small>
+            </p>
           </div>
         </div>
 
         <div class="branch-note">Choose one of the following options for Step&nbsp;3:</div>
 
+        <!-- 分岐：電車 / バス / タクシー -->
         <div class="option-grid">
+          <!-- 電車ルート -->
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-train"></i>
-            <p><strong>JR Chuo‑Sobu Line</strong><br>to Okubo Station</p>
-            <p class="sub">then <strong>walk 2‑3&nbsp;min</strong></p>
+            <p><strong>JR Yamanote Line</strong> to <strong>Takadanobaba</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Transfer to the <strong>Seibu Shinjuku Line</strong> (for <em>Haijima /
+                  Hon-Kawagoe</em>).</li>
+              <li><strong>Step 5:</strong> Get off at <strong>Shimoochiai</strong> and walk <strong>2–3 min</strong>.
+              </li>
+            </ol>
           </div>
+
+          <!-- バスルート -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-bus"></i>
+            <p><strong>Shuku 02 (宿02) bus</strong> bound for <strong>Maruyama Eigyousho</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Get off at <strong>Ochiai Chuo Park</strong> &amp; walk <strong>2–3
+                  min</strong>.</li>
+            </ol>
+          </div>
+
+          <!-- タクシー -->
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-taxi"></i>
-            <p><strong>Taxi directly</strong><br>to our place</p>
-            <p class="sub">≈ 600&nbsp;JPY / 5&nbsp;USD</p>
-          </div>
-          <div class="option-card">
-            <span class="step-num">3</span>
-            <i class="fa-solid fa-person-walking-luggage"></i>
-            <p><strong>Walk directly</strong><br>from Shinjuku</p>
-            <p class="sub">≈ 13&nbsp;min</p>
+            <p><strong>Taxi directly</strong> to our place</p>
+            <p class="sub">≈ <strong>1,920 JPY</strong> / <strong>12.63 USD</strong></p>
           </div>
         </div>
-        <p>If you prefer comfort, <strong>taxi from Shinjuku Station</strong> is still the easiest. All routes are
-          IC‑card friendly (Suica/PASMO).</p>
-        <p>Our top recommendation is <strong>taxi from Shinjuku Station</strong> for ease after a long flight.</p>
+
+        <p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from
+            Shinjuku</strong> is the easiest option.</p>
+
       </div>
     </details>
 
@@ -481,23 +511,24 @@ header .subheading{
     <details>
       <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
       <div class="content">
-        <p style="font-style:italic;margin-bottom:.5rem">KEY is placed in this mailbox</p>
+        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
         <div class="grid-2 check-photos">
           <figure>
             <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
-            <figcaption class="caption">Mailbox location at entrance</figcaption>
+            <figcaption class="caption">Entrance location</figcaption>
           </figure>
           <figure>
             <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
-            <figcaption class="caption">Mailbox label: <strong>SUMIKA STAY</strong></figcaption>
+            <figcaption class="caption">Enter passcode</figcaption>
           </figure>
         </div>
 
         <h3>Access Code</h3>
-        <div class="access-code">→ 0 → 0 ← 7</div>
+        <div class="access-code">1122</div>
         <ul class="sub-steps">
-          <li>Turn the dial <strong>→</strong> (clockwise) to <strong>0</strong> <strong>two times</strong>.</li>
-          <li>Then turn the dial <strong>←</strong> (anti‑clockwise) to <strong>7</strong>.</li>
+          <li>Press the "Unlock" button at the bottom right
+            and Enter the building.</li>
+
         </ul>
         <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
 
@@ -505,8 +536,8 @@ header .subheading{
         <ol>
           <ol>
             <li>Arrival from <strong>15:00</strong>.</li>
-            <li>Use the mailbox code to retrieve the key.</li>
-            <li>Enter using the Key.</li>
+            <li>Use the Passcode for entering.</li>
+
 
           </ol>
           <h3>Note</h3>
@@ -555,19 +586,18 @@ header .subheading{
         <h3 class="badge">Wi‑Fi info</h3>
         <div class="row-2">
           <div>
-            <p>There are <strong>2 portable Wi‑Fis</strong> available in the house. Please refer to the following:</p>
+            <p>There are <strong>1 Wi‑Fi's</strong> available in the house. Please refer to the following:</p>
             <ul class="wifi-list">
-              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Sumika wifi</strong><br>PW: <strong>sumikastay</strong></li>
-              <li><strong>Wi‑Fi 2</strong><br>SSID: <strong>Rakuten‑C94E</strong><br>PW:
-                <strong>LN3R9GTMT4QSP5KX</strong>
+              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Rakuten Turbo-FE28 - 2.4&5GHz</strong><br>PW:
+                <strong>RLQ8P288LGPAKK3S</strong>
               </li>
+
             </ul>
-            <p class="note">You can also scan the <strong>QR code</strong> on the Wi‑Fi router for easy connection. (QR
-              code connection is only for <strong>Wi‑Fi 2</strong>.)</p>
+            <p class="note">You can also scan the <strong>QR code</strong> on the Wi‑Fi router for easy connection.</p>
           </div>
           <figure class="appliance-figure">
             <img src="QRcode.jpg" alt="Portable Wi‑Fi device with QR code">
-            <figcaption class="caption">Wi‑Fi 2 supports QR code connect</figcaption>
+            <figcaption class="caption">Wi‑Fi supports QR code connect</figcaption>
           </figure>
         </div>
 
@@ -594,41 +624,88 @@ header .subheading{
         <h3 class="badge">Laundry Appliances</h3>
         <p>We have a <strong>washing machine & dryer</strong> in the <strong>1F bathroom</strong>.
 
-        <h3 class="badge">Washer & Dryer (SHARP)</h3>
+        <h3 class="badge">Washer (TOSHIBA-AW700Z2)</h3>
         <figure class="appliance-figure">
           <img src="laundry appliance.jpg" alt="Washer & dryer control panel">
-          <figcaption class="caption">Example panel (SHARP)</figcaption>
+          <figcaption class="caption">Example panel (TOSHIBA-AW700Z2)</figcaption>
         </figure>
         <ol>
-          <li>Open the washing machine and put in your clothes. <small>*Max weight: <strong>10 kg</strong> (wash) /
-              <strong>6 kg</strong> (dry)</small></li>
-          <li>Put in <strong>detergent </strong>. <small>*One cup is enough</small></li>
-          <li>Choose mode: <strong>洗濯 (Washing)</strong> / <strong>乾燥 (Drying)</strong> / <strong>洗濯乾燥 (Wash &amp;
-              dry)</strong>. <small>*Avoid the dryer for clothes that may shrink</small></li>
-          <li>Choose the course (default <strong>Standard</strong>). We recommend not changing the mode. Press
-            <strong>START</strong>.
+          <li>Open the washing machine and put in your clothes. <small>*Max weight: <strong>7 kg</strong> (wash)</small>
           </li>
-          <li>Washing takes <strong>40–60 min</strong>. Wash &amp; dry total takes <strong>120–180 min</strong>.</li>
+          <li>Put in <strong>detergent </strong>. <small>*One cup is enough</small></li>
+          <li>Choose the course that you want, default seting is standard mode. <strong>We recommend not to change the
+              mode. Press START.</strong>.
+          </li>
+          <li>Washing takes <strong>40–60 min</strong>.</li>
         </ol>
 
+        <!-- LAUNDRY DRYING (NEW) -->
+        <h3 class="badge">Laundry Drying Instructions</h3>
+
+        <!-- 上段：場所が分かる写真2枚 -->
+        <div class="grid-2">
+          <figure>
+            <!-- 例: 2Fバルコニーへ出られるリビングの写真 -->
+            <img src="drying-living.jpg" alt="2F balcony for open-air drying">
+            <figcaption class="caption">2F balcony — open-air drying</figcaption>
+          </figure>
+          <figure>
+            <!-- 例: 浴室の写真（室内干し推奨） -->
+            <img src="drying-bath.jpg" alt="Bathroom for indoor drying">
+            <figcaption class="caption">Bathroom — indoor drying (recommended)</figcaption>
+          </figure>
+        </div>
+
+        <!-- 下段：説明 + パネル写真 -->
+        <div class="row-2" style="margin-top:.5rem">
+          <div>
+            <p>You can dry your laundry in the following places:</p>
+            <ul class="wifi-list">
+              <li><strong>2nd-floor balcony</strong> — ideal for drying clothes in the open air.</li>
+              <li><strong>Bathroom (indoor drying)</strong> — hang your clothes inside the bathroom (recommended).</li>
+            </ul>
+
+            <p><strong>For indoor drying:</strong></p>
+            <ol class="sub-steps">
+              <li>Find the ventilation/heater control panel in the bathroom.</li>
+              <li>Press the <strong>left yellow button</strong> to start <strong>Dry</strong> mode (乾燥).</li>
+              <li>Optionally set a timer; it will stop automatically.</li>
+            </ol>
+
+            <p class="note">Feel free to use these spaces as needed.</p>
+          </div>
+
+          <figure class="appliance-figure">
+            <!-- 例: 乾燥モードのボタンを赤丸で示したパネル写真 -->
+            <img src="bath-drying-panel.jpg" alt="Bathroom drying panel — press the left yellow button">
+            <figcaption class="caption">Press the left yellow button to start Dry mode</figcaption>
+          </figure>
+        </div>
         <!-- WASHLET -->
-        <h3 class="badge">Washlet (Bidet toilet)</h3>
+        <h3 class="badge">How to Use the Washlet</h3>
 
         <figure class="appliance-figure">
           <img src="washlet_panel.jpg" alt="Washlet control panel">
-          <figcaption class="caption">Example panel </figcaption>
+          <figcaption class="caption">Washlet control panel</figcaption>
         </figure>
+
         <div>
           <ul>
-            <li><strong>Wash (おしり／ワイド)</strong> — standard spray after use.</li>
-            <li><strong>Bidet (ビデ／ワイド／スーパ)</strong> — gentler spray.</li>
-            <li><strong>Pressure</strong> — weak/strong (弱／強).</li>
-            <li><strong>Seat Temp (便座温度)</strong> — adjust seat temperature.</li>
-            <li><strong>Water Temp (温水温度)</strong> — adjust spray temperature.</li>
-            <li><strong>Cleaning (ノズルそうじ)</strong> — cleans the spray nozzle.</li>
+            <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the
+              toilet.</li>
+            <li><strong>Bidet (ビデ・ワイド・スーパ)</strong> — For feminine cleaning. This is a gentler spray.</li>
+            <li><strong>Turbo (おしりターボ)</strong> — A stronger wash for your rear. Use if you want extra cleaning power.
+            </li>
+            <li><strong>Cleaning (ノズルそうじ)</strong> — Cleans the spray nozzle itself. Use this occasionally for hygiene.
+            </li>
+            <li><strong>Seat Temp (便座温度)</strong> — Adjust the seat temperature.</li>
+            <li><strong>Water Temp (温水温度)</strong> — Adjust the temperature of the spray water.</li>
+            <li><strong>Eco / Eco Mode (節電 ECO)</strong> — Saves energy by reducing power consumption.</li>
           </ul>
-          <p class="note">Tips: Always press <strong>Stop</strong> after using any function. Try different settings to
-            find what’s comfortable for you.</p>
+
+          <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try
+            different settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and
+            hygienic!</p>
         </div>
 
 
@@ -678,7 +755,7 @@ header .subheading{
       </div>
     </details>
 
-    <!-- House Rules -->
+    
     <!-- House Rules -->
     <details>
       <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
@@ -709,7 +786,7 @@ header .subheading{
         </div>
         <figure class="appliance-figure">
           <img src="dustbox_parking.jpg" alt="Silver dust box in the parking lot" class="rule-img">
-          <figcaption class="caption">Silver dust box in the parking lot</figcaption>
+          <figcaption class="caption">White dust box in the parking lot</figcaption>
         </figure>
 
         <!-- Garbage rules (II) -->
@@ -761,29 +838,34 @@ header .subheading{
       </div>
     </details>
 
-    <!-- Neighborhood Guide -->
+    <!-- Neighborhood Guide (Ochiai) -->
     <details>
       <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
       <div class="content">
         <ul>
           <li>
             <i class="fa-solid fa-store"></i>
-            <strong>7-Eleven Kita-Shinjuku 1-chome</strong> (approx. 2 min walk) — open 24 hours
-            <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Kita-Shinjuku+1-chome" target="_blank"
+            <strong>Lawson Shinjuku Kamiochiai 1-chome</strong> — convenience store<br>
+            1-16-3 Kamiochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Lawson+Shinjuku+Kamiochiai+1-chome" target="_blank"
               rel="noopener">Map</a>
           </li>
           <li>
-            <i class="fa-solid fa-prescription-bottle-medical"></i>
-            <strong>Hijikata Pharmacy</strong> (approx. 1 min walk) — prescription & daily goods
-            <a href="https://www.google.com/maps/search/?api=1&query=Hijikata+Pharmacy+Shinjuku" target="_blank"
+            <i class="fa-solid fa-cart-shopping"></i>
+            <strong>Maruetsu Petit Naka-Ochiai</strong> — supermarket<br>
+            1-6-13 Naka-Ochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Maruetsu+Petit+Naka-Ochiai" target="_blank"
               rel="noopener">Map</a>
           </li>
-          <li><strong>Isomaru Suisan Okubo Ekimae</strong> (4 min walk) — Lively izakaya specializing in seafood dishes.
+          <li>
+            <i class="fa-solid fa-wine-glass"></i>
+            <strong>Yakitori Hidaka (Nakai Ekimae)</strong> — izakaya<br>
+            1-20-15 Naka-Ochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Hidaka+Nakai+Ekimae" target="_blank"
+              rel="noopener">Map</a>
           </li>
-          <a href="https://maps.app.goo.gl/J4Fj95ck3h6Mepj86" target="_blank" rel="noopener">Map</a>
         </ul>
-        <p class="note">* Walking times and opening hours are approximate. Please check the latest details on the map
-          link.</p>
+        <p class="note">* Walking times vary; all are within a short stroll from the address.</p>
       </div>
     </details>
 
@@ -799,7 +881,7 @@ header .subheading{
       </div>
     </details>
 
-    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">© 2025 SUMIKA SHINJUKU</footer>
+    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">© 2025 SUMIKA STAY OCHIAI</footer>
   </div>
 
   <script>
