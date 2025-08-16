@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to SUMIKASTAY OCHIAI</title>
+  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #0d9488;
+      /* teal */
+      --accent: #f97316;
+      /* orange */
+      --bg-overlay: rgba(202, 202, 202, 0.4);
+      /* brighten overlay */
+      --text: #1e293b;
+      /* slate-800 */
+      --surface: #ffffff;
+      /* card background */
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ---------- GLOBAL BACKGROUND IMAGE ---------- */
+    body {
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* Full‑screen background layer */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      /* ← 好きな画像へ差替え */
+      z-index: -2;
+    }
+
+    /* Semi‑transparent overlay for readability */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--bg-overlay);
+      z-index: -1;
+    }
+
+    /* ---------- HERO ---------- */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      /* ここを追加 ↓ */
+      flex-direction: column;
+      /* ← 縦並びにする */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+      /* （任意）タイトルとサブの間隔 */
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+      margin: 0;
+    }
+
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+      margin: 0;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      color: var(--primary);
+      transition: transform .2s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .content h3 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    ul {
+      margin-left: 1.25rem;
+    }
+
+    ol {
+      margin-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* -------- Images & Grid -------- */
+    details img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem
+    }
+
+    .grid-2 img {
+      max-height: 260px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .grid-2 img {
+        max-height: 220px
+      }
+    }
+
+    /* ---- Airport Flow ---- */
+    .steps-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0
+    }
+
+    .step-box {
+      background: #eef2f7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .step-box i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: .35rem
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.35
+    }
+
+    .arrow-vert {
+      font-size: 1.5rem;
+      color: var(--text)
+    }
+
+    .branch-note {
+      margin: .75rem 0 .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--primary)
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .75rem
+    }
+
+    .option-card {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .option-card .sub {
+      font-size: .8rem;
+      color: var(--text)
+    }
+
+    .option-card i {
+      font-size: 1.75rem;
+      color: var(--primary)
+    }
+
+    @media(max-width:600px) {
+      .steps-flow .step-box {
+        max-width: 100%
+      }
+
+      .arrow-vert {
+        display: none
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ---- Check-in images & notes ---- */
+    .check-photos img {
+      max-height: 280px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .check-photos img {
+        max-height: 220px
+      }
+    }
+
+    .caption {
+      text-align: center;
+      font-size: .85rem;
+      margin-top: .35rem
+    }
+
+    .access-code {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      margin: .5rem 0
+    }
+
+    .sub-steps {
+      margin-left: 1.1rem
+    }
+
+    .note {
+      font-size: .9rem;
+      opacity: .85
+    }
+
+    /* ---------- DARK MODE ADJUSTMENTS ---------- */
+    @media(prefers-color-scheme:dark) {
+      :root {
+        --bg-overlay: rgba(0, 0, 0, 0.6);
+        --surface: #1e293b;
+        --text: #e2e8f0;
+      }
+
+      summary i {
+        color: var(--accent);
+      }
+
+      a {
+        color: var(--primary);
+      }
+    }
+
+    /* ---- Appliance detail layout ---- */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+      align-items: start
+    }
+
+    @media(max-width:700px) {
+      .row-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .appliance-figure img {
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    @media(max-width:600px) {
+      .appliance-figure img {
+        max-height: 220px
+      }
+    }
+
+    .wifi-list {
+      margin-left: 1.1rem
+    }
+
+    /* ---- House Rules layout ---- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: .75rem 0
+    }
+
+    @media(max-width:700px) {
+      .rules-table {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem
+    }
+
+    .rule-img {
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px
+    }
+
+    .small-note {
+      font-size: .9rem;
+      opacity: .9
+    }
+
+    .emergency-card {
+      border-left: 4px solid var(--accent);
+      background: #fff7ed;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem
+    }
+
+    .emergency-numbers {
+      margin-left: 1.25rem
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to SUMIKASTAY OCHIAI</h1>
+    <p class="subheading">Here’s everything you need to know about your stay with us.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- How to get here (Access & Map) -->
+    <details>
+      <summary><i class="fa-solid fa-map-signs"></i> How to get here (Access & Map)</summary>
+      <div class="content">
+        <h3 class="badge">Address</h3>
+        <p>1-14-2, Kamiochiai, Shinjuku-ku, Tokyo <strong>〒161-0034</strong></p>
+        <p><a href="https://maps.app.goo.gl/JDoG7xWB8pV2RkDi7" target="_blank">Open in Google Maps</a></p>
+
+        <h3 class="badge">Landmarks</h3>
+        <div class="grid-2">
+          <figure>
+            <img src="howtoget here1.jpg" alt="Front view of the building">
+            <figcaption style="text-align:center;font-size:.85rem">Our building — look for the parking space
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="howtoget here2.jpg" alt="Silver dust box">
+            <figcaption style="text-align:center;font-size:.85rem">Look for the mailpost SUMIKA STAY.</figcaption>
+          </figure>
+        </div>
+        <ul style="margin-top:1rem">
+          <li>**White dust box** in the parking lot</li>
+          <li>We are the <strong>1st building from the left</strong></li>
+          <li>Name plate on mailbox: <strong>SUMIKA STAY</strong></li>
+          <li>Registration number: <strong>M130041997</strong></li>
+        </ul>
+
+        <h3 class="badge">From Narita &amp; Haneda Airport</h3>
+
+        <!-- Step 1 → Step 2（西口） -->
+        <div class="steps-flow">
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <i class="fa-solid fa-bus"></i>
+            <p>
+              Airport Limousine Bus<br>
+              <small>
+                <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank" rel="noopener">
+                  Timetable
+                </a>
+              </small>
+            </p>
+          </div>
+          <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <i class="fa-solid fa-train-subway"></i>
+            <p>
+              Get off at <strong>Shinjuku Station (West Exit)</strong><br>
+              <small>新宿駅西口</small>
+            </p>
+          </div>
+        </div>
+
+        <div class="branch-note">Choose one of the following options for Step&nbsp;3:</div>
+
+        <!-- 分岐：電車 / バス / タクシー -->
+        <div class="option-grid">
+          <!-- 電車ルート -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-train"></i>
+            <p><strong>JR Yamanote Line</strong> to <strong>Takadanobaba</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Transfer to the <strong>Seibu Shinjuku Line</strong> (for <em>Haijima /
+                  Hon-Kawagoe</em>).</li>
+              <li><strong>Step 5:</strong> Get off at <strong>Shimoochiai</strong> and walk <strong>2–3 min</strong>.
+              </li>
+            </ol>
+          </div>
+
+          <!-- バスルート -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-bus"></i>
+            <p><strong>Shuku 02 (宿02) bus</strong> bound for <strong>Maruyama Eigyousho</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Get off at <strong>Ochiai Chuo Park</strong> &amp; walk <strong>2–3
+                  min</strong>.</li>
+            </ol>
+          </div>
+
+          <!-- タクシー -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-taxi"></i>
+            <p><strong>Taxi directly</strong> to our place</p>
+            <p class="sub">≈ <strong>1,920 JPY</strong> / <strong>12.63 USD</strong></p>
+          </div>
+        </div>
+
+        <p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from
+            Shinjuku</strong> is the easiest option.</p>
+
+      </div>
+    </details>
+
+
+    <!-- Check-in /out Guide -->
+    <details>
+      <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
+      <div class="content">
+        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
+        <div class="grid-2 check-photos">
+          <figure>
+            <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
+            <figcaption class="caption">Entrance location</figcaption>
+          </figure>
+          <figure>
+            <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
+            <figcaption class="caption">Enter passcode</figcaption>
+          </figure>
+        </div>
+
+        <h3>Access Code</h3>
+        <div class="access-code">1122</div>
+        <ul class="sub-steps">
+          <li>Press the "Unlock" button at the bottom right
+            and Enter the building.</li>
+
+        </ul>
+        <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
+
+        <h3>Check-in</h3>
+        <ol>
+          <ol>
+            <li>Arrival from <strong>15:00</strong>.</li>
+            <li>Use the Passcode for entering.</li>
+
+
+          </ol>
+          <h3>Note</h3>
+
+          <p>Your check in time is 3pm. We can sometimes arrange an early check-in, so please contact us if you plan to
+            arrive early and we'll do our best to accomodate you (we can't promise, unfortunately.)</p>
+        </ol>
+        <h3>Check-out</h3>
+        <ol>
+          <ol>
+            <li>Please leave by <strong>11:00</strong>.</li>
+            <li>Turn off lights/AC/appliances and sort garbage into indoor bins.</li>
+            <li>Return the key to the mailbox and close the door (make shure to lock before leaving).</li>
+          </ol>
+
+
+          <h3>Note</h3>
+
+          <p>Check-out time is strictly 11am. If you require a later check-out, we’ll do our best to accommodate it. But
+            please bear in mind you’ll need to let us know beforehand.</p>
+        </ol>
+
+        <h3>BEFORE CHECK-OUT</h3>
+
+        <p>Before your departure, we’d appreciate if you would
+          take care of the following:</p>
+
+
+        <ol>
+          <li>Leave the beds unmade. No need to strip them.</li>
+          <li>Place used towels in the shower.</li>
+          <li>Empty all the trash (We will explain how to separate them later)</li>
+          <li>Move all furniture and items back to original locations.</li>
+          <li>Check air conditioners and other alliances are turned off.</li>
+          <li>Check all doors and windows to be sure that they are locked.</li>
+        </ol>
+
+      </div>
+    </details>
+
+    <!-- Appliance instructions -->
+    <details>
+      <summary><i class="fa-solid fa-screwdriver-wrench"></i> Appliance instructions</summary>
+      <div class="content">
+        <!-- WIFI INFO -->
+        <h3 class="badge">Wi‑Fi info</h3>
+        <div class="row-2">
+          <div>
+            <p>There are <strong>1 Wi‑Fi's</strong> available in the house. Please refer to the following:</p>
+            <ul class="wifi-list">
+              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Rakuten Turbo-FE28 - 2.4&5GHz</strong><br>PW:
+                <strong>RLQ8P288LGPAKK3S</strong>
+              </li>
+
+            </ul>
+            <p class="note">You can also scan the <strong>QR code</strong> on the Wi‑Fi router for easy connection.</p>
+          </div>
+          <figure class="appliance-figure">
+            <img src="QRcode.jpg" alt="Portable Wi‑Fi device with QR code">
+            <figcaption class="caption">Wi‑Fi supports QR code connect</figcaption>
+          </figure>
+        </div>
+
+        <!-- TV / FIRE STICK -->
+        <h3 class="badge">Television / Amazon Fire TV</h3>
+        <div class="row-2">
+          <div>
+            <p>You’re welcome to use our TV & entertainment system for personal use. The <strong>remote control</strong>
+              is on the dining table.</p>
+            <p>You can log in to any streaming services using your account. <strong>Please remember to log out</strong>
+              before you head off.</p>
+          </div>
+
+        </div>
+
+        <!-- HEATING / HOT WATER NOTE -->
+        <h3 class="badge">Heating / Cooling (Hot Water)</h3>
+        <p>If hot water is not coming out, it’s mostly because the panel is turned off. You’ll find a panel on the
+          <strong>2F kitchen wall</strong> and the <strong>1F bathroom</strong> that allows you to control the
+          temperature of the water.
+        </p>
+
+        <!-- LAUNDRY BASIC -->
+        <h3 class="badge">Laundry Appliances</h3>
+        <p>We have a <strong>washing machine & dryer</strong> in the <strong>1F bathroom</strong>.
+
+        <h3 class="badge">Washer (TOSHIBA-AW700Z2)</h3>
+        <figure class="appliance-figure">
+          <img src="laundry appliance.jpg" alt="Washer & dryer control panel">
+          <figcaption class="caption">Example panel (TOSHIBA-AW700Z2)</figcaption>
+        </figure>
+        <ol>
+          <li>Open the washing machine and put in your clothes. <small>*Max weight: <strong>7 kg</strong> (wash)</small>
+          </li>
+          <li>Put in <strong>detergent </strong>. <small>*One cup is enough</small></li>
+          <li>Choose the course that you want, default seting is standard mode. <strong>We recommend not to change the
+              mode. Press START.</strong>.
+          </li>
+          <li>Washing takes <strong>40–60 min</strong>.</li>
+        </ol>
+
+        <!-- LAUNDRY DRYING (NEW) -->
+        <h3 class="badge">Laundry Drying Instructions</h3>
+
+        <!-- 上段：場所が分かる写真2枚 -->
+        <div class="grid-2">
+          <figure>
+            <!-- 例: 2Fバルコニーへ出られるリビングの写真 -->
+            <img src="drying-living.jpg" alt="2F balcony for open-air drying">
+            <figcaption class="caption">2F balcony — open-air drying</figcaption>
+          </figure>
+          <figure>
+            <!-- 例: 浴室の写真（室内干し推奨） -->
+            <img src="drying-bath.jpg" alt="Bathroom for indoor drying">
+            <figcaption class="caption">Bathroom — indoor drying (recommended)</figcaption>
+          </figure>
+        </div>
+
+        <!-- 下段：説明 + パネル写真 -->
+        <div class="row-2" style="margin-top:.5rem">
+          <div>
+            <p>You can dry your laundry in the following places:</p>
+            <ul class="wifi-list">
+              <li><strong>2nd-floor balcony</strong> — ideal for drying clothes in the open air.</li>
+              <li><strong>Bathroom (indoor drying)</strong> — hang your clothes inside the bathroom (recommended).</li>
+            </ul>
+
+            <p><strong>For indoor drying:</strong></p>
+            <ol class="sub-steps">
+              <li>Find the ventilation/heater control panel in the bathroom.</li>
+              <li>Press the <strong>left yellow button</strong> to start <strong>Dry</strong> mode (乾燥).</li>
+              <li>Optionally set a timer; it will stop automatically.</li>
+            </ol>
+
+            <p class="note">Feel free to use these spaces as needed.</p>
+          </div>
+
+          <figure class="appliance-figure">
+            <!-- 例: 乾燥モードのボタンを赤丸で示したパネル写真 -->
+            <img src="bath-drying-panel.jpg" alt="Bathroom drying panel — press the left yellow button">
+            <figcaption class="caption">Press the left yellow button to start Dry mode</figcaption>
+          </figure>
+        </div>
+        <!-- WASHLET -->
+        <h3 class="badge">How to Use the Washlet</h3>
+
+        <figure class="appliance-figure">
+          <img src="washlet_panel.jpg" alt="Washlet control panel">
+          <figcaption class="caption">Washlet control panel</figcaption>
+        </figure>
+
+        <div>
+          <ul>
+            <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the
+              toilet.</li>
+            <li><strong>Bidet (ビデ・ワイド・スーパ)</strong> — For feminine cleaning. This is a gentler spray.</li>
+            <li><strong>Turbo (おしりターボ)</strong> — A stronger wash for your rear. Use if you want extra cleaning power.
+            </li>
+            <li><strong>Cleaning (ノズルそうじ)</strong> — Cleans the spray nozzle itself. Use this occasionally for hygiene.
+            </li>
+            <li><strong>Seat Temp (便座温度)</strong> — Adjust the seat temperature.</li>
+            <li><strong>Water Temp (温水温度)</strong> — Adjust the temperature of the spray water.</li>
+            <li><strong>Eco / Eco Mode (節電 ECO)</strong> — Saves energy by reducing power consumption.</li>
+          </ul>
+
+          <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try
+            different settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and
+            hygienic!</p>
+        </div>
+
+
+        <!-- BATHTUB PANEL -->
+        <h3 class="badge">Bathtub Control Panel</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="bathroom panel.jpg" alt="Bathtub control panel">
+          </figure>
+          <div>
+            <ol>
+              <li><strong>Turn on the System</strong> — press <strong>ON/OFF (運転)</strong>.</li>
+              <li><strong>Auto Fill the Bathtub</strong> — press <strong>Auto (自動)</strong>: fills to preset level &
+                temperature; announces when ready.</li>
+              <li><strong>Reheat if Needed</strong> — press <strong>Reheat (おいだき)</strong> to warm it back up.</li>
+            </ol>
+            <ul>
+              <li><strong>Reservation (ふろ予約)</strong> — timer to have the bath ready at a specific time.</li>
+              <li><strong>Volume (音量)</strong> — speaker volume for voice announcements.</li>
+              <li><strong>Clock / Time Setting (時計表示 / 時刻合わせ)</strong> — displays and adjusts the current time.</li>
+            </ul>
+            <p class="note">Do not use <strong>Reheat</strong> when the tub is empty. The <strong>Auto</strong> function
+              is the easiest and safest way.</p>
+          </div>
+        </div>
+
+        <!-- AIR CONDITIONER -->
+        <h3 class="badge">Air Conditioner</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="ac_remote.jpg" alt="Air conditioner remote">
+          </figure>
+          <div>
+            <ul>
+              <li><strong>Power ON</strong> — press the green button labeled <strong>運転/停止</strong>.</li>
+              <li><strong>Power OFF</strong> — press the yellow button labeled <strong>停止 (OFF)</strong>.</li>
+              <li><strong>Change Mode</strong> — <strong>冷房 (Cool)</strong> blue / <strong>暖房 (Warm)</strong> red /
+                <strong>自動 (Auto)</strong> green.
+              </li>
+              <li><strong>Temperature Control</strong> — use up/down arrows next to <strong>温度</strong>.</li>
+            </ul>
+            <p class="note">The AC may take a few minutes to start blowing air, especially in heating mode. Always turn
+              it off when you leave the room.</p>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+    
+    <!-- House Rules -->
+    <details>
+      <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
+      <div class="content">
+        <!-- Garbage rules (I) -->
+        <h3 class="badge">Garbage disposal rules</h3>
+        <p>We understand that garbage rules in Japan can be confusing, so we made it simple. Separate the garbage into
+          <strong>2 categories</strong> using different plastic bags, then put them in the silver dust box in the
+          parking lot as below.
+        </p>
+        <div class="rules-table">
+          <div class="col">
+            <div class="thead">Burnable Garbage</div>
+            <ul>
+              <li>Kitchen waste</li>
+              <li>Paper scraps</li>
+              <li>Clothing, etc.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">Recyclable Garbage</div>
+            <ul>
+              <li>Plastic bottles</li>
+              <li>Container jars & cans</li>
+              <li>Aerosol spray cans, etc.</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="appliance-figure">
+          <img src="dustbox_parking.jpg" alt="Silver dust box in the parking lot" class="rule-img">
+          <figcaption class="caption">White dust box in the parking lot</figcaption>
+        </figure>
+
+        <!-- Garbage rules (II) -->
+        <h3 class="badge">Garbage disposal II</h3>
+        <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
+          house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
+
+        <!-- Quiet hours -->
+        <h3 class="badge">Quiet time: 10pm–8am</h3>
+        <p>Please respect our residential community. Between <strong>10pm and 8am</strong>, keep noise to a minimum.</p>
+
+        <!-- Shoes -->
+        <h3 class="badge">Please take off your shoes</h3>
+        <p>Please do not wear your shoes inside the property.</p>
+
+        <!-- Smoking -->
+        <h3 class="badge">Smoking rules</h3>
+        <p>This is a <strong>non‑smoking</strong> home — no smoking or vaping inside the house.</p>
+        <p class="small-note">You may smoke in the parking lot, but please use your own ash tray. Do not smoke on the
+          street — it is strictly prohibited in Tokyo.</p>
+
+        <!-- Pets / Guests / Breakages / Exceptions -->
+        <h3 class="badge">Pets</h3>
+        <p>We love animals, but this home is pet‑free due to allergies.</p>
+
+        <h3 class="badge">Additional guests</h3>
+        <p>Please do not bring additional guests. If necessary, let us know in advance so we can adjust your booking.
+        </p>
+
+        <h3 class="badge">Breakages</h3>
+        <p>If you break anything, please tell us immediately. Minor issues are usually not charged. For larger issues
+          (e.g., TV screen), we will agree the cost with you before checkout to avoid surprises.</p>
+
+        <h3 class="badge">Written exceptions</h3>
+        <p>Any exceptions to these rules must be approved in advance. Thank you!</p>
+
+        <!-- Emergency (from the images) -->
+        <div class="emergency-card">
+          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">What to do in an Emergency
+          </h3>
+          <p>For emergency services (ambulance, police, fire), please make the call immediately. State your location as
+            shown on the front page of this guidebook.</p>
+          <ul class="emergency-numbers">
+            <li><strong>Police:</strong> 110</li>
+            <li><strong>Ambulance:</strong> 119</li>
+            <li><strong>Fire:</strong> 119</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- Neighborhood Guide (Ochiai) -->
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
+      <div class="content">
+        <ul>
+          <li>
+            <i class="fa-solid fa-store"></i>
+            <strong>Lawson Shinjuku Kamiochiai 1-chome</strong> — convenience store<br>
+            1-16-3 Kamiochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Lawson+Shinjuku+Kamiochiai+1-chome" target="_blank"
+              rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <strong>Maruetsu Petit Naka-Ochiai</strong> — supermarket<br>
+            1-6-13 Naka-Ochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Maruetsu+Petit+Naka-Ochiai" target="_blank"
+              rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-wine-glass"></i>
+            <strong>Yakitori Hidaka (Nakai Ekimae)</strong> — izakaya<br>
+            1-20-15 Naka-Ochiai, Shinjuku-ku
+            <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Hidaka+Nakai+Ekimae" target="_blank"
+              rel="noopener">Map</a>
+          </li>
+        </ul>
+        <p class="note">* Walking times vary; all are within a short stroll from the address.</p>
+      </div>
+    </details>
+
+    <!-- Contact & Support -->
+    <details>
+      <summary><i class="fa-solid fa-comment-dots"></i> Contact & Support</summary>
+      <div class="content">
+        <p>If you have any inquiries during your stay, please contact us via booking app message or the following:</p>
+        <ul>
+          <li><strong>Direct Host Line (24h):</strong> +818043709211</li>
+          <li><strong>Emergency:</strong> Fire, Ambulance, or Police — Dial 110 / 119</li>
+        </ul>
+      </div>
+    </details>
+
+    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">© 2025 SUMIKA STAY OCHIAI</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
+      if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
+    }));
+  </script>
+</body>
+
+</html>
