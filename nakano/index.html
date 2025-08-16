@@ -398,25 +398,33 @@
       margin: .25rem 0
     }
 
-    /* === Mobile fixes: stop overlap between hero and first card === */
-    @media (max-width: 640px) {
+   /* === Mobile spacing tune (fix big gap under hero) === */
+@media (max-width: 640px) {
+  /* ヒーローを少し低く＆下の余白を詰める */
+  header{
+    min-height: 48vh;  /* 60vh → 48vh に */
+    padding: calc(1.75rem + env(safe-area-inset-top)) 1rem 1.75rem;
+  }
 
-      /* ヒーローを少し高く＆余白を増やす */
-      header {
-        padding: 2.5rem;
-      }
-      
-      /* 見出しを少しだけ小さくして収まり良く */
-      header h1 {
-        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
-        line-height: 1.15;
-      }
+  /* カードを少しだけ上に重ねて“つながり”を作る */
+  .container{
+    margin: -1.25rem auto 2rem;  /* 0 → -1.25rem に */
+  }
 
-      header .subheading {
-        font-size: clamp(1rem, 4vw, 1.15rem);
-        margin-top: .5rem;
-      }
-    }
+  /* 見出しの下の余白も少しだけ圧縮 */
+  header h1{ 
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    line-height: 1.15;
+    margin: 0;
+  }
+  header .subheading{
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    margin-top: .35rem;
+  }
+
+  /* 1つ目のセクションの上マージンを控えめに */
+  .container details:first-of-type{ margin-top: .5rem; }
+}
   </style>
 </head>
 
