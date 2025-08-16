@@ -303,22 +303,7 @@
       opacity: .85
     }
 
-    /* ---------- DARK MODE ADJUSTMENTS ---------- */
-    @media(prefers-color-scheme:dark) {
-      :root {
-        --bg-overlay: rgba(0, 0, 0, 0.6);
-        --surface: #1e293b;
-        --text: #e2e8f0;
-      }
 
-      summary i {
-        color: var(--accent);
-      }
-
-      a {
-        color: var(--primary);
-      }
-    }
 
     /* ---- Appliance detail layout ---- */
     .row-2 {
@@ -399,9 +384,47 @@
       margin-left: 1.25rem
     }
 
-    .content h4{margin:.75rem 0 .25rem;font-size:1rem;font-weight:700}
-.washlet-guide ol{margin-left:1.25rem}
-.washlet-guide ol li{margin:.25rem 0}
+    .content h4 {
+      margin: .75rem 0 .25rem;
+      font-size: 1rem;
+      font-weight: 700
+    }
+
+    .washlet-guide ol {
+      margin-left: 1.25rem
+    }
+
+    .washlet-guide ol li {
+      margin: .25rem 0
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        min-height: 60vh;
+        /* 40vh → 60vh に拡大 */
+        padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
   </style>
 </head>
 
@@ -435,72 +458,75 @@
         </div>
         <ul style="margin-top:1rem">
           <li>**Silver dust box** in the parking lot</li>
-          
+
           <li>Name plate on mailbox: <strong>SUMIKA HOUSE NAKANO</strong></li>
           <li>Registration number: <strong>M130046978</strong></li>
         </ul>
 
         <h3 class="badge">From Narita &amp; Haneda Airport</h3>
 
-<!-- Step 1 → Step 2（西口） -->
-<div class="steps-flow">
-  <div class="step-box">
-    <span class="step-num">1</span>
-    <i class="fa-solid fa-bus"></i>
-    <p>
-      Airport Limousine Bus<br>
-      <small>
-        <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank" rel="noopener">
-          Timetable
-        </a>
-      </small>
-    </p>
-  </div>
-  <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
-  <div class="step-box">
-    <span class="step-num">2</span>
-    <i class="fa-solid fa-train-subway"></i>
-    <p>
-      Get off at <strong>Shinjuku Station (West Exit)</strong><br>
-      <small>新宿駅西口</small>
-    </p>
-  </div>
-</div>
+        <!-- Step 1 → Step 2（西口） -->
+        <div class="steps-flow">
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <i class="fa-solid fa-bus"></i>
+            <p>
+              Airport Limousine Bus<br>
+              <small>
+                <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank" rel="noopener">
+                  Timetable
+                </a>
+              </small>
+            </p>
+          </div>
+          <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <i class="fa-solid fa-train-subway"></i>
+            <p>
+              Get off at <strong>Shinjuku Station (West Exit)</strong><br>
+              <small>新宿駅西口</small>
+            </p>
+          </div>
+        </div>
 
-<div class="branch-note">Choose one of the following options for Step&nbsp;3:</div>
+        <div class="branch-note">Choose one of the following options for Step&nbsp;3:</div>
 
-<!-- 分岐：電車 / バス / タクシー -->
-<div class="option-grid">
-  <!-- 電車ルート -->
-  <div class="option-card">
-    <span class="step-num">3</span>
-    <i class="fa-solid fa-train"></i>
-    <p><strong>Tokyo Metro Marunouchi Line</strong> to <strong>Nakano-Shimbashi</strong></p>
-    <ol class="sub-steps">
-      <li><strong>Step 4:</strong> Get off at <strong>Nakano-Shimbashi</strong> &amp; walk <strong>8–11 min</strong>.</li>
-    </ol>
-  </div>
+        <!-- 分岐：電車 / バス / タクシー -->
+        <div class="option-grid">
+          <!-- 電車ルート -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-train"></i>
+            <p><strong>Tokyo Metro Marunouchi Line</strong> to <strong>Nakano-Shimbashi</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Get off at <strong>Nakano-Shimbashi</strong> &amp; walk <strong>8–11
+                  min</strong>.</li>
+            </ol>
+          </div>
 
-  <!-- バスルート -->
-  <div class="option-card">
-    <span class="step-num">3</span>
-    <i class="fa-solid fa-bus"></i>
-    <p><strong>Shuku 33 (宿33) bus</strong> bound for <strong>Eifukuchō</strong></p>
-    <ol class="sub-steps">
-      <li><strong>Step 4:</strong> Get off at <strong>Todai Fuzoku</strong> &amp; walk <strong>2–3 min</strong>.</li>
-    </ol>
-  </div>
+          <!-- バスルート -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-bus"></i>
+            <p><strong>Shuku 33 (宿33) bus</strong> bound for <strong>Eifukuchō</strong></p>
+            <ol class="sub-steps">
+              <li><strong>Step 4:</strong> Get off at <strong>Todai Fuzoku</strong> &amp; walk <strong>2–3 min</strong>.
+              </li>
+            </ol>
+          </div>
 
-  <!-- タクシー -->
-  <div class="option-card">
-    <span class="step-num">3</span>
-    <i class="fa-solid fa-taxi"></i>
-    <p><strong>Taxi directly</strong> to our place</p>
-    <p class="sub">≈ <strong>1,700 JPY</strong> / <strong>15 USD</strong></p>
-  </div>
-</div>
+          <!-- タクシー -->
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-taxi"></i>
+            <p><strong>Taxi directly</strong> to our place</p>
+            <p class="sub">≈ <strong>1,700 JPY</strong> / <strong>15 USD</strong></p>
+          </div>
+        </div>
 
-<p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from Shinjuku</strong> is the easiest option.</p>
+        <p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from
+            Shinjuku</strong> is the easiest option.</p>
 
 
       </div>
@@ -680,34 +706,36 @@
           </figure>
         </div>
         <!-- WASHLET -->
-<h3 class="badge">How to Use the Washlet (Main function)</h3>
-<div class="row-2">
-<figure class="appliance-figure">
-  <img src="washlet_panel.jpg" alt="Washlet control panel">
-  <figcaption class="caption">Washlet control panel</figcaption>
-</figure>
+        <h3 class="badge">How to Use the Washlet (Main function)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="washlet_panel.jpg" alt="Washlet control panel">
+            <figcaption class="caption">Washlet control panel</figcaption>
+          </figure>
 
-<div class="washlet-guide">
-  <h4>Top Row – Flushing &amp; Lid Control</h4>
-  <ol>
-    <li><strong>Full Flush (流す大)</strong> — For solid waste.</li>
-    <li><strong>Small Flush (流す小)</strong> — For liquid waste.</li>
-    <li><strong>Eco Flush (eco小)</strong> — Eco-friendly small flush.</li>
-    <li><strong>Seat Open/Close (便座開閉)</strong> — Opens or closes the seat.</li>
-    <li><strong>Lid Open/Close (便ふた開閉)</strong> — Opens or closes the toilet lid.</li>
-  </ol>
-  </div>
-  </div>
-  <h4>Main Functions</h4>
-  <ol>
-    <li><strong>Stop (止)</strong> — Stops any running function (spray, dryer, etc.).</li>
-    <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the toilet.</li>
-    <li><strong>Soft Wash (やわらか)</strong> — A gentler spray than standard rear wash.</li>
-    <li><strong>Bidet (ビデ)</strong> — For feminine cleaning. This is a gentler spray.</li>
-  </ol>
+          <div class="washlet-guide">
+            <h4>Top Row – Flushing &amp; Lid Control</h4>
+            <ol>
+              <li><strong>Full Flush (流す大)</strong> — For solid waste.</li>
+              <li><strong>Small Flush (流す小)</strong> — For liquid waste.</li>
+              <li><strong>Eco Flush (eco小)</strong> — Eco-friendly small flush.</li>
+              <li><strong>Seat Open/Close (便座開閉)</strong> — Opens or closes the seat.</li>
+              <li><strong>Lid Open/Close (便ふた開閉)</strong> — Opens or closes the toilet lid.</li>
+            </ol>
+          </div>
+        </div>
+        <h4>Main Functions</h4>
+        <ol>
+          <li><strong>Stop (止)</strong> — Stops any running function (spray, dryer, etc.).</li>
+          <li><strong>Wash (おしり・ワイド)</strong> — For cleaning your rear. This is a standard spray for after using the
+            toilet.</li>
+          <li><strong>Soft Wash (やわらか)</strong> — A gentler spray than standard rear wash.</li>
+          <li><strong>Bidet (ビデ)</strong> — For feminine cleaning. This is a gentler spray.</li>
+        </ol>
 
-  <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try different
-    settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and hygienic!</p>
+        <p class="note"><strong>Tips:</strong> Always press <strong>Stop</strong> after using any function. Try
+          different
+          settings to find what’s most comfortable for you. Don’t worry—it’s designed to be safe and hygienic!</p>
 
 
 
@@ -758,7 +786,7 @@
       </div>
     </details>
 
-    
+
     <!-- House Rules -->
     <details>
       <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
@@ -842,32 +870,32 @@
     </details>
 
     <!-- Neighborhood Guide (Nakano Yayoicho) -->
-<details>
-  <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
-  <div class="content">
-    <ul>
-      <li>
-        <i class="fa-solid fa-store"></i>
-        <strong>7-Eleven Nakano Yayoicho 5-chome</strong> — convenience store<br>
-        5-1-12 Yayoicho, Nakano-ku
-        <a href="https://maps.app.goo.gl/LTEWgDBuPt77B5cTA" target="_blank" rel="noopener">Map</a>
-      </li>
-      <li>
-        <i class="fa-solid fa-cart-shopping"></i>
-        <strong>Olympic Nakano Yayoicho</strong> — supermarket<br>
-        3-12-14 Yayoicho, Nakano-ku
-        <a href="https://maps.app.goo.gl/AP1upWGvnxUt5KNJ8" target="_blank" rel="noopener">Map</a>
-      </li>
-      <li>
-        <i class="fa-solid fa-wine-glass"></i>
-        <strong>Torikihana Nakanoshimbashi</strong> — izakaya<br>
-        2-28-7 Yayoicho, Nakano-ku
-        <a href="https://maps.app.goo.gl/9wHAzYTGHsEXj86j7" target="_blank" rel="noopener">Map</a>
-      </li>
-    </ul>
-    <p class="note">* Walking times vary; all are within a short stroll from the address.</p>
-  </div>
-</details>
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
+      <div class="content">
+        <ul>
+          <li>
+            <i class="fa-solid fa-store"></i>
+            <strong>7-Eleven Nakano Yayoicho 5-chome</strong> — convenience store<br>
+            5-1-12 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/LTEWgDBuPt77B5cTA" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <strong>Olympic Nakano Yayoicho</strong> — supermarket<br>
+            3-12-14 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/AP1upWGvnxUt5KNJ8" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-wine-glass"></i>
+            <strong>Torikihana Nakanoshimbashi</strong> — izakaya<br>
+            2-28-7 Yayoicho, Nakano-ku
+            <a href="https://maps.app.goo.gl/9wHAzYTGHsEXj86j7" target="_blank" rel="noopener">Map</a>
+          </li>
+        </ul>
+        <p class="note">* Walking times vary; all are within a short stroll from the address.</p>
+      </div>
+    </details>
 
     <!-- Contact & Support -->
     <details>
