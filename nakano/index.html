@@ -398,33 +398,30 @@
       margin: .25rem 0
     }
 
-   /* === Mobile spacing tune (fix big gap under hero) === */
-@media (max-width: 640px) {
-  /* ヒーローを少し低く＆下の余白を詰める */
-  header{
-    min-height: 48vh;  /* 60vh → 48vh に */
-    padding: calc(1.75rem + env(safe-area-inset-top)) 1rem 1.75rem;
-  }
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
 
-  /* カードを少しだけ上に重ねて“つながり”を作る */
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        padding: 1rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
   .container{
-    margin: -1.25rem auto 2rem;  /* 0 → -1.25rem に */
+    margin: 0 auto 2rem;              /* -4rem → 0 に */
   }
+      
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
 
-  /* 見出しの下の余白も少しだけ圧縮 */
-  header h1{ 
-    font-size: clamp(2rem, 8vw, 2.8rem);
-    line-height: 1.15;
-    margin: 0;
-  }
-  header .subheading{
-    font-size: clamp(1rem, 4vw, 1.1rem);
-    margin-top: .35rem;
-  }
-
-  /* 1つ目のセクションの上マージンを控えめに */
-  .container details:first-of-type{ margin-top: .5rem; }
-}
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
   </style>
 </head>
 
@@ -537,23 +534,23 @@
     <details>
       <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
       <div class="content">
-        <p style="font-style:italic;margin-bottom:.5rem">KEY is placed in this mailbox</p>
+        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
         <div class="grid-2 check-photos">
           <figure>
             <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
-            <figcaption class="caption">Mailbox location at entrance</figcaption>
+            <figcaption class="caption">Entrance location</figcaption>
           </figure>
           <figure>
-            <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
-            <figcaption class="caption">Mailbox label: <strong>SUMIKA STAY</strong></figcaption>
+            <img src="entrance_passcode.jpg" alt="Mailbox front with label SUMIKA STAY">
+            <figcaption class="caption">Enter passcode</figcaption>
           </figure>
         </div>
 
         <h3>Access Code</h3>
-        <div class="access-code">→ 9 → 9 ← 5</div>
+        <div class="access-code">1122</div>
         <ul class="sub-steps">
-          <li>Turn the dial <strong>→</strong> (clockwise) to <strong>9</strong> <strong>two times</strong>.</li>
-          <li>Then turn the dial <strong>←</strong> (anti‑clockwise) to <strong>5</strong>.</li>
+          <li>Press the "Unlock" button at the bottom right
+            and Enter the building.</li>
         </ul>
         <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
         <h3>Check-in</h3>
