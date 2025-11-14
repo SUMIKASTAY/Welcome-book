@@ -4,23 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to SUMIKA SHIMO-OCHIAI</title>
-  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <title>SUMIKA SHINJUKU ご利用ガイド</title>
+
+  <!-- Google フォント & Font Awesome（アイコン用） -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0d9488;
-      /* teal */
-      --accent: #f97316;
-      /* orange */
-      --bg-overlay: rgba(202, 202, 202, 0.4);
-      /* brighten overlay */
-      --text: #1e293b;
-      /* slate-800 */
-      --surface: #ffffff;
-      /* card background */
+      --primary: #0d9488; /* メインカラー（ティール） */
+      --accent: #f97316; /* アクセント（オレンジ） */
+      --bg-overlay: rgba(202, 202, 202, 0.4); /* 背景の薄いオーバーレイ */
+      --text: #1e293b; /* 文字色（濃いグレー） */
+      --surface: #ffffff; /* カード背景色 */
       --radius: 1rem;
       --shadow: 0 4px 20px rgba(0, 0, 0, .05);
     }
@@ -32,23 +28,22 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* ---------- GLOBAL BACKGROUND IMAGE ---------- */
+    /* ===== 背景全体の設定 ===== */
     body {
       line-height: 1.6;
       color: var(--text);
     }
 
-    /* Full‑screen background layer */
+    /* 背景画像レイヤー */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background: url('background.jpg') center/cover no-repeat fixed;
-      /* ← 好きな画像へ差替え */
       z-index: -2;
     }
 
-    /* Semi‑transparent overlay for readability */
+    /* 読みやすさ向上のための薄いオーバーレイ */
     body::after {
       content: "";
       position: fixed;
@@ -57,44 +52,41 @@
       z-index: -1;
     }
 
-    /* ---------- HERO ---------- */
-header {
-  background: url('hero.jpg') center/cover no-repeat;
-  min-height: 40vh;
-  display: flex;
-  /* ここを追加 ↓ */
-  flex-direction: column;       /* ← 縦並びにする */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  gap: .35rem;                  /* （任意）タイトルとサブの間隔 */
-}
+    /* ===== ヒーロー（冒頭の大きな背景） ===== */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+    }
 
-header h1{
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color:#fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,.3);
-  font-weight:800;
-  margin:0;
-}
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+    }
 
-header .subheading{
-  color:#fff;
-  font-size:1.2rem;
-  font-weight:300;
-  text-shadow: 1px 1px 4px rgba(0,0,0,.7);
-  margin:0;
-}
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+    }
 
-    /* ---------- LAYOUT ---------- */
+    /* ===== 共通レイアウト ===== */
     .container {
       max-width: 800px;
       margin: -4rem auto 4rem;
       padding: 0 1rem;
     }
 
-    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    /* ===== 開閉式セクション ===== */
     details {
       background: var(--surface);
       border-radius: var(--radius);
@@ -137,11 +129,7 @@ header .subheading{
       color: var(--primary);
     }
 
-    ul {
-      margin-left: 1.25rem;
-    }
-
-    ol {
+    ul, ol {
       margin-left: 1.25rem;
     }
 
@@ -154,38 +142,34 @@ header .subheading{
       text-decoration: underline;
     }
 
-    /* -------- Images & Grid -------- */
+    /* ===== 画像＆グリッド ===== */
     details img {
       width: 100%;
-      height: auto;
       border-radius: 12px;
-      display: block
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem
+      gap: 1rem;
     }
 
     .grid-2 img {
       max-height: 260px;
-      object-fit: cover
+      object-fit: cover;
     }
 
     @media(max-width:600px) {
-      .grid-2 img {
-        max-height: 220px
-      }
+      .grid-2 img { max-height: 220px; }
     }
 
-    /* ---- Airport Flow ---- */
+    /* ===== 空港 → 宿までのガイド ===== */
     .steps-flow {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      margin: 1rem 0
+      margin: 1rem 0;
     }
 
     .step-box {
@@ -195,40 +179,33 @@ header .subheading{
       text-align: center;
       box-shadow: var(--shadow);
       max-width: 340px;
-      width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center
+      align-items: center;
     }
 
     .step-box i {
       font-size: 2.2rem;
       color: var(--primary);
-      margin-bottom: .35rem
-    }
-
-    .step-box p {
-      margin: 0;
-      font-size: .95rem;
-      line-height: 1.35
+      margin-bottom: .35rem;
     }
 
     .arrow-vert {
       font-size: 1.5rem;
-      color: var(--text)
+      color: var(--text);
     }
 
     .branch-note {
       margin: .75rem 0 .4rem;
       font-size: .95rem;
       font-weight: 600;
-      color: var(--primary)
+      color: var(--primary);
     }
 
     .option-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: .75rem
+      gap: .75rem;
     }
 
     .option-card {
@@ -240,585 +217,595 @@ header .subheading{
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: .5rem
-    }
-
-    .option-card .sub {
-      font-size: .8rem;
-      color: var(--text)
-    }
-
-    .option-card i {
-      font-size: 1.75rem;
-      color: var(--primary)
+      gap: .5rem;
     }
 
     @media(max-width:600px) {
-      .steps-flow .step-box {
-        max-width: 100%
-      }
-
-      .arrow-vert {
-        display: none
-      }
-
-      .option-grid {
-        grid-template-columns: 1fr
-      }
+      .steps-flow .step-box { max-width: 100%; }
+      .arrow-vert { display: none; }
+      .option-grid { grid-template-columns: 1fr; }
     }
 
-    /* ---- Check-in images & notes ---- */
+    /* ===== チェックイン画像 ===== */
     .check-photos img {
       max-height: 280px;
-      object-fit: cover
+      object-fit: cover;
     }
 
     @media(max-width:600px) {
-      .check-photos img {
-        max-height: 220px
-      }
+      .check-photos img { max-height: 220px; }
     }
 
     .caption {
       text-align: center;
       font-size: .85rem;
-      margin-top: .35rem
+      margin-top: .35rem;
     }
 
     .access-code {
       font-weight: 800;
       font-size: 1.6rem;
       letter-spacing: .15em;
-      margin: .5rem 0
+      margin: .5rem 0;
     }
 
-    .sub-steps {
-      margin-left: 1.1rem
-    }
-
-    .note {
-      font-size: .9rem;
-      opacity: .85
-    }
-
-    
-
-    /* ---- Appliance detail layout ---- */
-    .row-2 {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 1rem;
-      align-items: start
-    }
-
-    @media(max-width:700px) {
-      .row-2 {
-        grid-template-columns: 1fr
-      }
-    }
-
-    .appliance-figure img {
-      max-height: 260px;
-      object-fit: cover;
-      border-radius: 10px
-    }
-
-    @media(max-width:600px) {
-      .appliance-figure img {
-        max-height: 220px
-      }
-    }
-
-    .wifi-list {
-      margin-left: 1.1rem
-    }
-
-    /* ---- House Rules layout ---- */
-    .rules-table {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: .75rem;
-      margin: .75rem 0
-    }
-
-    @media(max-width:700px) {
-      .rules-table {
-        grid-template-columns: 1fr
-      }
-    }
-
-    .rules-table .col {
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: .75rem;
-      background: #f8fafc
-    }
-
-    .rules-table .thead {
-      font-weight: 700;
-      margin-bottom: .25rem
-    }
-
-    .rule-img {
-      max-height: 280px;
-      object-fit: cover;
-      border-radius: 12px
-    }
-
-    .small-note {
-      font-size: .9rem;
-      opacity: .9
-    }
-
-    .emergency-card {
-      border-left: 4px solid var(--accent);
-      background: #fff7ed;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-top: 1rem
-    }
-
-    .emergency-numbers {
-      margin-left: 1.25rem
-    }
-
-    /* === Mobile fixes: stop overlap between hero and first card === */
+    /* ===== モバイル調整 ===== */
     @media (max-width: 640px) {
-
-      /* ヒーローを少し高く＆余白を増やす */
       header {
-        min-height: 40vh;
-        /* 40vh → 60vh に拡大 */
+        min-height: 60vh;
         padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
       }
-
-      /* カードを引き上げない（負のマージンを無効化） */
-      .container {
-        margin: 0 auto 2rem;
-        /* -4rem → 0 に */
-      }
-
-      /* 見出しを少しだけ小さくして収まり良く */
-      header h1 {
-        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
-        line-height: 1.15;
-      }
-
-      header .subheading {
-        font-size: clamp(1rem, 4vw, 1.15rem);
-        margin-top: .5rem;
-      }
+      .container { margin: 0 auto 2rem; }
+      header h1 { font-size: clamp(1.9rem, 8.5vw, 2.8rem); }
+      header .subheading { font-size: clamp(1rem, 4vw, 1.15rem); }
     }
   </style>
 </head>
 
+
 <body>
   <header>
-    <h1>Welcome to SUMIKA SHINJUKU</h1>
-    <p class="subheading">Here’s everything you need to know about your stay with us.</p>
+    <h1>SUMIKA SHINJUKU ご利用ガイド</h1>
+    <p class="subheading">ご滞在中に必要な情報をこちらにまとめています。</p>
   </header>
 
   <div class="container">
 
-    <!-- How to get here (Access & Map) -->
+    <!-- アクセス・地図 -->
     <details>
-      <summary><i class="fa-solid fa-map-signs"></i> How to get here (Access & Map)</summary>
+      <summary><i class="fa-solid fa-map-signs"></i> アクセス・行き方（地図）</summary>
       <div class="content">
-        <h3 class="badge">Address</h3>
-        <p>1-8-7, Kita-shinjuku, Shinjuku-ku, Tokyo <strong>169-0074</strong></p>
-        <p><a href="https://goo.gl/maps/t6GAG8WgRQSqBwpY7" target="_blank">Open in Google Maps</a></p>
+        <h3 class="badge">住所</h3>
+        <p>東京都新宿区北新宿 1-8-7 <strong>169-0074</strong></p>
+        <p><a href="https://goo.gl/maps/t6GAG8WgRQSqBwpY7" target="_blank">Google マップで開く</a></p>
 
-        <h3 class="badge">Landmarks</h3>
+        <h3 class="badge">建物の目印</h3>
         <div class="grid-2">
           <figure>
-            <img src="howtoget here1.jpg" alt="Front view of the building">
-            <figcaption style="text-align:center;font-size:.85rem">Our building — look for the parking space
+            <img src="howtoget here1.jpg" alt="建物外観">
+            <figcaption style="text-align:center;font-size:.85rem">
+              建物外観（駐車スペースが目印です）
             </figcaption>
           </figure>
           <figure>
-            <img src="howtoget here2.jpg" alt="Silver dust box">
-            <figcaption style="text-align:center;font-size:.85rem">Huge silver dust box in front</figcaption>
+            <img src="howtoget here2.jpg" alt="シルバーのダストボックス">
+            <figcaption style="text-align:center;font-size:.85rem">
+              建物前に大きなシルバーのダストボックスがあります
+            </figcaption>
           </figure>
         </div>
         <ul style="margin-top:1rem">
-          <li>**Silver dust box** in the parking lot</li>
-          <li>We are the <strong>2nd building from the right</strong> once you turn into the alley</li>
-          <li>Name plate on mailbox: <strong>SUMIKA STAY</strong></li>
-          <li>Registration number: <strong>M130004224</strong></li>
+          <li>駐車場内に <strong>大きなシルバーのごみボックス</strong> があります。</li>
+          <li>路地に入って <strong>右側から2軒目の建物</strong> が当施設です。</li>
+          <li>ポストのネームプレート表記：<strong>SUMIKA STAY</strong></li>
+          <li>届出番号：<strong>M130004224</strong></li>
         </ul>
 
-        <h3 class="badge">From Narita &amp; Haneda Airport</h3>
-        <!-- Unified step flow → branch options -->
+        <h3 class="badge">成田・羽田空港からのアクセス</h3>
+
+        <!-- 共通フロー → ルート分岐 -->
         <div class="steps-flow">
-          <div class="step-box"><span class="step-num">1</span><i class="fa-solid fa-bus"></i>
-            <p>Airport Limousine Bus<br><small>Narita / Haneda → Shinjuku<br><a
-                  href="https://www.limousinebus.co.jp/en/timetable/">You can see the timetable from here</a></small>
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <i class="fa-solid fa-bus"></i>
+            <p>リムジンバス利用<br>
+              <small>
+                成田 / 羽田 → 新宿駅<br>
+                <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank">
+                  時刻表はこちらから確認できます
+                </a>
+              </small>
             </p>
           </div>
           <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
-          <div class="step-box"><span class="step-num">2</span><i class="fa-solid fa-train-subway"></i>
-            <p>Arrive <br><strong>Shinjuku Station</strong></p>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <i class="fa-solid fa-train-subway"></i>
+            <p>
+              <strong>新宿駅</strong> に到着
+            </p>
           </div>
         </div>
 
-        <div class="branch-note">Choose one of the following options for Step&nbsp;3:</div>
+        <div class="branch-note">ステップ3は、次のいずれかお好きな方法をお選びください：</div>
 
         <div class="option-grid">
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-train"></i>
-            <p><strong>JR Chuo‑Sobu Line</strong><br>to Okubo Station</p>
-            <p class="sub">then <strong>walk 2‑3&nbsp;min</strong></p>
+            <p>
+              <strong>JR 中央・総武線</strong><br>
+              大久保駅まで
+            </p>
+            <p class="sub">その後、<strong>徒歩 約2〜3分</strong></p>
           </div>
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-taxi"></i>
-            <p><strong>Taxi directly</strong><br>to our place</p>
-            <p class="sub">≈ 600&nbsp;JPY / 5&nbsp;USD</p>
+            <p>
+              <strong>タクシーで直接</strong><br>
+              当施設まで
+            </p>
+            <p class="sub">目安：<strong>約600円 / 約5 USD</strong></p>
           </div>
           <div class="option-card">
             <span class="step-num">3</span>
             <i class="fa-solid fa-person-walking-luggage"></i>
-            <p><strong>Walk directly</strong><br>from Shinjuku</p>
-            <p class="sub">≈ 13&nbsp;min</p>
+            <p>
+              <strong>新宿駅から徒歩</strong><br>
+              そのまま歩いて来る
+            </p>
+            <p class="sub">目安：<strong>徒歩 約13分</strong></p>
           </div>
         </div>
-        <p>If you prefer comfort, <strong>taxi from Shinjuku Station</strong> is still the easiest. All routes are
-          IC‑card friendly (Suica/PASMO).</p>
-        <p>Our top recommendation is <strong>taxi from Shinjuku Station</strong> for ease after a long flight.</p>
+
+        <p>
+          体力や荷物の量にもよりますが、<strong>新宿駅からタクシー</strong> が一番ラクでおすすめです。
+          どのルートも IC カード（Suica / PASMO など）でご利用いただけます。
+        </p>
+        <p>
+          長時間フライト後などは、特に<strong>新宿駅からタクシー</strong>をご利用いただくのが快適です。
+        </p>
       </div>
     </details>
 
-
-    <!-- Check-in /out Guide -->
+    <!-- チェックイン・チェックアウト案内 -->
     <details>
-      <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
+      <summary><i class="fa-solid fa-door-open"></i> チェックイン / チェックアウトのご案内</summary>
       <div class="content">
-        <p style="font-style:italic;margin-bottom:.5rem">KEY is placed in this mailbox</p>
+        <p style="font-style:italic;margin-bottom:.5rem">
+          鍵はこのポストの中に入っています。
+        </p>
         <div class="grid-2 check-photos">
           <figure>
-            <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
-            <figcaption class="caption">Mailbox location at entrance</figcaption>
+            <img src="entrance_mailbox_location.jpg" alt="エントランスとポストの位置">
+            <figcaption class="caption">エントランス付近のポスト位置</figcaption>
           </figure>
           <figure>
-            <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
-            <figcaption class="caption">Mailbox label: <strong>SUMIKA STAY</strong></figcaption>
+            <img src="entrance_mailbox_front.jpg" alt="SUMIKA STAY と書かれたポスト">
+            <figcaption class="caption">
+              ポスト表記：<strong>SUMIKA STAY</strong>
+            </figcaption>
           </figure>
         </div>
 
-        <h3>Access Code</h3>
+        <h3>ポストの解錠番号</h3>
         <div class="access-code">→ 0 → 0 ← 7</div>
         <ul class="sub-steps">
-          <li>Turn the dial <strong>→</strong> (clockwise) to <strong>0</strong> <strong>two times</strong>.</li>
-          <li>Then turn the dial <strong>←</strong> (anti‑clockwise) to <strong>7</strong>.</li>
+          <li>
+            ダイヤルを<strong>右（→）</strong>に回し、
+            <strong>「0」に2回</strong>合わせます。
+          </li>
+          <li>
+            次にダイヤルを<strong>左（←）</strong>に回し、
+            <strong>「7」</strong>に合わせます。
+          </li>
         </ul>
-        <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
+        <p class="note">
+          深夜到着などに備え、この番号は事前にメモしておくことをおすすめします。
+        </p>
 
-        <h3>Check-in</h3>
+        <h3>チェックインについて</h3>
         <ol>
           <ol>
-            <li>Arrival from <strong>15:00</strong>.</li>
-            <li>Use the mailbox code to retrieve the key.</li>
-            <li>Enter using the Key.</li>
-
+            <li>チェックイン可能時間は <strong>15:00（午後3時）以降</strong> です。</li>
+            <li>上記の暗証番号でポストを開け、鍵を取り出してください。</li>
+            <li>取り出した鍵で玄関ドアを開錠し、ご入室ください。</li>
           </ol>
-          <h3>Note</h3>
 
-          <p>Your check in time is 3pm. We can sometimes arrange an early check-in, so please contact us if you plan to
-            arrive early and we'll do our best to accomodate you (we can't promise, unfortunately.)</p>
+          <h3>チェックインに関するお願い</h3>
+          <p>
+            通常のチェックイン時間は<strong>15:00</strong>です。<br>
+            お部屋の準備状況によってはアーリーチェックインも可能な場合がありますので、
+            早めの到着をご予定の際は事前にメッセージでご相談ください。
+            （必ずお約束できるものではありません。予めご了承ください。）
+          </p>
         </ol>
-        <h3>Check-out</h3>
+
+        <h3>チェックアウトについて</h3>
         <ol>
           <ol>
-            <li>Please leave by <strong>11:00</strong>.</li>
-            <li>Turn off lights/AC/appliances and sort garbage into indoor bins.</li>
-            <li>Return the key to the mailbox and close the door (make shure to lock before leaving).</li>
+            <li>チェックアウト時間は <strong>11:00（午前11時）まで</strong> です。</li>
+            <li>照明・エアコン・家電の電源を切り、ごみは室内のごみ箱で分別してください。</li>
+            <li>鍵をポストに戻し、玄関ドアをしっかり施錠してからご退出ください。</li>
           </ol>
 
-
-          <h3>Note</h3>
-
-          <p>Check-out time is strictly 11am. If you require a later check-out, we’ll do our best to accommodate it. But
-            please bear in mind you’ll need to let us know beforehand.</p>
+          <h3>チェックアウトに関するお願い</h3>
+          <p>
+            チェックアウト時間は<strong>原則 11:00 まで</strong>となります。<br>
+            レイトチェックアウトをご希望の場合は、事前にご相談いただければ
+            可能な範囲で対応いたしますが、当日の予約状況によってはお受けできない場合もございます。
+          </p>
         </ol>
 
-        <h3>BEFORE CHECK-OUT</h3>
-
-        <p>Before your departure, we’d appreciate if you would
-          take care of the following:</p>
-
+        <h3>チェックアウト前にお願いしたいこと</h3>
+        <p>
+          ご出発前に、下記の点についてご協力いただけますと大変助かります。
+        </p>
 
         <ol>
-          <li>Leave the beds unmade. No need to strip them.</li>
-          <li>Place used towels in the shower.</li>
-          <li>Empty all the trash (We will explain how to separate them later)</li>
-          <li>Move all furniture and items back to original locations.</li>
-          <li>Check air conditioners and other alliances are turned off.</li>
-          <li>Check all doors and windows to be sure that they are locked.</li>
+          <li>ベッドはそのまま（シーツを外さず）で結構です。</li>
+          <li>使用済みタオルはシャワールーム（浴室）にまとめて置いてください。</li>
+          <li>ごみは分別ルールに従ってまとめてください（詳しくは「ごみ出しルール」の項目で説明します）。</li>
+          <li>移動した家具や備品は、できるだけ元の位置にお戻しください。</li>
+          <li>エアコンや家電の電源がすべて切れているかご確認ください。</li>
+          <li>玄関・窓・バルコニーの扉など、すべての施錠をご確認ください。</li>
         </ol>
 
       </div>
     </details>
-
-    <!-- Appliance instructions -->
+    <!-- 家電の使い方 -->
     <details>
-      <summary><i class="fa-solid fa-screwdriver-wrench"></i> Appliance instructions</summary>
+      <summary><i class="fa-solid fa-screwdriver-wrench"></i> 家電の使い方</summary>
       <div class="content">
-        <!-- WIFI INFO -->
-        <h3 class="badge">Wi‑Fi info</h3>
+
+        <!-- Wi-Fi -->
+        <h3 class="badge">Wi-Fi の案内</h3>
         <div class="row-2">
           <div>
-            <p>There are <strong>2 portable Wi‑Fis</strong> available in the house. Please refer to the following:</p>
+            <p>室内には <strong>2台のポータブル Wi-Fi</strong> がございます。下記をご利用ください：</p>
             <ul class="wifi-list">
-              <li><strong>Wi‑Fi 1</strong><br>SSID: <strong>Sumika wifi</strong><br>PW: <strong>sumikastay</strong></li>
-              <li><strong>Wi‑Fi 2</strong><br>SSID: <strong>Rakuten‑C94E</strong><br>PW:
-                <strong>LN3R9GTMT4QSP5KX</strong>
+              <li>
+                <strong>Wi-Fi 1</strong><br>
+                SSID：<strong>Sumika wifi</strong><br>
+                パスワード：<strong>sumikastay</strong>
+              </li>
+              <li>
+                <strong>Wi-Fi 2</strong><br>
+                SSID：<strong>Rakuten-C94E</strong><br>
+                パスワード：<strong>LN3R9GTMT4QSP5KX</strong>
               </li>
             </ul>
-            <p class="note">You can also scan the <strong>QR code</strong> on the Wi‑Fi router for easy connection. (QR
-              code connection is only for <strong>Wi‑Fi 2</strong>.)</p>
+            <p class="note">
+              かんたん接続をご希望の場合は、Wi-Fi ルーターに記載の
+              <strong>QRコードを読み取ると自動接続</strong>できます。（QR接続は Wi-Fi2 のみ対応）
+            </p>
           </div>
+
           <figure class="appliance-figure">
-            <img src="QRcode.jpg" alt="Portable Wi‑Fi device with QR code">
-            <figcaption class="caption">Wi‑Fi 2 supports QR code connect</figcaption>
+            <img src="QRcode.jpg" alt="QRコード付きのポータブルWi-Fi">
+            <figcaption class="caption">Wi-Fi 2 は QR コード接続に対応</figcaption>
           </figure>
         </div>
 
-        <!-- TV / FIRE STICK -->
-        <h3 class="badge">Television / Amazon Fire TV</h3>
+        <!-- TV・Fire TV Stick -->
+        <h3 class="badge">テレビ / Amazon Fire TV</h3>
         <div class="row-2">
           <div>
-            <p>You’re welcome to use our TV & entertainment system for personal use. The <strong>remote control</strong>
-              is on the dining table.</p>
-            <p>You can log in to any streaming services using your account. <strong>Please remember to log out</strong>
-              before you head off.</p>
+            <p>
+              室内のテレビは自由にお使いいただけます。<br>
+              <strong>リモコンはダイニングテーブルの上</strong>に置いてあります。
+            </p>
+            <p>
+              Amazon Fire TV を通じて、
+              <strong>ご自身のアカウントで各種配信サービス</strong>をご利用いただけます。
+              視聴後は必ず<strong>ログアウト</strong>をお願いいたします。
+            </p>
           </div>
-
         </div>
 
-        <!-- HEATING / HOT WATER NOTE -->
-        <h3 class="badge">Heating / Cooling (Hot Water)</h3>
-        <p>If hot water is not coming out, it’s mostly because the panel is turned off. You’ll find a panel on the
-          <strong>2F kitchen wall</strong> and the <strong>1F bathroom</strong> that allows you to control the
-          temperature of the water.
+        <!-- 給湯（お湯が出ない場合） -->
+        <h3 class="badge">給湯・お湯の設定（重要）</h3>
+        <p>
+          お湯が出ない場合は、給湯パネルの電源が切れている可能性があります。
+          給湯パネルは <strong>2階キッチンの壁</strong> と <strong>1階浴室</strong> の2か所にあります。
         </p>
 
-        <!-- LAUNDRY BASIC -->
-        <h3 class="badge">Laundry Appliances</h3>
-        <p>We have a <strong>washing machine & dryer</strong> in the <strong>1F bathroom</strong>.
+        <!-- 洗濯機・乾燥機 -->
+        <h3 class="badge">洗濯機・乾燥機</h3>
+        <p>1階の浴室内に、<strong>洗濯機・乾燥機（SHARP）</strong>があります。</p>
 
-        <h3 class="badge">Washer & Dryer (SHARP)</h3>
+        <h3 class="badge">洗濯・乾燥の使い方（SHARP）</h3>
         <figure class="appliance-figure">
-          <img src="laundry appliance.jpg" alt="Washer & dryer control panel">
-          <figcaption class="caption">Example panel (SHARP)</figcaption>
+          <img src="laundry appliance.jpg" alt="洗濯機と乾燥機の操作パネル">
+          <figcaption class="caption">操作パネル（例：SHARP）</figcaption>
         </figure>
+
         <ol>
-          <li>Open the washing machine and put in your clothes. <small>*Max weight: <strong>10 kg</strong> (wash) /
-              <strong>6 kg</strong> (dry)</small></li>
-          <li>Put in <strong>detergent </strong>. <small>*One cup is enough</small></li>
-          <li>Choose mode: <strong>洗濯 (Washing)</strong> / <strong>乾燥 (Drying)</strong> / <strong>洗濯乾燥 (Wash &amp;
-              dry)</strong>. <small>*Avoid the dryer for clothes that may shrink</small></li>
-          <li>Choose the course (default <strong>Standard</strong>). We recommend not changing the mode. Press
-            <strong>START</strong>.
+          <li>洗濯物を洗濯機に入れます。<br>
+              <small>※最大容量：<strong>洗濯 10kg</strong> / <strong>乾燥 6kg</strong></small>
           </li>
-          <li>Washing takes <strong>40–60 min</strong>. Wash &amp; dry total takes <strong>120–180 min</strong>.</li>
+
+          <li>洗剤を投入します。<br>
+              <small>※カップ1杯程度で十分です。</small>
+          </li>
+
+          <li>
+            モードを選択します：<br>
+            <strong>洗濯（洗濯） / 乾燥（乾燥） / 洗濯乾燥（洗濯 + 乾燥）</strong><br>
+            <small>※縮みやすい衣類は乾燥機の使用を避けてください。</small>
+          </li>
+
+          <li>
+            コースを選ぶ（基本は <strong>標準</strong> のままでOK）。<br>
+            <strong>スタート（START）</strong> を押します。
+          </li>
+
+          <li>
+            所要時間：<br>
+            ・洗濯のみ：<strong>約40〜60分</strong><br>
+            ・洗濯＋乾燥：<strong>約120〜180分</strong>
+          </li>
         </ol>
 
-        <!-- WASHLET -->
-        <h3 class="badge">Washlet (Bidet toilet)</h3>
+        <!-- ウォシュレット -->
+        <h3 class="badge">ウォシュレット（温水洗浄便座）</h3>
 
         <figure class="appliance-figure">
-          <img src="washlet_panel.jpg" alt="Washlet control panel">
-          <figcaption class="caption">Example panel </figcaption>
+          <img src="washlet_panel.jpg" alt="ウォシュレットの操作パネル">
+          <figcaption class="caption">ウォシュレット操作パネル（例）</figcaption>
         </figure>
-        <div>
-          <ul>
-            <li><strong>Wash (おしり／ワイド)</strong> — standard spray after use.</li>
-            <li><strong>Bidet (ビデ／ワイド／スーパ)</strong> — gentler spray.</li>
-            <li><strong>Pressure</strong> — weak/strong (弱／強).</li>
-            <li><strong>Seat Temp (便座温度)</strong> — adjust seat temperature.</li>
-            <li><strong>Water Temp (温水温度)</strong> — adjust spray temperature.</li>
-            <li><strong>Cleaning (ノズルそうじ)</strong> — cleans the spray nozzle.</li>
-          </ul>
-          <p class="note">Tips: Always press <strong>Stop</strong> after using any function. Try different settings to
-            find what’s comfortable for you.</p>
-        </div>
 
+        <ul>
+          <li><strong>おしり洗浄（おしり / ワイド）</strong> … 通常の洗浄。</li>
+          <li><strong>ビデ洗浄（ビデ / ワイド / スーパー）</strong> … 優しい洗浄。</li>
+          <li><strong>水圧調整（弱 / 強）</strong></li>
+          <li><strong>便座温度</strong> の調整</li>
+          <li><strong>温水温度</strong> の調整</li>
+          <li><strong>ノズルそうじ</strong> … ノズルを自動クリーニングします。</li>
+        </ul>
 
-        <!-- BATHTUB PANEL -->
-        <h3 class="badge">Bathtub Control Panel</h3>
+        <p class="note">
+          使用後は必ず <strong>停止（STOP）</strong> ボタンを押してください。<br>
+          お好みに合わせて水温・座面温度などを調整してご利用ください。
+        </p>
+
+        <!-- 風呂の自動お湯はりパネル -->
+        <h3 class="badge">浴槽（お風呂）操作パネル</h3>
+
         <div class="row-2">
           <figure class="appliance-figure">
-            <img src="bathroom panel.jpg" alt="Bathtub control panel">
+            <img src="bathroom panel.jpg" alt="浴室の給湯パネル">
           </figure>
+
           <div>
             <ol>
-              <li><strong>Turn on the System</strong> — press <strong>ON/OFF (運転)</strong>.</li>
-              <li><strong>Auto Fill the Bathtub</strong> — press <strong>Auto (自動)</strong>: fills to preset level &
-                temperature; announces when ready.</li>
-              <li><strong>Reheat if Needed</strong> — press <strong>Reheat (おいだき)</strong> to warm it back up.</li>
+              <li><strong>電源オン</strong> — <strong>運転（ON/OFF）</strong> を押します。</li>
+              <li><strong>自動お湯はり</strong> — <strong>自動（AUTO）</strong> を押すと、設定量&温度まで自動でお湯を張ります。</li>
+              <li><strong>追いだき</strong> — 冷めた場合は <strong>おいだき</strong> ボタンで再加熱できます。</li>
             </ol>
+
             <ul>
-              <li><strong>Reservation (ふろ予約)</strong> — timer to have the bath ready at a specific time.</li>
-              <li><strong>Volume (音量)</strong> — speaker volume for voice announcements.</li>
-              <li><strong>Clock / Time Setting (時計表示 / 時刻合わせ)</strong> — displays and adjusts the current time.</li>
+              <li><strong>ふろ予約</strong> — 指定時間にお風呂が沸くようタイマー設定。</li>
+              <li><strong>音量</strong> — 音声案内の音量調整。</li>
+              <li><strong>時計設定</strong> — 現在時刻の調整。</li>
             </ul>
-            <p class="note">Do not use <strong>Reheat</strong> when the tub is empty. The <strong>Auto</strong> function
-              is the easiest and safest way.</p>
+
+            <p class="note">
+              浴槽にお湯が入っていない状態で <strong>追いだき</strong> を使わないでください。<br>
+              基本は <strong>自動（AUTO）</strong> を押すだけで安全に使えます。
+            </p>
           </div>
         </div>
 
-        <!-- AIR CONDITIONER -->
-        <h3 class="badge">Air Conditioner</h3>
+        <!-- エアコン -->
+        <h3 class="badge">エアコンの使い方</h3>
+
         <div class="row-2">
           <figure class="appliance-figure">
-            <img src="ac_remote.jpg" alt="Air conditioner remote">
+            <img src="ac_remote.jpg" alt="エアコンのリモコン">
           </figure>
+
           <div>
             <ul>
-              <li><strong>Power ON</strong> — press the green button labeled <strong>運転/停止</strong>.</li>
-              <li><strong>Power OFF</strong> — press the yellow button labeled <strong>停止 (OFF)</strong>.</li>
-              <li><strong>Change Mode</strong> — <strong>冷房 (Cool)</strong> blue / <strong>暖房 (Warm)</strong> red /
-                <strong>自動 (Auto)</strong> green.
+              <li><strong>電源オン</strong> — 緑色の <strong>運転 / 停止</strong> ボタンを押す。</li>
+              <li><strong>電源オフ</strong> — 黄色の <strong>停止</strong> ボタン。</li>
+              <li>
+                <strong>モード切替</strong>：<br>
+                ・<strong>冷房（青）</strong><br>
+                ・<strong>暖房（赤）</strong><br>
+                ・<strong>自動（緑）</strong>
               </li>
-              <li><strong>Temperature Control</strong> — use up/down arrows next to <strong>温度</strong>.</li>
+              <li><strong>温度調整</strong> — 温度ボタン（▲ / ▼）</li>
             </ul>
-            <p class="note">The AC may take a few minutes to start blowing air, especially in heating mode. Always turn
-              it off when you leave the room.</p>
+
+            <p class="note">
+              暖房の場合、風が出るまで数分かかることがあります。<br>
+              外出時は必ず電源をお切りください。
+            </p>
           </div>
         </div>
 
       </div>
     </details>
-
-    <!-- House Rules -->
-    <!-- House Rules -->
+    <!-- ハウスルール -->
     <details>
-      <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
+      <summary><i class="fa-solid fa-house-user"></i> ハウスルール</summary>
       <div class="content">
-        <!-- Garbage rules (I) -->
-        <h3 class="badge">Garbage disposal rules</h3>
-        <p>We understand that garbage rules in Japan can be confusing, so we made it simple. Separate the garbage into
-          <strong>2 categories</strong> using different plastic bags, then put them in the silver dust box in the
-          parking lot as below.
+
+        <!-- ごみ出しルール ① -->
+        <h3 class="badge">ごみ出しルール</h3>
+        <p>
+          日本のごみ分別ルールは少し複雑なため、当施設ではわかりやすく
+          <strong>2種類に分けるだけ</strong>でOKです。<br>
+          それぞれ別の袋にまとめ、建物前の<strong>シルバーのダストボックス</strong>へ捨ててください。
         </p>
+
         <div class="rules-table">
           <div class="col">
-            <div class="thead">Burnable Garbage</div>
+            <div class="thead">可燃ごみ</div>
             <ul>
-              <li>Kitchen waste</li>
-              <li>Paper scraps</li>
-              <li>Clothing, etc.</li>
+              <li>生ごみ</li>
+              <li>紙くず</li>
+              <li>衣類など</li>
             </ul>
           </div>
+
           <div class="col">
-            <div class="thead">Recyclable Garbage</div>
+            <div class="thead">資源ごみ</div>
             <ul>
-              <li>Plastic bottles</li>
-              <li>Container jars & cans</li>
-              <li>Aerosol spray cans, etc.</li>
+              <li>ペットボトル</li>
+              <li>瓶・缶</li>
+              <li>スプレー缶など</li>
             </ul>
           </div>
         </div>
+
         <figure class="appliance-figure">
-          <img src="dustbox_parking.jpg" alt="Silver dust box in the parking lot" class="rule-img">
-          <figcaption class="caption">Silver dust box in the parking lot</figcaption>
+          <img src="dustbox_parking.jpg" alt="駐車場のシルバーごみボックス" class="rule-img">
+          <figcaption class="caption">建物前のシルバーごみボックス</figcaption>
         </figure>
 
-        <!-- Garbage rules (II) -->
-        <h3 class="badge">Garbage disposal II</h3>
-        <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
-          house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
-
-        <!-- Quiet hours -->
-        <h3 class="badge">Quiet time: 10pm–8am</h3>
-        <p>Please respect our residential community. Between <strong>10pm and 8am</strong>, keep noise to a minimum.</p>
-
-        <!-- Shoes -->
-        <h3 class="badge">Please take off your shoes</h3>
-        <p>Please do not wear your shoes inside the property.</p>
-
-        <!-- Smoking -->
-        <h3 class="badge">Smoking rules</h3>
-        <p>This is a <strong>non‑smoking</strong> home — no smoking or vaping inside the house.</p>
-        <p class="small-note">You may smoke in the parking lot, but please use your own ash tray. Do not smoke on the
-          street — it is strictly prohibited in Tokyo.</p>
-
-        <!-- Pets / Guests / Breakages / Exceptions -->
-        <h3 class="badge">Pets</h3>
-        <p>We love animals, but this home is pet‑free due to allergies.</p>
-
-        <h3 class="badge">Additional guests</h3>
-        <p>Please do not bring additional guests. If necessary, let us know in advance so we can adjust your booking.
+        <!-- ごみ出しルール ② -->
+        <h3 class="badge">ごみ出し ②（注意事項）</h3>
+        <p class="small-note">
+          上記以外の荷物（スーツケース・大きな物・粗大ごみなど）は、室内に置いていかないでください。<br>
+          不要物を残置された場合、処理費用を請求する場合がございます。
         </p>
 
-        <h3 class="badge">Breakages</h3>
-        <p>If you break anything, please tell us immediately. Minor issues are usually not charged. For larger issues
-          (e.g., TV screen), we will agree the cost with you before checkout to avoid surprises.</p>
+        <!-- 静音時間 -->
+        <h3 class="badge">静かにお過ごしいただく時間（22:00〜8:00）</h3>
+        <p>
+          近隣は住宅街のため、<strong>22時〜翌8時</strong>の間は物音にご配慮ください。
+        </p>
 
-        <h3 class="badge">Written exceptions</h3>
-        <p>Any exceptions to these rules must be approved in advance. Thank you!</p>
+        <!-- 土足禁止 -->
+        <h3 class="badge">土足はご遠慮ください</h3>
+        <p>室内では靴を脱いでお過ごしください。</p>
 
-        <!-- Emergency (from the images) -->
+        <!-- 禁煙 -->
+        <h3 class="badge">喫煙について</h3>
+        <p>
+          室内は<strong>完全禁煙</strong>となります。（電子タバコ含む）
+        </p>
+        <p class="small-note">
+          駐車場では喫煙いただけますが、携帯灰皿をご使用ください。<br>
+          路上での喫煙は東京都区条例により禁止されています。
+        </p>
+
+        <!-- ペット -->
+        <h3 class="badge">ペットの同伴について</h3>
+        <p>アレルギーの関係により、ペットの同伴はご遠慮いただいております。</p>
+
+        <!-- 追加ゲスト -->
+        <h3 class="badge">無断での宿泊人数の追加は禁止</h3>
+        <p>
+          ご予約人数以外の同伴はご遠慮ください。<br>
+          やむを得ない場合は必ず事前にご連絡ください。
+        </p>
+
+        <!-- 破損 -->
+        <h3 class="badge">破損について</h3>
+        <p>
+          万が一備品を破損された場合は、すぐにご連絡ください。<br>
+          軽微な破損は請求しないことがほとんどです。テレビ画面など高額品の場合は、
+          チェックアウト前に費用をご説明し、双方合意のもとで対応いたします。
+        </p>
+
+        <!-- 例外 -->
+        <h3 class="badge">例外事項について</h3>
+        <p>
+          特別なご要望や例外対応が必要な場合は、事前にご相談ください。柔軟に対応いたします。
+        </p>
+
+        <!-- 緊急時 -->
         <div class="emergency-card">
-          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">What to do in an Emergency
+          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">
+            緊急時の対応
           </h3>
-          <p>For emergency services (ambulance, police, fire), please make the call immediately. State your location as
-            shown on the front page of this guidebook.</p>
+
+          <p>
+            緊急事態（救急・火災・犯罪など）は、ためらわずにすぐ連絡してください。<br>
+            その際、当施設の住所（ガイド冒頭に記載）をお伝えください。
+          </p>
+
           <ul class="emergency-numbers">
-            <li><strong>Police:</strong> 110</li>
-            <li><strong>Ambulance:</strong> 119</li>
-            <li><strong>Fire:</strong> 119</li>
+            <li><strong>警察：</strong>110</li>
+            <li><strong>救急車：</strong>119</li>
+            <li><strong>消防：</strong>119</li>
           </ul>
         </div>
       </div>
     </details>
 
-    <!-- Neighborhood Guide -->
+    <!-- 周辺ガイド -->
     <details>
-      <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
+      <summary><i class="fa-solid fa-utensils"></i> 周辺ガイド（近くのお店）</summary>
       <div class="content">
+
         <ul>
           <li>
             <i class="fa-solid fa-store"></i>
-            <strong>7-Eleven Kita-Shinjuku 1-chome</strong> (approx. 2 min walk) — open 24 hours
-            <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Kita-Shinjuku+1-chome" target="_blank"
-              rel="noopener">Map</a>
+            <strong>セブンイレブン 北新宿1丁目店</strong>（徒歩約2分 / 24時間営業）
+            <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Kita-Shinjuku+1-chome" target="_blank">
+              地図
+            </a>
           </li>
+
           <li>
             <i class="fa-solid fa-prescription-bottle-medical"></i>
-            <strong>Hijikata Pharmacy</strong> (approx. 1 min walk) — prescription & daily goods
-            <a href="https://www.google.com/maps/search/?api=1&query=Hijikata+Pharmacy+Shinjuku" target="_blank"
-              rel="noopener">Map</a>
+            <strong>ヒジカタ薬局</strong>（徒歩約1分 / 医薬品・日用品）
+            <a href="https://www.google.com/maps/search/?api=1&query=Hijikata+Pharmacy+Shinjuku" target="_blank">
+              地図
+            </a>
           </li>
-          <li><strong>Isomaru Suisan Okubo Ekimae</strong> (4 min walk) — Lively izakaya specializing in seafood dishes.
+
+          <li>
+            <strong>磯丸水産 大久保駅前店</strong>（徒歩約4分 / 魚介系の人気居酒屋）
+            <a href="https://maps.app.goo.gl/J4Fj95ck3h6Mepj86" target="_blank">
+              地図
+            </a>
           </li>
-          <a href="https://maps.app.goo.gl/J4Fj95ck3h6Mepj86" target="_blank" rel="noopener">Map</a>
         </ul>
-        <p class="note">* Walking times and opening hours are approximate. Please check the latest details on the map
-          link.</p>
+
+        <p class="note">
+          ※徒歩時間や営業時間などは目安です。詳しくはリンク先の地図でご確認ください。
+        </p>
       </div>
     </details>
 
-    <!-- Contact & Support -->
+    <!-- 連絡先 -->
     <details>
-      <summary><i class="fa-solid fa-comment-dots"></i> Contact & Support</summary>
+      <summary><i class="fa-solid fa-comment-dots"></i> お問い合わせ・サポート</summary>
       <div class="content">
-        <p>If you have any inquiries during your stay, please contact us via booking app message or the following:</p>
+        <p>
+          ご滞在中、ご不明点やトラブルがございましたら、
+          予約アプリ（Airbnb など）からメッセージにてご連絡ください。<br>
+          また、以下の連絡先でも対応可能です。
+        </p>
+
         <ul>
-          <li><strong>Direct Host Line (24h):</strong> +818043709211</li>
-          <li><strong>Emergency:</strong> Fire, Ambulance, or Police — Dial 110 / 119</li>
+          <li><strong>ホスト直通（24時間対応）：</strong> +81 80-4370-9211</li>
+          <li><strong>緊急時：</strong> 警察・救急・消防 — 110 / 119</li>
         </ul>
       </div>
     </details>
 
-    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">© 2025 SUMIKA SHINJUKU</footer>
+    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">
+      © 2025 SUMIKA SHINJUKU
+    </footer>
   </div>
 
   <script>
-    document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
-      if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
-    }));
+    document.querySelectorAll('details').forEach(d => 
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document.querySelectorAll('details').forEach(o => 
+            o !== d && o.removeAttribute('open')
+          );
+        }
+      })
+    );
   </script>
 </body>
 
