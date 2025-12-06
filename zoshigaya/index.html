@@ -63,12 +63,12 @@
     }
 
     body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('background.jpg') center/cover no-repeat fixed;
-  z-index: -2;
-}
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      z-index: -2;
+    }
 
     /* Semi‑transparent overlay for readability */
     body::after {
@@ -78,6 +78,16 @@
       background: var(--bg-overlay);
       z-index: -1;
     }
+
+    /* 追加 */
+    @media (max-width: 768px) {
+      body::before {
+        position: absolute;
+        /* or static でもOK */
+        background: url('background.jpg') center/cover no-repeat;
+      }
+    }
+
 
     /* ---------- HERO ---------- */
     header {
