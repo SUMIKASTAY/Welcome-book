@@ -483,24 +483,24 @@
       cursor: pointer;
     }
 
-    /* ---- Video wrapper (YouTube) ---- */
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 177.78%;
-      /* 9:16 の縦長動画用 */
-      height: 0;
-      overflow: hidden;
-      margin: 1rem 0;
-    }
+   
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* ← これが正しい 9:16 ショート動画比率 */
+  height: 0;
+  overflow: hidden;
+  background: #000; /* 黒背景でキレイに見える */
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
 
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+ 
 </head>
 
 <body>
