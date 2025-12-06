@@ -56,43 +56,35 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* ---------- GLOBAL BACKGROUND IMAGE ---------- */
-    body {
-      line-height: 1.6;
-      color: var(--text);
-    }
+    /* ---------- GLOBAL BACKGROUND IMAGE (PC & SP 共通) ---------- */
+body {
+  line-height: 1.6;
+  color: var(--text);
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('background.jpg') center/cover no-repeat fixed;
-      z-index: -2;
-    }
+  /* 背景＋オーバーレイを直接指定 */
+  background-image:
+    linear-gradient(rgba(202, 202, 202, 0.4), rgba(202, 202, 202, 0.4)),
+    url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* PCは固定 */
+}
 
-    /* ====== SP用：背景を固定しないで普通にスクロールさせる ====== */
-    @media (max-width: 768px) {
+/* ---------- 擬似要素は完全に無効化（PC/SP 両方） ---------- */
+body::before,
+body::after {
+  content: none !important;
+  display: none !important;
+}
 
-      /* 疑似要素はスマホでは使わない */
-      body::before,
-      body::after {
-        content: none !important;
-        display: none !important;
-      }
 
-      /* 背景画像＋オーバーレイを body に直接指定 */
-      body {
-        background-image:
-          linear-gradient(rgba(202, 202, 202, 0.4), rgba(202, 202, 202, 0.4)),
-          url('background.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        /* ← スクロールに追従させる */
-      }
-    }
-
+/* ---------- SP（スマホ）は背景固定するとガクつくので scroll に変更 ---------- */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
 
 
     /* ---------- HERO ---------- */
@@ -518,24 +510,24 @@
       /* 中央寄せ */
     }
 
-    /* YouTube動画のレイアウト調整 */
+    /* YouTube動画のレイアウト調整（PC・SP共通） */
     .video-wrapper {
       max-width: 420px;
-      /* PCでの最大幅。大きくしたければ 480px とかにしてOK */
+      /* PC時の最大幅 */
       margin: 1rem auto 1.5rem;
       /* 中央寄せ */
     }
 
-    /* 9:16 の縦動画をレスポンシブに表示 */
+    /* プレーヤー自体は 16:9 にする */
     .video-wrapper iframe {
       display: block;
       width: 100%;
-      aspect-ratio: 9 / 16;
-      /* 縦長 */
+      aspect-ratio: 16 / 9;
+      /* ← ここを 9/16 ではなく 16/9 に */
       height: auto;
     }
 
-    /* スマホではカード幅いっぱいに広げるだけ（特に変更不要だけど念のため） */
+    /* スマホでは幅いっぱいでOK */
     @media (max-width: 768px) {
       .video-wrapper {
         max-width: 100%;
