@@ -62,15 +62,13 @@
       color: var(--text);
     }
 
-    /* Full‑screen background layer */
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('background.jpg') center/cover no-repeat fixed;
-      /* ← 好きな画像へ差替え */
-      z-index: -2;
-    }
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('background.jpg') center/cover no-repeat fixed;
+  z-index: -2;
+}
 
     /* Semi‑transparent overlay for readability */
     body::after {
