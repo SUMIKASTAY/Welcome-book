@@ -70,23 +70,29 @@
       z-index: -2;
     }
 
-    /* Semi‑transparent overlay for readability */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: var(--bg-overlay);
-      z-index: -1;
-    }
-
-    /* 追加 */
+    /* ====== SP用：背景を固定しないで普通にスクロールさせる ====== */
     @media (max-width: 768px) {
-      body::before {
-        position: absolute;
-        /* or static でもOK */
-        background: url('background.jpg') center/cover no-repeat;
+
+      /* 疑似要素はスマホでは使わない */
+      body::before,
+      body::after {
+        content: none !important;
+        display: none !important;
+      }
+
+      /* 背景画像＋オーバーレイを body に直接指定 */
+      body {
+        background-image:
+          linear-gradient(rgba(202, 202, 202, 0.4), rgba(202, 202, 202, 0.4)),
+          url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        /* ← スクロールに追従させる */
       }
     }
+
 
 
     /* ---------- HERO ---------- */
