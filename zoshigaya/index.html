@@ -517,26 +517,30 @@
       transform: translateX(-50%);
       /* 中央寄せ */
     }
+
     /* YouTube動画のレイアウト調整 */
-.video-wrapper {
-  max-width: 420px;        /* PCでの最大幅。大きくしたければ 480px とかにしてOK */
-  margin: 1rem auto 1.5rem;/* 中央寄せ */
-}
+    .video-wrapper {
+      max-width: 420px;
+      /* PCでの最大幅。大きくしたければ 480px とかにしてOK */
+      margin: 1rem auto 1.5rem;
+      /* 中央寄せ */
+    }
 
-/* 9:16 の縦動画をレスポンシブに表示 */
-.video-wrapper iframe {
-  display: block;
-  width: 100%;
-  aspect-ratio: 9 / 16;   /* 縦長 */
-  height: auto;
-}
+    /* 9:16 の縦動画をレスポンシブに表示 */
+    .video-wrapper iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      /* 縦長 */
+      height: auto;
+    }
 
-/* スマホではカード幅いっぱいに広げるだけ（特に変更不要だけど念のため） */
-@media (max-width: 768px) {
-  .video-wrapper {
-    max-width: 100%;
-  }
-}
+    /* スマホではカード幅いっぱいに広げるだけ（特に変更不要だけど念のため） */
+    @media (max-width: 768px) {
+      .video-wrapper {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -584,7 +588,8 @@
         <h3 class="badge">Video Guide</h3>
 
         <div class="video-wrapper">
-          <iframe src="https://www.youtube-nocookie.com/embed/dmOzQvB89o8" title="Access guide video" frameborder="0"
+          <iframe src="https://www.youtube.com/embed/dmOzQvB89o8" title="How to get here" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
