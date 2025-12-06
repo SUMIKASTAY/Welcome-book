@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Zoshigaya</title>
+  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Create overlay
+      const overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay hidden";
+      const overlayImg = document.createElement("img");
+      overlay.appendChild(overlayImg);
+      document.body.appendChild(overlay);
+
+      // Add click event to all images
+      document.querySelectorAll("img").forEach(img => {
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+          overlayImg.src = img.src;
+          overlay.classList.remove("hidden");
+        });
+      });
+
+      // Close when clicking outside or on X
+      overlay.addEventListener("click", () => {
+        overlay.classList.add("hidden");
+      });
+    });
+  </script>
+
+  <style>
+    :root {
+      --primary: #0d9488;
+      /* teal */
+      --accent: #f97316;
+      /* orange */
+      --bg-overlay: rgba(202, 202, 202, 0.4);
+      /* brighten overlay */
+      --text: #1e293b;
+      /* slate-800 */
+      --surface: #ffffff;
+      /* card background */
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ---------- GLOBAL BACKGROUND IMAGE ---------- */
+    body {
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* Full‑screen background layer */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      /* ← 好きな画像へ差替え */
+      z-index: -2;
+    }
+
+    /* Semi‑transparent overlay for readability */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--bg-overlay);
+      z-index: -1;
+    }
+
+    /* ---------- HERO ---------- */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      /* ここを追加 ↓ */
+      flex-direction: column;
+      /* ← 縦並びにする */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+      /* （任意）タイトルとサブの間隔 */
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+      margin: 0;
+    }
+
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+      margin: 0;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      color: var(--primary);
+      transition: transform .2s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .content h3 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    ul {
+      margin-left: 1.25rem;
+    }
+
+    ol {
+      margin-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* -------- Images & Grid -------- */
+    details img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem
+    }
+
+    .grid-2 img {
+      max-height: 260px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .grid-2 img {
+        max-height: 220px
+      }
+    }
+
+    /* ---- Airport Flow ---- */
+    .steps-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0
+    }
+
+    .step-box {
+      background: #eef2f7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .step-box i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: .35rem
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.35
+    }
+
+    .arrow-vert {
+      font-size: 1.5rem;
+      color: var(--text)
+    }
+
+    .branch-note {
+      margin: .75rem 0 .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--primary)
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .75rem
+    }
+
+    .option-card {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .option-card .sub {
+      font-size: .8rem;
+      color: var(--text)
+    }
+
+    .option-card i {
+      font-size: 1.75rem;
+      color: var(--primary)
+    }
+
+    @media(max-width:600px) {
+      .steps-flow .step-box {
+        max-width: 100%
+      }
+
+      .arrow-vert {
+        display: none
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ---- Check-in images & notes ---- */
+    .check-photos img {
+      max-height: 280px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .check-photos img {
+        max-height: 220px
+      }
+    }
+
+    .caption {
+      text-align: center;
+      font-size: .85rem;
+      margin-top: .35rem
+    }
+
+    .access-code {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      margin: .5rem 0
+    }
+
+    .sub-steps {
+      margin-left: 1.1rem
+    }
+
+    .note {
+      font-size: .9rem;
+      opacity: .85
+    }
+
+
+
+    /* ---- Appliance detail layout ---- */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+      align-items: start
+    }
+
+    @media(max-width:700px) {
+      .row-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .appliance-figure img {
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    @media(max-width:600px) {
+      .appliance-figure img {
+        max-height: 220px
+      }
+    }
+
+    .wifi-list {
+      margin-left: 1.1rem
+    }
+
+    /* ---- House Rules layout ---- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: .75rem 0
+    }
+
+    @media(max-width:700px) {
+      .rules-table {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem
+    }
+
+    .rule-img {
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px
+    }
+
+    .small-note {
+      font-size: .9rem;
+      opacity: .9
+    }
+
+    .emergency-card {
+      border-left: 4px solid var(--accent);
+      background: #fff7ed;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem
+    }
+
+    .emergency-numbers {
+      margin-left: 1.25rem
+    }
+
+    .content h4 {
+      margin: .75rem 0 .25rem;
+      font-size: 1rem;
+      font-weight: 700
+    }
+
+    .washlet-guide ol {
+      margin-left: 1.25rem
+    }
+
+    .washlet-guide ol li {
+      margin: .25rem 0
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        padding: 1rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
+
+    /* ===== Lightbox base ===== */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+
+    .lightbox-overlay.hidden {
+      display: none;
+    }
+
+    .lightbox-overlay:after {
+      content: "✕";
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ---- Video wrapper (YouTube) ---- */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 177.78%;
+      /* 9:16 の縦長動画用 */
+      height: 0;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to Zoshigaya</h1>
+    <p class="subheading">Here’s everything you need to know about your stay with us.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- How to get here (Access & Map) -->
+    <details>
+      <summary><i class="fa-solid fa-map-signs"></i> How to get here (Access & Map)</summary>
+      <div class="content">
+        <h3 class="badge">Address</h3>
+        <p>Tokyo Toshima City Zōshigaya 2-chōme-22-16 Zōshigaya <strong>〒171-0032</strong></p>
+        <p><a href="https://maps.app.goo.gl/XL1dNTbaZUuGbR8h6" target="_blank">Open in Google Maps</a></p>
+
+        <h3 class="badge">Landmarks</h3>
+        <div class="grid-2">
+          <figure>
+            <img src="howtoget here1.jpg" alt="Front view of the building">
+            <figcaption style="text-align:center;font-size:.85rem">Our building — look for the parking space
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="howtoget here2.jpg" alt="Silver dust box">
+            <figcaption style="text-align:center;font-size:.85rem">silver dust box in the parking space</figcaption>
+          </figure>
+        </div>
+        <ul style="margin-top:1rem">
+          <li>**Silver dust box** in the parking lot</li>
+
+
+          <li>Registration number: <strong>M130056625</strong></li>
+        </ul>
+
+        <h3 class="badge">From Haneda Airport</h3>
+        <img src="haneda.png" alt="How to get here">
+
+        <p>All routes are IC-card friendly (Suica/PASMO). For comfort and simplicity, a <strong>taxi from
+            Haneda</strong> is the easiest option.</p>
+
+        <h3 class="badge">Video Guide</h3>
+
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube-nocookie.com/embed/sI9p6CP14PM?si=SvuWH8Q37WuzOTVd" title="Access guide video" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+
+
+      </div>
+    </details>
+
+
+    <!-- Check-in /out Guide -->
+    <details>
+      <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
+      <div class="content">
+        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
+        <div class="grid-2 check-photos">
+          <figure>
+            <img src="entrance_passcode.jpg" alt="Mailbox front with label">
+            <figcaption class="caption">Enter passcode</figcaption>
+          </figure>
+        </div>
+
+        <h3>Access Code</h3>
+        <div class="access-code">1122</div>
+        <ul class="sub-steps">
+          <li>Press the "Unlock" button at the bottom right
+            and Enter the building.</li>
+        </ul>
+        <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
+        <h3>Check-in</h3>
+        <ol>
+          <ol>
+            <li>Arrival from <strong>16:00</strong>.</li>
+            <li>Use the Passcode for entering.</li>
+
+
+          </ol>
+          <h3>Note</h3>
+
+          <p>Your check in time is 4pm. We can sometimes arrange an early check-in, so please contact us if you plan to
+            arrive early and we'll do our best to accomodate you (we can't promise, unfortunately.)</p>
+        </ol>
+        <h3>Check-out</h3>
+        <ol>
+          <ol>
+            <li>Please leave by <strong>10:00</strong>.</li>
+            <li>Turn off lights/AC/appliances and sort garbage into indoor bins.</li>
+            <li>close the door (make shure to lock before leaving).</li>
+          </ol>
+
+
+          <h3>Note</h3>
+
+          <p>Check-out time is strictly 10am. If you require a later check-out, we’ll do our best to accommodate it. But
+            please bear in mind you’ll need to let us know beforehand.</p>
+        </ol>
+
+        <h3>BEFORE CHECK-OUT</h3>
+
+        <p>Before your departure, we’d appreciate if you would
+          take care of the following:</p>
+
+
+        <ol>
+          <li>Leave the beds unmade. No need to strip them.</li>
+          <li>Place used towels in the shower.</li>
+          <li>Empty all the trash (We will explain how to separate them later)</li>
+          <li>Move all furniture and items back to original locations.</li>
+          <li>Check air conditioners and other alliances are turned off.</li>
+          <li>Check all doors and windows to be sure that they are locked.</li>
+        </ol>
+
+      </div>
+    </details>
+
+    <!-- Appliance instructions -->
+    <details>
+      <summary><i class="fa-solid fa-screwdriver-wrench"></i> Appliance instructions</summary>
+      <div class="content">
+        <!-- WIFI INFO -->
+        <h3 class="badge">Wi-Fi info</h3>
+        <div class="row-2">
+          <div>
+            <p>There is <strong>1 Wi-Fi network</strong> available in the house.</p>
+            <ul class="wifi-list">
+              <li>
+                <strong>Wi-Fi Name (SSID):</strong> welcome<br>
+                <strong>Password:</strong> tokyo1234
+              </li>
+            </ul>
+            <p class="note">
+              The Wi-Fi information is also displayed on the <strong>cat Wi-Fi sign</strong> on the wall.
+            </p>
+          </div>
+
+          <figure class="appliance-figure">
+            <img src="wifi_cat_sign.jpg" alt="Wi-Fi sign with cat illustration">
+            <figcaption class="caption">Wi-Fi info (located on the wall)</figcaption>
+          </figure>
+        </div>
+
+
+        <!-- TELEVISION -->
+        <h3 class="badge">Television (TV) Instructions</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="tv_remote.jpg" alt="TV remote controller">
+            <figcaption class="caption">Power / Channel / Volume controls</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Turn ON / OFF</strong>
+                <br>Press the <strong>red power button</strong> at the top of the remote.
+              </li>
+
+              <li><strong>Change channels</strong>
+                <br>Use the <strong>▲ / ▼ buttons</strong> next to “チャンネル”.
+              </li>
+
+              <li><strong>Adjust volume</strong>
+                <br>Use the <strong>＋ / － buttons</strong> next to “音量”.
+              </li>
+
+              <li><strong>Direction buttons</strong>
+                <br>Use the large center arrows (← ↑ → ↓) to navigate menus if needed.
+              </li>
+            </ol>
+
+            <p class="note">
+              📺 You may log in to streaming services with your own account if available.<br>
+              <strong>Please remember to log out before check-out.</strong>
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 If the TV does not turn on, please make sure the power cable is connected and press the power button on the
+          TV itself.
+        </p>
+
+
+
+        <!-- WASHING MACHINE -->
+        <h3 class="badge">Washing Machine (Auto Detergent)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="washing_machine.jpg" alt="Washing machine control panel">
+            <figcaption class="caption">Power → Mode → Start</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Open the door</strong> and place your laundry inside.<br>
+                <small>*Max capacity: 10 kg*</small>
+              </li>
+
+              <li>
+                <strong>Press & hold the power button</strong> (①) to turn on.
+              </li>
+
+              <li>
+                <strong>Select mode</strong> using the mode button (②):
+                <ul>
+                  <li><strong>洗い</strong> — Wash only</li>
+                  <li><strong>すすぎ＋脱水</strong> — Rinse & spin</li>
+                  <li><strong>脱水＋乾燥</strong> — Spin & dry</li>
+                  <li><strong>洗濯＋乾燥</strong> — Full wash & dry (recommended)</li>
+                </ul>
+              </li>
+
+              <li>
+                Once you have selected the mode, <strong>press START / PAUSE</strong> (③) to begin.
+              </li>
+            </ol>
+
+            <p class="note">
+              🧴 <strong>No need to add detergent.</strong><br>
+              The washing machine will automatically dispense detergent.
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 *Drying may take longer depending on load size.*
+          ⚠ *Please remove lint filter content if full, and do not overload the drum.*
+        </p>
+
+
+
+        <!-- AIR CONDITIONER -->
+        <h3 class="badge">Air Conditioner (AC)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <!-- お好きな方の画像ファイル名に変更してください -->
+            <img src="ac_remote1.jpg" alt="Air conditioner remote control">
+            <figcaption class="caption">Example AC remote (your remote may look similar)</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Power ON / OFF</strong><br>
+                Press the <strong>運転 / 停止</strong> or <strong>停止</strong> button (often yellow or red).
+              </li>
+
+              <li><strong>Select mode</strong><br>
+                Choose one of the main buttons:
+                <ul>
+                  <li><strong>冷房</strong> – Cool (for summer / cooling)</li>
+                  <li><strong>暖房</strong> – Warm (for winter / heating)</li>
+                  <li><strong>除湿 / ドライ</strong> – Dehumidify / Dry (removes moisture, mild cooling)</li>
+                  <li><strong>自動</strong> – Auto (AC chooses the best mode automatically)</li>
+                </ul>
+              </li>
+
+              <li><strong>Set the temperature</strong><br>
+                Use the <strong>温度 ▲ / ▼</strong> buttons to adjust the temperature.
+                <br><small>Recommended: <strong>24–27 °C</strong> in summer, <strong>20–23 °C</strong> in
+                  winter.</small>
+              </li>
+
+              <li><strong>Adjust fan speed</strong><br>
+                Press <strong>風量</strong> (Fan speed) to change the airflow strength.
+              </li>
+
+              <li><strong>Adjust wind direction</strong><br>
+                Use <strong>風向 上下 / 左右</strong> buttons to move the air up/down or left/right.
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 Please close windows & doors while using the AC for better efficiency.<br>
+              ⚠ Always turn <strong>OFF</strong> the AC when you leave the room or the house.
+            </p>
+          </div>
+        </div>
+
+
+        <!-- VACUUM CLEANER -->
+        <h3 class="badge">Vacuum Cleaner</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="vacuum_cleaner.jpg" alt="Stick vacuum cleaner with labeled buttons">
+            <figcaption class="caption">
+              Power button (red circle) and dust container release (blue box)
+            </figcaption>
+          </figure>
+          <div>
+            <ol>
+              <li><strong>Turn ON / OFF</strong> — Press the round <strong>power button</strong> at the top
+                (shown in the red circle).</li>
+              <li><strong>Use</strong> — Gently push the vacuum over the floor or carpet.
+                Please avoid vacuuming water or very wet areas.</li>
+              <li><strong>Empty the dust</strong> — After cleaning, make sure the vacuum is <strong>OFF</strong>,
+                then press the lever in the <strong>blue box</strong> to open the dust container and empty it into the
+                trash.</li>
+              <li><strong>Close & return</strong> — Close the container firmly and place the vacuum back in its original
+                spot.</li>
+            </ol>
+            <p class="note">If the suction feels weak, please check and empty the dust container.</p>
+          </div>
+        </div>
+
+        <!-- MICROWAVE OVEN -->
+        <h3 class="badge">Microwave Oven (SHARP)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="microwave_oven.jpg" alt="Microwave oven with labeled buttons">
+            <figcaption class="caption">
+              Mode switch (heating / defrost) and timer dial
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Open the door</strong> and place your food or drink inside on the plate.</li>
+              <li><strong>Choose the mode</strong>:
+                <ul style="margin-top: .3rem;">
+                  <li><strong>500W</strong> — Standard heating (<em>recommended</em>)</li>
+                  <li><strong>Defrost</strong> — Use for frozen food</li>
+                </ul>
+                <small>Press the <strong>mode button</strong> (highlighted in the picture) to switch modes.</small>
+              </li>
+              <li><strong>Rotate the timer dial</strong> to set the heating time.<br>
+                <small>*E.g. 1–2 min for warming drinks, 3–5 min for meals.</small>
+              </li>
+              <li>The microwave will <strong>start automatically**</strong> after turning the dial.</li>
+              <li>When the time is up, it will <strong>stop and make a sound</strong>. Carefully remove the food.</li>
+            </ol>
+
+            <p class="note">
+              ⚠ Please <strong>do not use metal containers, aluminum foil, or sealed containers</strong> inside the
+              microwave.
+              Use microwave-safe dishes only.
+            </p>
+          </div>
+        </div>
+
+        <!-- RICE COOKER -->
+        <h3 class="badge">Rice Cooker (TIger IH)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="rice_cooker.jpg" alt="Rice cooker with labeled buttons">
+            <figcaption class="caption">
+              Start button (炊飯) and Cancel (取消) / Warm (保温)
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Open the lid</strong> and take out the inner pot.</li>
+              <li><strong>Put rice and water</strong> inside the pot.<br>
+                <small>
+                  Example: 1 cup of rice (180 ml) + water up to level “1”.<br>
+                  *This is <strong>for non-washed rice (無洗米)</strong>.
+                </small>
+              </li>
+              <li>Wipe the outside of the pot if it gets wet and place it back in the cooker.</li>
+              <li>Close the lid completely.</li>
+              <li><strong>Press the “炊飯” (Start)</strong> button to begin cooking.</li>
+              <li>Cooking takes around <strong>40–50 minutes</strong>. The cooker will automatically switch to
+                <strong>Warm mode (保温)</strong> when done.
+              </li>
+            </ol>
+
+            <p><strong>After cooking:</strong></p>
+            <ul class="wifi-list">
+              <li>Use the <strong>保温 (Warm)</strong> button to keep rice warm if you plan to eat later.</li>
+              <li>Press <strong>取消 (Cancel)</strong> to stop any process.</li>
+            </ul>
+
+            <p class="note">
+              ⚠ Please do not put the inner pot directly on the stove or in the sink with water inside.<br>
+              Always clean and dry it before returning.
+            </p>
+          </div>
+        </div>
+        <!-- FLOOR HEATING -->
+        <h3 class="badge">Floor Heating </h3>
+        <p>The house has floor heating and system. Please follow the instructions below.
+
+        </p>
+
+        <!-- FLOOR HEATING -->
+        <h4>① Floor Heating Controller (Living Room)</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="floor_heating.jpg" alt="Floor heating controller">
+            <figcaption class="caption">Switch buttons & temperature controls</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Press “運転/停止1” or “運転/停止2”</strong> to turn ON floor heating.</li>
+              <li>To adjust temperature:
+                <ul>
+                  <li>Press &amp; <strong>hold the “設定” button (blue circle)</strong> to enter setting mode.</li>
+                  <li>Use <strong>▲ / ▼ buttons</strong> to adjust the temperature.</li>
+                  <li>Press &amp; <strong>hold “設定” button again</strong> to save.</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="note">Heating may take some time to warm up. Please turn OFF when not needed.</p>
+          </div>
+        </div>
+
+        <!-- GAS STOVE & SMALL OVEN -->
+        <h3 class="badge">Gas Stove & Small Oven Instructions</h3>
+        <p>Please follow these steps carefully when using the stove.<br>
+          <span style="color:red;font-weight:bold;">⚠ Always turn off the flame after use. Never leave the stove
+            unattended.</span>
+        </p>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="gas_stove.jpg" alt="Gas stove and small oven controls">
+            <figcaption class="caption">
+              Press & hold to ignite, press again to turn off
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Place your pot or pan</strong> securely on the burner.</li>
+
+              <li><strong>Press the control knob down</strong> and hold for about <strong>3 seconds</strong> to ignite.
+                <ul>
+                  <li>Left burner → left knob</li>
+                  <li>Right burner → right knob</li>
+                </ul>
+              </li>
+
+              <li><strong>Adjust flame strength</strong> by rotating the knob.</li>
+
+              <li>To turn off the heat, <strong>press the knob down again</strong> until the flame goes out.</li>
+            </ol>
+
+            <p class="note">
+              🔥 *If ignition does not work, release and try again.*
+              Please ensure there is no water or oil around the burner.
+            </p>
+          </div>
+        </div>
+
+        <!-- SMALL OVEN -->
+        <h4>Small Oven / Grill</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="gas_stove.jpg" alt="Small oven controls (blue circle)" style="opacity:.9;">
+            <figcaption class="caption">Pull the tray gently to open</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>Pull the oven tray forward gently.</li>
+              <li>Place food inside (please use foil if needed).</li>
+              <li><strong>Use the oven control knob</strong> (center panel) to heat.</li>
+              <li>Press and hold the knob (same as stove) for ignition.</li>
+              <li>Keep watching while cooking — <strong>it heats quickly.</strong></li>
+              <li>Press the knob again to turn off.</li>
+            </ol>
+
+            <p class="note">
+              ⚠ Use with caution — this small oven heats very fast and may burn food quickly.<br>
+              Recommended time: <strong>3–5 min with constant monitoring.</strong>
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 <strong>After cooking:</strong><br>
+          – Turn off all flames<br>
+          – Ensure no gas smell remains<br>
+          – Clean any spills after the stove cools down
+        </p>
+        <!-- DISHWASHER -->
+        <h3 class="badge">Dishwasher</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="dishwasher.jpg" alt="Dishwasher control panel">
+            <figcaption class="caption">Mode / Drying / Start (long press)</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Open the dishwasher</strong> and place the dishes inside.<br>
+                <small>*Please remove large food residues before loading.*</small>
+              </li>
+
+              <li><strong>Press & hold the power button</strong> (スタート / 電源切) to turn on.<br>
+                <small>*It requires a long press to activate.*</small>
+              </li>
+
+              <li><strong>Select a mode</strong> using the “コース” (Mode) button:
+                <ul>
+                  <li><strong>標準</strong> — Standard cleaning (recommended)</li>
+                  <li><strong>念入り</strong> — Intensive cleaning</li>
+                  <li><strong>予約</strong> — Timer / Delay</li>
+                  <li><strong>乾燥</strong> — Drying only</li>
+                </ul>
+              </li>
+
+              <li><strong>Press the Start button</strong> to begin the washing cycle.</li>
+
+              <li>After washing, the dishwasher will stop automatically.<br>
+                You may open the door slightly to release steam and help drying.</li>
+            </ol>
+
+            <p class="note">
+              🧽 Detergent: If detergent is needed, please add it to the dispenser tray.
+              Many dishes clean well with the standard cycle.
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          ⚠ <strong>Please do not wash wooden utensils, kitchen knives, or delicate items.</strong><br>
+          💡 For best results, avoid overloading and place bowls facing downward.
+        </p>
+
+        <!-- WATER HEATER PANEL -->
+        <h3 class="badge">Water Heater Panel</h3>
+        <span style="color:red;font-weight:bold;">⚠️ Do NOT turn OFF the water heater switch</span> — it must remain
+        ON to supply hot water and heating.
+        <div class="row-2">
+
+          <figure class="appliance-figure">
+            <img src="water_heater_1.jpg" alt="Water heater control panel">
+            <figcaption class="caption">Main controls: Power & Temperature</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>
+                <strong>Power Switch (運転)</strong><br>
+                This button turns the water heater ON / OFF.<br>
+                <span class="note">
+                  ⚠ Please <strong>do not turn OFF</strong> the water heater during your stay.
+                  If it is off, there will be no hot water.
+                </span>
+              </li>
+
+              <li>
+                <strong>Temperature Adjustment (給湯 温度調節)</strong><br>
+                Use the <strong>▲ / ▼ buttons</strong> to change the hot-water temperature.<br>
+                Recommended setting: <strong>40–43&nbsp;°C</strong> for showers and baths.
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 If the water feels too hot or too cold, please adjust here rather than at the shower tap.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- WATER HEATING -->
+        <h4>② Water Heater (Hot Water for Shower / Bath)</h4>
+        <p><span style="color:red;font-weight:bold;">⚠️ Please DO NOT turn OFF the main power switch (運転).</span></p>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="bathroom panel.jpg" alt="Water heater panel 1">
+            <figcaption class="caption">Main control panel (bathroom)</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>To use hot water, <strong>ensure the green light next to “運転 (Power)” is ON</strong>.</li>
+              <li>Adjust the temperature by pressing:
+                <ul>
+                  <li><strong>▲ Up</strong> to increase temperature</li>
+                  <li><strong>▼ Down</strong> to decrease</li>
+                </ul>
+              </li>
+              <li>Recommended temperature: <strong>40–43 °C</strong>.</li>
+            </ol>
+            <p class="note">If the green light is OFF, please press “運転” to turn it on.</p>
+          </div>
+        </div>
+
+
+        <p class="note">
+          💡 <strong>Tips:</strong><br>
+          – Always check the temperature before showering.<br>
+          – If no hot water comes out, check that the green light is ON.<br>
+          – Please turn off floor heating after use to save energy.
+        </p>
+        <!-- BATHROOM SHOWER -->
+        <h3 class="badge">Shower / Bathroom Faucet</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="bathroom_shower.jpg" alt="Shower faucet with labeled controls">
+            <figcaption class="caption">Temperature & water outlet controls</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Turn the RIGHT knob</strong> to choose:
+                <ul>
+                  <li>🛁 <strong>Bathwater</strong> (for filling the tub)</li>
+                  <li>🚿 <strong>Shower</strong> (for normal shower use)</li>
+                </ul>
+              </li>
+
+              <li><strong>Turn the LEFT knob</strong> to adjust water temperature.</li>
+
+              <li><strong>IMPORTANT:</strong>
+                To set the temperature above <strong>40 °C</strong>, you must:
+                <ol class="sub-steps">
+                  <li>Press and hold the small safety button on the knob</li>
+                  <li>While holding, turn the knob further</li>
+                </ol>
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 Tip: The recommended shower temperature is <strong>38–41 °C</strong>.<br>
+              ⚠ Be careful when adjusting above 40 °C, as water may become very hot.
+            </p>
+          </div>
+        </div>
+
+        <!-- SMART TOILET -->
+        <h3 class="badge">Smart Toilet</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="toilet_panel.jpg" alt="Smart toilet control panel">
+            <figcaption class="caption">Cleaning / Stop / Water Temp / Intensity</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>Stop (关闭 / STOP)</strong><br>
+                Press the <strong>止</strong> button to stop all functions.
+              </li>
+
+              <li><strong>Washing the buttocks (清洗臀部)</strong><br>
+                Press the <strong>おしり</strong> button.<br>
+                <small>*The nozzle will spray warm water for cleaning.*</small>
+              </li>
+
+              <li><strong>Bidet / Gentle cleaning (女性用 / ビデ)</strong><br>
+                Press the <strong>ビデ</strong> button.
+              </li>
+
+              <li><strong>Adjust cleaning intensity (清洗强度)</strong><br>
+                Use the <strong>＋ / −</strong> buttons to make the spray stronger or softer.
+              </li>
+
+              <li><strong>Adjust water temperature (温度调节)</strong><br>
+                Press the <strong>温水温度</strong> button to change the water temperature.
+              </li>
+
+              <li><strong>Adjust seat temperature (座圈温度)</strong><br>
+                Press the <strong>便座温度</strong> button to warm or cool the toilet seat.
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 The toilet will automatically stop after a short time.
+              ⚠ Please do not stand on the toilet seat.
+            </p>
+          </div>
+        </div>
+
+        <!-- LIGHTING REMOTE CONTROLS -->
+        <h3 class="badge">Lighting Remote Controls</h3>
+        <p>Some rooms have different lighting remotes, but the basic usage is the same:
+          <strong>Power ON/OFF, Full brightness, Brighten, Darken.</strong>
+        </p>
+
+        <!-- ROOM 1 LIGHT -->
+        <h4>Room 1 – Lighting Remote</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="light_remote1.jpg" alt="Lighting remote controller 1">
+            <figcaption class="caption">Power / Full light / Bright / Dark</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>Power</strong> – Press the green <strong>power button</strong> to turn the light ON/OFF.</li>
+              <li><strong>Full light (全灯)</strong> – Press the center <strong>全灯</strong> button for full brightness.
+              </li>
+              <li><strong>Brighten (明)</strong> – Press the upper button to make the room brighter.</li>
+              <li><strong>Darken (暗)</strong> – Press the lower button to dim the light.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROOM 2 LIGHT -->
+        <h4>Room 2 – Lighting Remote (TOSHIBA)</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="light_remote2.jpg" alt="Lighting remote controller 2">
+            <figcaption class="caption">Full light / Dimmer / Off</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>Power ON (点灯)</strong> – Press the center <strong>点灯</strong> button.</li>
+              <li><strong>Full brightness (全灯)</strong> – Press the top <strong>全灯</strong> button.</li>
+              <li><strong>Brighten (明)</strong> – Press the upper part of the ring (明).</li>
+              <li><strong>Darken (暗)</strong> – Press the lower part of the ring (暗).</li>
+              <li><strong>Power OFF (消灯)</strong> – Press the <strong>消灯</strong> button to turn the light off.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROOM 3 LIGHT -->
+        <h4>Room 3 – Lighting Remote (IRIS OHYAMA)</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="light_remote3.jpg" alt="Lighting remote controller 3">
+            <figcaption class="caption">Full light / Dimmer / Off</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>Power ON / Full brightness (点灯・全灯)</strong> – Press the large button labeled
+                <strong>点灯 / 全灯</strong>.
+              </li>
+              <li><strong>Brighten (明るく)</strong> – Press the <strong>明るく</strong> button.</li>
+              <li><strong>Darken (暗く)</strong> – Press the <strong>暗く</strong> button.</li>
+              <li><strong>Power OFF (消灯)</strong> – Press the <strong>消灯</strong> button to switch the light off.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 Tip: If a light does not respond, please point the remote directly at the ceiling light and try again.
+        </p>
+
+        <!-- WASHBASIN AMENITIES -->
+        <h3 class="badge">Washbasin Amenities</h3>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="washbasin_items.jpg" alt="Toothbrushes and cups inside washbasin cabinet">
+            <figcaption class="caption">
+              Toothbrushes & cups are prepared inside the mirror cabinet
+            </figcaption>
+          </figure>
+
+          <div>
+            <p>
+              We have prepared <strong>clean toothbrush sets</strong> and <strong>cups</strong> inside the mirror
+              cabinet
+              at the washbasin.
+              Please open the cabinet door to access them.
+            </p>
+
+            <ul>
+              <li>1 set per guest</li>
+              <li>Located on each shelf inside the mirror cabinet</li>
+              <li>Free to use during your stay</li>
+            </ul>
+
+            <p class="note">
+              💡 Please feel free to take the toothbrushes with you after use.
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </details>
+
+
+    <!-- House Rules -->
+    <details>
+      <summary><i class="fa-solid fa-house-user"></i> House Rules</summary>
+      <div class="content">
+        <!-- Garbage rules (I) -->
+        <h3 class="badge">Garbage disposal rules</h3>
+        <p>We understand that garbage rules in Japan can be confusing, so we made it simple. Separate the garbage into
+          <strong>2 categories</strong> using different plastic bags, then put them in the silver dust box in the
+          parking lot as below.
+        </p>
+        <div class="rules-table">
+          <div class="col">
+            <div class="thead">Burnable Garbage</div>
+            <ul>
+              <li>Kitchen waste</li>
+              <li>Paper scraps</li>
+              <li>Clothing, etc.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">Recyclable Garbage</div>
+            <ul>
+              <li>Plastic bottles</li>
+              <li>Container jars & cans</li>
+              <li>Aerosol spray cans, etc.</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="appliance-figure">
+          <img src="howtoget here2.jpg" alt="Silver dust box in the parking lot" class="rule-img">
+          <figcaption class="caption">White dust box in the parking lot</figcaption>
+        </figure>
+
+        <!-- Garbage rules (II) -->
+        <h3 class="badge">Garbage disposal II</h3>
+        <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
+          house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
+
+        <!-- Quiet hours -->
+        <h3 class="badge">Quiet time: 9pm–8am</h3>
+        <p>Please respect our residential community. Between <strong>9pm and 8am</strong>, keep noise to a minimum.</p>
+
+        <!-- Shoes -->
+        <h3 class="badge">Please take off your shoes</h3>
+        <p>Please do not wear your shoes inside the property.</p>
+
+        <!-- Smoking -->
+        <h3 class="badge">Smoking rules</h3>
+        <p>This is a <strong>non‑smoking</strong> home — no smoking or vaping inside the house.</p>
+        <p class="small-note">A designated smoking area is available on the terrace on the 4th floor. Do not smoke on
+          the
+          street — it is strictly prohibited in Tokyo.</p>
+
+        <h3 class="badge">Parking is not available on-site.</h3>
+        <p>If you are arriving by car, please use one of the nearby coin-operated parking lots.</p>
+
+        <h3 class="badge">security</h3>
+        <p>For security reasons, a surveillance camera is installed at the entrance, as required by local government
+          guidance.</p>
+
+        <!-- Pets / Guests / Breakages / Exceptions -->
+        <h3 class="badge">Pets</h3>
+        <p>We love animals, but this home is pet‑free due to allergies.</p>
+
+        <h3 class="badge">Additional guests</h3>
+        <p>Please do not bring additional guests. Exceeding the maximum occupancy is not permitted.
+        </p>
+
+        <h3 class="badge">Breakages</h3>
+        <p>If you break anything, please tell us immediately. Minor issues are usually not charged. For larger issues
+          (e.g., TV screen), we will agree the cost with you before checkout to avoid surprises.</p>
+
+        <h3 class="badge">Written exceptions</h3>
+        <p>Any exceptions to these rules must be approved in advance. Thank you!</p>
+
+        <!-- Emergency (from the images) -->
+        <div class="emergency-card">
+          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">What to do in an Emergency
+          </h3>
+          <p>For emergency services (ambulance, police, fire), please make the call immediately. State your location as
+            shown on the front page of this guidebook.</p>
+          <ul class="emergency-numbers">
+            <li><strong>Police:</strong> 110</li>
+            <li><strong>Ambulance:</strong> 119</li>
+            <li><strong>Fire:</strong> 119</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- Neighborhood Guide (Zoshigaya Area) -->
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> Neighborhood Guide</summary>
+      <div class="content">
+        <ul>
+          <li>
+            <i class="fa-solid fa-store"></i>
+            <strong>Bell Sage Mejiro Apartment Area</strong> — convenience store nearby<br>
+            2-18-20 Takada, Toshima-ku, Tokyo 171-0033
+            <a href="https://maps.app.goo.gl/8eP36z6LiDmhmWxBA" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <strong>Maruetsu Petit Zoshigaya 2-chome</strong> — supermarket<br>
+            2-3-3 Zoshigaya, Toshima-ku
+            <a href="https://maps.app.goo.gl/XcgbcKZQwiXcupnS6" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-wine-glass"></i>
+            <strong>Yamataro Onigiri & Pork Soup</strong> — casual Japanese eatery<br>
+            2-10-7 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/h63WdaEV1ivfM5Y68" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-utensils"></i>
+            <strong>Mo’s Cafe</strong> — cozy local cafe<br>
+            2-5-18 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/X3GGQoMUJHXadbRw9" target="_blank" rel="noopener">Map</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-landmark"></i>
+            <strong>Kayama Coffee (Zoshigaya branch)</strong> — retro kissaten-style café<br>
+            3-19-5 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/Eo9mvitRgspcba629" target="_blank" rel="noopener">Map</a>
+          </li>
+        </ul>
+        <p class="note">* All locations are approximately within a 10-minute walk.</p>
+      </div>
+    </details>
+
+    <!-- Access to Major Sightseeing Spots -->
+    <details>
+      <summary><i class="fa-solid fa-train-subway"></i> Access to Major Sightseeing Spots</summary>
+      <div class="content">
+        <ul class="access-list">
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_meiji_shrine.jpg" alt="Access map to Meiji Shrine from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Meiji Shrine / Harajuku</strong><br>
+              From <strong>Zoshigaya Station</strong> on the Fukutoshin Line to
+              <strong>Meiji-jingumae ‘Harajuku’ Station</strong> – about <strong>14 min</strong>, no transfer.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_ikebukuro.jpg" alt="Access map to Ikebukuro from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Ikebukuro</strong><br>
+              From <strong>Zoshigaya Station</strong> on the Fukutoshin Line to
+              <strong>Ikebukuro Station</strong> – about <strong>2 min</strong>, no transfer.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_shinjuku.jpg" alt="Access map to Shinjuku from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Shinjuku</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Shinjuku-sanchome Station</strong> – about <strong>6 min</strong>, no transfer.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_shibuya.jpg" alt="Access map to Shibuya from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Shibuya</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Shibuya Station</strong> – about <strong>17 min</strong>, no transfer.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_tokyo_tower.jpg" alt="Access map to Tokyo Tower from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Tokyo Tower</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Naka-meguro</strong>, then Hibiya Line to
+              <strong>Kamiyacho Station</strong> – about <strong>30 min</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_sky_tree.jpg" alt="Access map to Tokyo Skytree from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Tokyo Skytree (Oshiage)</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Shibuya</strong>, then Hanzomon Line to
+              <strong>Oshiage Station</strong> – about <strong>45 min</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_nakameguro.jpg" alt="Access map to Naka-meguro from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Naka-meguro</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya Station</strong> to
+              <strong>Naka-meguro Station</strong> – about <strong>20 min</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_asakusa.jpg" alt="Access map to Asakusa from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Asakusa / Senso-ji Temple</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Higashi-Shinjuku</strong>, Oedo Line to
+              <strong>Ueno-okachimachi</strong>, then Ginza Line to
+              <strong>Asakusa Station</strong> – around <strong>30 min</strong> total.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_ueno.jpg" alt="Access map to Ueno from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Ueno / Ueno Zoo & Ameyoko</strong><br>
+              Toden Arakawa Line from <strong>Kishibojimmae</strong> to
+              <strong>Otsuka</strong>, then JR Yamanote Line to
+              <strong>Ueno Station</strong> – about <strong>25 min</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_akihabara.jpg" alt="Access map to Akihabara from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Akihabara</strong><br>
+              Toden Arakawa Line from <strong>Kishibojimmae</strong> to
+              <strong>Otsuka</strong>, then JR Yamanote Line to
+              <strong>Akihabara Station</strong> – about <strong>30 min</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="access_ginza.jpg" alt="Access map to Ginza from Zoshigaya">
+            </figure>
+            <div class="access-text">
+              <strong>Ginza</strong><br>
+              Fukutoshin Line from <strong>Zoshigaya</strong> to
+              <strong>Shinjuku-sanchome</strong>, then Marunouchi Line to
+              <strong>Ginza Station</strong> – about <strong>20 min</strong>.
+            </div>
+          </li>
+
+        </ul>
+        <p class="note">
+          * Travel times are approximate and may vary depending on time of day and transfer conditions.
+        </p>
+      </div>
+    </details>
+
+
+
+    <!-- Contact & Support -->
+    <details>
+      <summary><i class="fa-solid fa-comment-dots"></i> Contact & Support</summary>
+      <div class="content">
+        <p>If you have any inquiries during your stay, please contact us via booking app message</p>
+        <ul>
+          <li><strong>Emergency:</strong> Fire, Ambulance, or Police — Dial 110 / 119</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
+      if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
+    }));
+  </script>
+</body>
+
+</html>
