@@ -392,7 +392,11 @@ header .subheading{
         padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
       }
 
-      
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
 
       /* 見出しを少しだけ小さくして収まり良く */
       header h1 {
@@ -490,32 +494,31 @@ header .subheading{
     <details>
       <summary><i class="fa-solid fa-door-open"></i> Check-in /out Guide</summary>
       <div class="content">
-        <p style="font-style:italic;margin-bottom:.5rem">KEY is placed in this mailbox</p>
+        <p style="font-style:italic;margin-bottom:.5rem">You can enter by using the passcode</p>
         <div class="grid-2 check-photos">
           <figure>
             <img src="entrance_mailbox_location.jpg" alt="Entrance and mailbox location">
-            <figcaption class="caption">Mailbox location at entrance</figcaption>
+            <figcaption class="caption">Entrance location</figcaption>
           </figure>
           <figure>
-            <img src="entrance_mailbox_front.jpg" alt="Mailbox front with label SUMIKA STAY">
-            <figcaption class="caption">Mailbox label: <strong>SUMIKA STAY</strong></figcaption>
+            <img src="entrance_passcode.jpg" alt="Mailbox front with label SUMIKA STAY">
+            <figcaption class="caption">Enter passcode</figcaption>
           </figure>
         </div>
 
         <h3>Access Code</h3>
-        <div class="access-code">→ 0 → 0 ← 7</div>
+        <div class="access-code">1122</div>
         <ul class="sub-steps">
-          <li>Turn the dial <strong>→</strong> (clockwise) to <strong>0</strong> <strong>two times</strong>.</li>
-          <li>Then turn the dial <strong>←</strong> (anti‑clockwise) to <strong>7</strong>.</li>
+          <li>Press the "Unlock" button at the bottom right
+            and Enter the building.</li>
         </ul>
         <p class="note">Please note down this access code before your trip in case you arrive late at night.</p>
-
         <h3>Check-in</h3>
         <ol>
           <ol>
             <li>Arrival from <strong>15:00</strong>.</li>
-            <li>Use the mailbox code to retrieve the key.</li>
-            <li>Enter using the Key.</li>
+            <li>Use the Passcode for entering.</li>
+
 
           </ol>
           <h3>Note</h3>
@@ -555,6 +558,7 @@ header .subheading{
 
       </div>
     </details>
+
 
     <!-- Appliance instructions -->
     <details>
@@ -696,7 +700,7 @@ header .subheading{
         <h3 class="badge">Garbage disposal rules</h3>
         <p>We understand that garbage rules in Japan can be confusing, so we made it simple. Separate the garbage into
           <strong>2 categories</strong> using different plastic bags, then put them in the silver dust box in the
-          parking lot as below.If garbage is not properly sorted or is left scattered on the floor or around the rooms, additional cleaning or disposal fees may be charged.
+          parking lot as below.
         </p>
         <div class="rules-table">
           <div class="col">
@@ -721,13 +725,10 @@ header .subheading{
           <figcaption class="caption">Silver dust box in the parking lot</figcaption>
         </figure>
 
-       <!-- Garbage rules (II) -->
+        <!-- Garbage rules (II) -->
         <h3 class="badge">Garbage disposal II</h3>
         <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
           house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
-        
-          <h3 class="badge">Kitchen Use</h3>
-<p>After using the kitchen, please wash all dishes, utensils, and cookware you used and return them to their original places. We appreciate your cooperation in keeping the kitchen clean for the next guests.</p>
 
         <!-- Quiet hours -->
         <h3 class="badge">Quiet time: 10pm–8am</h3>
