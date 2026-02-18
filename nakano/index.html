@@ -398,6 +398,69 @@
       margin: .25rem 0
     }
 
+    /* ===== Video preview (small) ===== */
+    .video-preview-card {
+      max-width: 360px;
+      /* ←普段は小さめ */
+      margin: .75rem auto 1rem;
+      /* 中央寄せ */
+      cursor: zoom-in;
+    }
+
+    .video-preview {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    .video-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-preview .play-badge {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 54px;
+      color: #fff;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, .55);
+    }
+
+    /* ===== Lightbox: allow videos too ===== */
+    .lightbox-overlay .lightbox-inner {
+      width: min(92vw, 980px);
+      max-height: 88vh;
+    }
+
+    .lightbox-overlay .lightbox-inner iframe,
+    .lightbox-overlay .lightbox-inner video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: 0;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* ===== Lightbox base ===== */
+.lightbox-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+.lightbox-overlay.hidden{ display:none; }
+
+
     /* === Mobile fixes: stop overlap between hero and first card === */
     @media (max-width: 640px) {
 
@@ -407,10 +470,11 @@
       }
 
       /* カードを引き上げない（負のマージンを無効化） */
-  .container{
-    margin: 0 auto 2rem;              /* -4rem → 0 に */
-  }
-      
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
       /* 見出しを少しだけ小さくして収まり良く */
       header h1 {
         font-size: clamp(1.9rem, 8.5vw, 2.8rem);
@@ -689,7 +753,8 @@
             <p><strong>For indoor drying:</strong></p>
             <ol class="sub-steps">
               <li>Find the ventilation/heater control panel in the bathroom.</li>
-              <li>Press the <strong>Right button shown in the image blow</strong> to start <strong>Dry</strong> mode (乾燥).</li>
+              <li>Press the <strong>Right button shown in the image blow</strong> to start <strong>Dry</strong> mode
+                (乾燥).</li>
               <li>Optionally set a timer; it will stop automatically.</li>
             </ol>
 
@@ -780,6 +845,27 @@
           </div>
         </div>
 
+        <h3 class="badge">Door Stopper (How to release)</h3>
+
+        <p class="note">
+          To release the door stopper, simply <strong>lift it up slightly</strong>.
+          Once it is raised a little, it will unlock and you can close the door normally.
+        </p>
+
+        <div class="video-preview-card" data-lightbox-video data-video-type="mp4" data-video-src="door_stopper.mp4">
+          <div class="video-preview">
+            <img src="door_stopper_thumb.jpg" alt="Door stopper video thumbnail">
+            <div class="play-badge">▶</div>
+          </div>
+        </div>
+
+        <p class="note">
+          ⚠️ Please lift it gently (do not force it). Be careful not to pinch your fingers.
+          If it feels unusual, please message us.
+        </p>
+
+
+
       </div>
     </details>
 
@@ -817,13 +903,14 @@
           <figcaption class="caption">White dust box in the parking lot</figcaption>
         </figure>
 
-       <!-- Garbage rules (II) -->
+        <!-- Garbage rules (II) -->
         <h3 class="badge">Garbage disposal II</h3>
         <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
           house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
-        
-          <h3 class="badge">Kitchen Use</h3>
-<p>After using the kitchen, please wash all dishes, utensils, and cookware you used and return them to their original places. We appreciate your cooperation in keeping the kitchen clean for the next guests.</p>
+
+        <h3 class="badge">Kitchen Use</h3>
+        <p>After using the kitchen, please wash all dishes, utensils, and cookware you used and return them to their
+          original places. We appreciate your cooperation in keeping the kitchen clean for the next guests.</p>
 
         <!-- Quiet hours -->
         <h3 class="badge">Quiet time: 10pm–8am</h3>
@@ -917,6 +1004,79 @@
       if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
     }));
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Create overlay (for images & videos)
+      const overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay hidden";
+
+      const inner = document.createElement("div");
+      inner.className = "lightbox-inner";
+
+      overlay.appendChild(inner);
+      document.body.appendChild(overlay);
+
+      // Close when clicking outside the inner area
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      function closeOverlay() {
+        overlay.classList.add("hidden");
+        inner.innerHTML = ""; // stop video/audio
+      }
+
+      document.querySelectorAll("img").forEach(img => {
+  // ★ここ追加：動画サムネは画像ライトボックスにしない
+  if (img.closest("[data-lightbox-video]")) return;
+
+  img.style.cursor = "zoom-in";
+  img.addEventListener("click", () => {
+    inner.innerHTML = `<img src="${img.src}" alt="${img.alt || ''}">`;
+    overlay.classList.remove("hidden");
+  });
+});
+
+      // Add click event to video preview cards
+      document.querySelectorAll("[data-lightbox-video]").forEach(el => {
+        el.addEventListener("click", () => {
+          const type = el.getAttribute("data-video-type"); // youtube | mp4
+          if (type === "youtube") {
+            const id = el.getAttribute("data-video-id");
+            inner.innerHTML = `
+            <iframe
+              src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+              title="Video"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          `;
+          } else if (type === "mp4") {
+            const src = el.getAttribute("data-video-src");
+            inner.innerHTML = `
+            <video controls autoplay playsinline>
+              <source src="${src}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
+          }
+          overlay.classList.remove("hidden");
+        });
+      });
+
+      // Optional: close with ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeOverlay();
+      });
+
+      // Keep your X mark (pseudo-element) behavior: click anywhere outside closes.
+      // If you want the X itself clickable, we can add a real button too.
+    });
+  </script>
+
 </body>
 
 </html>
