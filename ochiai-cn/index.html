@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎入住 SUMIKASTAY OCHIAI</title>
+  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #0d9488;
+      /* teal */
+      --accent: #f97316;
+      /* orange */
+      --bg-overlay: rgba(202, 202, 202, 0.4);
+      /* brighten overlay */
+      --text: #1e293b;
+      /* slate-800 */
+      --surface: #ffffff;
+      /* card background */
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ---------- GLOBAL BACKGROUND IMAGE ---------- */
+    body {
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* Full‑screen background layer */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      /* ← 好きな画像へ差替え */
+      z-index: -2;
+    }
+
+    /* Semi‑transparent overlay for readability */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--bg-overlay);
+      z-index: -1;
+    }
+
+    /* ---------- HERO ---------- */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      /* ここを追加 ↓ */
+      flex-direction: column;
+      /* ← 縦並びにする */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+      /* （任意）タイトルとサブの間隔 */
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+      margin: 0;
+    }
+
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+      margin: 0;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      color: var(--primary);
+      transition: transform .2s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .content h3 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    ul {
+      margin-left: 1.25rem;
+    }
+
+    ol {
+      margin-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* -------- Images & Grid -------- */
+    details img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem
+    }
+
+    .grid-2 img {
+      max-height: 260px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .grid-2 img {
+        max-height: 220px
+      }
+    }
+
+    /* ---- Airport Flow ---- */
+    .steps-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0
+    }
+
+    .step-box {
+      background: #eef2f7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .step-box i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: .35rem
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.35
+    }
+
+    .arrow-vert {
+      font-size: 1.5rem;
+      color: var(--text)
+    }
+
+    .branch-note {
+      margin: .75rem 0 .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--primary)
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .75rem
+    }
+
+    .option-card {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .option-card .sub {
+      font-size: .8rem;
+      color: var(--text)
+    }
+
+    .option-card i {
+      font-size: 1.75rem;
+      color: var(--primary)
+    }
+
+    @media(max-width:600px) {
+      .steps-flow .step-box {
+        max-width: 100%
+      }
+
+      .arrow-vert {
+        display: none
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ---- Check-in images & notes ---- */
+    .check-photos img {
+      max-height: 280px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .check-photos img {
+        max-height: 220px
+      }
+    }
+
+    .caption {
+      text-align: center;
+      font-size: .85rem;
+      margin-top: .35rem
+    }
+
+    .access-code {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      margin: .5rem 0
+    }
+
+    .sub-steps {
+      margin-left: 1.1rem
+    }
+
+    .note {
+      font-size: .9rem;
+      opacity: .85
+    }
+
+    
+
+    /* ---- Appliance detail layout ---- */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+      align-items: start
+    }
+
+    @media(max-width:700px) {
+      .row-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .appliance-figure img {
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    @media(max-width:600px) {
+      .appliance-figure img {
+        max-height: 220px
+      }
+    }
+
+    .wifi-list {
+      margin-left: 1.1rem
+    }
+
+    /* ---- House Rules layout ---- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: .75rem 0
+    }
+
+    @media(max-width:700px) {
+      .rules-table {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem
+    }
+
+    .rule-img {
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px
+    }
+
+    .small-note {
+      font-size: .9rem;
+      opacity: .9
+    }
+
+    .emergency-card {
+      border-left: 4px solid var(--accent);
+      background: #fff7ed;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem
+    }
+
+    .emergency-numbers {
+      margin-left: 1.25rem
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      
+
+      
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
+  
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<nav class="wb-lang" aria-label="Language"><a href="../ochiai/" hreflang="en">English</a><a href="../ochiai-jp/" hreflang="ja">日本語</a><span aria-current="page">中文</span></nav>
+<style>
+.wb-lang{position:sticky;top:0;z-index:9999;display:flex;justify-content:center;gap:.35rem;
+  padding:.45rem .6rem;background:#0f172a;box-shadow:0 1px 6px rgba(0,0,0,.25);
+  font-family:Inter,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans SC",sans-serif}
+.wb-lang a,.wb-lang span{display:inline-block;padding:.28rem .85rem;border-radius:999px;
+  font-size:.82rem;font-weight:600;line-height:1.4;text-decoration:none;color:#cbd5e1;
+  border:1px solid transparent;transition:background .15s,color .15s}
+.wb-lang a:hover,.wb-lang a:focus{background:rgba(255,255,255,.14);color:#fff}
+.wb-lang span[aria-current]{background:#fff;color:#0f172a}
+@media(max-width:380px){.wb-lang a,.wb-lang span{padding:.28rem .6rem;font-size:.76rem}}
+</style>
+
+  <header>
+  <h1>欢迎入住 SUMIKASTAY OCHIAI</h1>
+  <p class="subheading">这里汇总了您入住期间需要的信息。</p>
+</header>
+
+<div class="container">
+
+  <!-- アクセス・地図 -->
+  <details>
+    <summary><i class="fa-solid fa-map-signs"></i> 交通・地图</summary>
+    <div class="content">
+      <h3 class="badge">地址</h3>
+      <p>〒161-0034 東京都新宿区上落合1-14-2</p>
+      <p><a href="https://maps.app.goo.gl/JDoG7xWB8pV2RkDi7" target="_blank">在 Google 地图中打开</a></p>
+
+      <h3 class="badge">标识</h3>
+      <div class="grid-2">
+        <figure>
+          <img src="../ochiai-jp/howtoget here1.jpg" alt="建筑正面">
+          <figcaption style="text-align:center;font-size:.85rem">
+            建筑外观（以停车位为标识）
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../ochiai-jp/howtoget here2.jpg" alt="银色垃圾箱">
+          <figcaption style="text-align:center;font-size:.85rem">
+            请确认写有「SUMIKA STAY」的邮箱
+          </figcaption>
+        </figure>
+      </div>
+
+      <ul style="margin-top:1rem">
+        <li>停车场内有<strong>白色垃圾箱</strong></li>
+        <li><strong>从左数第1栋</strong>建筑即为本住宿</li>
+        <li>邮箱名牌：<strong>SUMIKA STAY</strong></li>
+        <li>备案编号：<strong>M130041997</strong></li>
+      </ul>
+
+      <h3 class="badge">从成田机场・羽田机场前往</h3>
+
+      <!-- Step 1 → Step 2（西口） -->
+      <div class="steps-flow">
+        <div class="step-box">
+          <span class="step-num">1</span>
+          <i class="fa-solid fa-bus"></i>
+          <p>
+            机场利木津巴士<br>
+            <small>
+              <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank" rel="noopener">
+                时刻表请见此处
+              </a>
+            </small>
+          </p>
+        </div>
+
+        <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
+
+        <div class="step-box">
+          <span class="step-num">2</span>
+          <i class="fa-solid fa-train-subway"></i>
+          <p>
+            <strong>新宿站（西口）</strong>下车<br>
+            <small>Shinjuku Station West Exit</small>
+          </p>
+        </div>
+      </div>
+
+      <div class="branch-note">第3步请从以下任选一种方式：</div>
+
+      <!-- 分岐：電車 / バス / タクシー -->
+      <div class="option-grid">
+
+        <!-- 電車ルート -->
+        <div class="option-card">
+          <span class="step-num">3</span>
+          <i class="fa-solid fa-train"></i>
+          <p><strong>JR 山手线</strong>至<strong>高田马场站</strong>　</p>
+          <ol class="sub-steps">
+            <li>
+              <strong>第4步：</strong>
+              <strong>西武新宿线</strong>（<em>拜岛・本川越方向</em>）换乘
+            </li>
+            <li>
+              <strong>第5步：</strong>
+              <strong>下落合站</strong>下车后步行<strong>2〜3分钟</strong>
+            </li>
+          </ol>
+        </div>
+
+        <!-- バスルート -->
+        <div class="option-card">
+          <span class="step-num">3</span>
+          <i class="fa-solid fa-bus"></i>
+          <p>
+            <strong>宿02路</strong>
+            （<strong>开往丸山营业所</strong>）
+          </p>
+          <ol class="sub-steps">
+            <li>
+              <strong>第4步：</strong>
+              <strong>落合中央公园</strong>下车后步行<strong>2〜3分钟</strong>
+            </li>
+          </ol>
+        </div>
+
+        <!-- タクシー -->
+        <div class="option-card">
+          <span class="step-num">3</span>
+          <i class="fa-solid fa-taxi"></i>
+          <p><strong>直接乘出租车</strong>前往本住宿</p>
+          <p class="sub">参考：<strong>约1,920日元</strong></p>
+        </div>
+      </div>
+
+      <p>
+        所有路线均可使用 IC 卡（Suica / PASMO）。<br>
+        如果重视舒适和简便，
+        <strong>从新宿站乘出租车</strong>前往是最简单的方式。
+      </p>
+
+    </div>
+  </details>
+
+
+    <!-- チェックイン／チェックアウト案内 -->
+<details>
+  <summary><i class="fa-solid fa-door-open"></i> 入住／退房指南</summary>
+  <div class="content">
+
+    <p style="font-style:italic;margin-bottom:.5rem">
+      使用密码即可进入房间
+    </p>
+
+    <div class="grid-2 check-photos">
+      <figure>
+        <img src="../ochiai-jp/entrance_mailbox_location.jpg" alt="入口与邮箱的位置">
+        <figcaption class="caption">入口的位置</figcaption>
+      </figure>
+      <figure>
+        <img src="../ochiai-jp/entrance_mailbox_front.jpg" alt="写有 SUMIKA STAY 的邮箱">
+        <figcaption class="caption">请输入密码</figcaption>
+      </figure>
+    </div>
+
+    <h3>入室密码</h3>
+    <div class="access-code">0335</div>
+
+    <ul class="sub-steps">
+      <li>
+        请按右下方的「Unlock」按钮进入建筑内。
+      </li>
+    </ul>
+
+    <p class="note">
+      如果您深夜到达，建议提前记下此密码。
+    </p>
+
+    <h3>入住</h3>
+    <ol>
+      <li><strong>15:00 以后</strong>可以办理入住。</li>
+      <li>进入时请使用密码。</li>
+    </ol>
+
+    <h3>注意事项</h3>
+    <p>
+      入住时间为<strong>15:00</strong>。<br>
+      视情况有时也可提前入住，如计划提早到达请事先与我们联系。
+      我们会尽量配合，但无法保证一定可以，敬请谅解。
+    </p>
+
+    <h3>退房</h3>
+    <ol>
+      <li><strong>11:00 之前</strong>请退房。</li>
+      <li>请关闭照明・空调・家电的全部电源，并将垃圾分类投入室内的垃圾桶。</li>
+      <li>请将钥匙放回邮箱并关好门（离开前请务必确认已上锁）。</li>
+    </ol>
+
+    <h3>注意事项</h3>
+    <p>
+      退房时间为<strong>严格遵守 11:00</strong>。<br>
+      如需延迟退房，请事先与我们沟通。
+      我们会尽量配合，但视情况有时无法接受，敬请谅解。
+    </p>
+
+    <h3>退房前的配合事项</h3>
+
+    <p>
+      出发前，敬请配合以下几点。
+    </p>
+
+    <ol>
+      <li>床铺保持原样即可（无需拆下床单）。</li>
+      <li>用过的毛巾请放在淋浴间内。</li>
+      <li>请倒掉所有垃圾（分类方法将在后面说明）。</li>
+      <li>请将家具和用品放回原位。</li>
+      <li>请确认空调和家电的电源已关闭。</li>
+      <li>请确认所有门窗均已上锁。</li>
+    </ol>
+
+  </div>
+</details>
+
+    <!-- 家電の使い方 -->
+<details>
+  <summary><i class="fa-solid fa-screwdriver-wrench"></i> 家电使用方法</summary>
+  <div class="content">
+
+    <!-- WIFI INFO -->
+    <h3 class="badge">Wi-Fi 信息</h3>
+    <div class="row-2">
+      <div>
+        <p>房间内可使用 <strong>1个 Wi-Fi</strong> ，请确认以下信息。</p>
+        <ul class="wifi-list">
+          <li>
+            <strong>Wi-Fi 1</strong><br>
+            SSID：<strong>Rakuten Turbo-FE28 - 2.4&5GHz</strong><br>
+            密码：<strong>RLQ8P288LGPAKK3S</strong>
+          </li>
+        </ul>
+        <p class="note">
+          也可以扫描 Wi-Fi 路由器上标注的 <strong>二维码</strong> ，轻松完成连接。
+        </p>
+      </div>
+
+      <figure class="appliance-figure">
+        <img src="../ochiai-jp/QRcode.jpg" alt="带二维码的 Wi-Fi 路由器">
+        <figcaption class="caption">可通过二维码连接 Wi-Fi</figcaption>
+      </figure>
+    </div>
+
+    <!-- TV / FIRE STICK -->
+    <h3 class="badge">电视 / Amazon Fire TV</h3>
+    <div class="row-2">
+      <div>
+        <p>
+          电视及影音设备可自由使用。<br>
+          <strong>遥控器</strong>放在餐桌上。
+        </p>
+        <p>
+          各类视频服务可使用您本人的账号登录。<br>
+          出发前请 <strong>务必退出登录</strong> 。
+        </p>
+      </div>
+    </div>
+
+    <!-- HEATING / HOT WATER NOTE -->
+    <h3 class="badge">热水・冷暖气（没有热水时）</h3>
+    <p>
+      如果没有热水，可能是操作面板的电源已关闭。<br>
+      <strong>2楼厨房的墙面</strong>以及<strong>1楼浴室</strong>处的面板，可以调节
+      热水温度和运转状态。
+    </p>
+
+    <!-- LAUNDRY BASIC -->
+    <h3 class="badge">洗衣设备</h3>
+    <p>
+      <strong>1楼浴室</strong>内设有 <strong>洗衣机・烘干机</strong> 。
+    </p>
+
+    <h3 class="badge">洗衣机（TOSHIBA AW-700Z2）</h3>
+    <figure class="appliance-figure">
+      <img src="../ochiai-jp/laundry appliance.jpg" alt="洗衣机的操作面板">
+      <figcaption class="caption">操作面板示例（TOSHIBA AW-700Z2）</figcaption>
+    </figure>
+
+    <ol>
+      <li>
+        打开洗衣机盖，放入衣物。
+        <small>※洗涤容量：最大 <strong>7kg</strong></small>
+      </li>
+      <li>
+        <strong>洗涤剂</strong>请投入。
+        <small>※1杯的量即可</small>
+      </li>
+      <li>
+        选择程序（初始设置为标准模式）。<br>
+        <strong>一般建议不改设置，直接按「START」。</strong>
+      </li>
+      <li>洗涤时间约为 <strong>40〜60分钟</strong> 。</li>
+    </ol>
+
+    <!-- LAUNDRY DRYING -->
+    <h3 class="badge">衣物的晾晒方法</h3>
+
+    <div class="grid-2">
+      <figure>
+        <img src="../ochiai-jp/drying-living.jpg" alt="在2楼阳台晾晒">
+        <figcaption class="caption">2楼阳台（室外晾晒）</figcaption>
+      </figure>
+      <figure>
+        <img src="../ochiai-jp/drying-bath.jpg" alt="在浴室内晾晒">
+        <figcaption class="caption">浴室（室内晾晒・推荐）</figcaption>
+      </figure>
+    </div>
+
+    <div class="row-2" style="margin-top:.5rem">
+      <div>
+        <p>衣物可在以下场所晾晒。</p>
+        <ul class="wifi-list">
+          <li><strong>2楼阳台</strong>：可在室外自然晾干。</li>
+          <li><strong>浴室（室内晾晒）</strong>：请晾在浴室内（推荐）。</li>
+        </ul>
+
+        <p><strong>室内晾晒时：</strong></p>
+        <ol class="sub-steps">
+          <li>找到浴室内的换气・供暖面板。</li>
+          <li><strong>左侧的黄色按钮</strong>按下 <strong>烘干模式（乾燥）</strong> 即可启动。</li>
+          <li>如有需要可设定定时器，到时会自动停止。</li>
+        </ol>
+
+        <p class="note">请根据用途自由使用。</p>
+      </div>
+
+      <figure class="appliance-figure">
+        <img src="../ochiai-jp/bath-drying-panel.jpg" alt="浴室烘干面板">
+        <figcaption class="caption">用左侧的黄色按钮启动烘干模式</figcaption>
+      </figure>
+    </div>
+
+    <!-- WASHLET -->
+    <h3 class="badge">智能马桶盖的使用方法</h3>
+
+    <figure class="appliance-figure">
+      <img src="../ochiai-jp/washlet_panel.jpg" alt="智能马桶盖操作面板">
+      <figcaption class="caption">智能马桶盖操作面板</figcaption>
+    </figure>
+
+    <div>
+      <ul>
+        <li><strong>おしり・ワイド（臀部・宽幅冲洗）</strong>：常规冲洗。</li>
+        <li><strong>ビデ・ワイド・スーパー（妇洗）</strong>：适合女性的柔和冲洗。</li>
+        <li><strong>おしりターボ（强力冲洗）</strong>：进行更强力的冲洗。</li>
+        <li><strong>ノズルそうじ（喷嘴清洁）</strong>：自动清洁冲洗喷嘴。</li>
+        <li><strong>便座温度（坐圈温度）</strong>：调节坐圈的温度。</li>
+        <li><strong>温水温度（热水温度）</strong>：调节冲洗水的温度。</li>
+        <li><strong>節電 ECO（节电）</strong>：降低耗电量的节能模式。</li>
+      </ul>
+
+      <p class="note">
+        <strong>使用小贴士：</strong>
+        使用后请务必按 <strong>停止（STOP）</strong> 按钮。
+        您可以按照个人喜好调整设置，请放心使用。
+      </p>
+    </div>
+
+    <!-- BATHTUB PANEL -->
+    <h3 class="badge">浴缸操作面板</h3>
+    <div class="row-2">
+      <figure class="appliance-figure">
+        <img src="../ochiai-jp/bathroom panel.jpg" alt="浴缸操作面板">
+      </figure>
+      <div>
+        <ol>
+          <li><strong>启动运转</strong>：<strong>运转／停止（ON/OFF）</strong> 请按此键。</li>
+          <li>
+            <strong>自动放水</strong>：
+            <strong>自动（自動）</strong> 按下后，会按设定的水量和温度放好洗澡水，完成时以语音提示。
+          </li>
+          <li><strong>追加加热</strong>：水变凉时请按 <strong>おいだき（追加加热）</strong> 键。</li>
+        </ol>
+        <ul>
+          <li><strong>预约放水</strong>：可在指定时间准备好洗澡水。</li>
+          <li><strong>音量</strong>：调节语音提示的音量。</li>
+          <li><strong>时钟显示／对时</strong>：显示和设定当前时间。</li>
+        </ul>
+        <p class="note">
+          浴缸内没有热水时，请勿使用 <strong>おいだき（追加加热）</strong> 功能。<br>
+          <strong>自动（自動）</strong> 功能最为简单安全。
+        </p>
+      </div>
+    </div>
+
+    <!-- AIR CONDITIONER -->
+    <h3 class="badge">空调</h3>
+    <div class="row-2">
+      <figure class="appliance-figure">
+        <img src="../ochiai-jp/ac_remote.jpg" alt="空调遥控器">
+      </figure>
+      <div>
+        <ul>
+          <li><strong>开启电源</strong>：按绿色的 <strong>运转／停止</strong> 按钮。</li>
+          <li><strong>关闭电源</strong>：按黄色的 <strong>停止（OFF）</strong> 按钮。</li>
+          <li>
+            <strong>运转模式切换</strong>：
+            <strong>制冷</strong>（蓝）／<strong>制热</strong>（红）／<strong>自动（自動）</strong>（绿）
+          </li>
+          <li><strong>温度调节</strong>：<strong>温度</strong>请用旁边的上下按钮调节。</li>
+        </ul>
+        <p class="note">
+          尤其是制热运转时，出热风可能需要几分钟。<br>
+          外出时请务必关闭空调电源。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+    
+    <!-- ハウスルール -->
+<details>
+  <summary><i class="fa-solid fa-house-user"></i> 住宿规则</summary>
+  <div class="content">
+
+    <!-- ゴミ出しルール（I） -->
+    <h3 class="badge">关于垃圾分类</h3>
+    <p>
+      日本的垃圾分类较难理解，本住宿已简化为<strong>3类</strong>。<br>
+      请将垃圾分别装入不同的塑料袋，投放到停车场的银色垃圾箱内。
+    </p>
+
+    <div class="rules-table">
+      <div class="col">
+        <div class="thead">① 可燃垃圾</div>
+        <ul>
+          <li>厨余垃圾</li>
+          <li>纸屑・纸杯</li>
+          <li>纸巾</li>
+          <li>饮料纸盒</li>
+          <li>纸尿裤（污物请先冲入马桶）</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="thead">② 不可燃垃圾</div>
+        <ul>
+          <li>杯面・便利店便当的容器</li>
+          <li>零食袋・塑料袋</li>
+          <li>泡沫托盘・泡沫塑料</li>
+          <li>硬质塑料（保鲜盒・衣架等）</li>
+          <li>喷雾罐（用完后打孔再丢弃）</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="thead">③ 可回收垃圾（玻璃瓶・易拉罐・塑料瓶）</div>
+        <ul>
+          <li>塑料瓶（PET）</li>
+          <li>易拉罐</li>
+          <li>玻璃瓶</li>
+          <li>请倒空内容物后再投放</li>
+        </ul>
+      </div>
+    </div>
+    <figure class="sorting-figure">
+      <img src="../ochiai-jp/garbage_sorting.jpg" alt="垃圾分类表：可燃垃圾・不可燃垃圾・可回收垃圾" class="sorting-img">
+      <figcaption class="caption">请按上述3类分开，分别装入不同的袋子。</figcaption>
+    </figure>
+
+    <figure class="appliance-figure">
+      <img src="../ochiai-jp/dustbox_parking.jpg" alt="停车场内的银色垃圾箱" class="rule-img">
+      <figcaption class="caption">停车场内的白色垃圾箱</figcaption>
+    </figure>
+
+    <!-- ゴミ出しルール（II） -->
+    <h3 class="badge">垃圾投放注意事项</h3>
+    <p class="small-note">
+      除上述规则外，请勿将用过的行李箱或大件物品留在室内。<br>
+      如遗留未经许可的物品，我们可能会收取处理费用。<br>
+      若分类严重不到位（例如厨余与易拉罐混装等），可能会被拒收，或需额外收取处理费用。
+    </p>
+
+    <!-- 静音時間 -->
+    <h3 class="badge">安静时间：22:00〜8:00</h3>
+    <p>
+      本住宿位于住宅区。<strong>22:00〜8:00</strong>期间请注意控制声响。
+    </p>
+
+    <!-- 靴 -->
+    <h3 class="badge">请脱鞋</h3>
+    <p>
+      在室内请脱鞋。
+    </p>
+
+    <!-- 喫煙 -->
+    <h3 class="badge">关于吸烟</h3>
+    <p>
+      本住宿<strong>全面禁烟</strong>。室内禁止吸烟及使用电子烟。
+    </p>
+    <p class="small-note">
+      停车场可以吸烟，但请务必使用自备的烟灰缸。<br>
+      在东京，道路上吸烟是<strong>被严格禁止</strong>的。
+    </p>
+
+    <!-- ペット・追加ゲスト・破損・例外 -->
+    <h3 class="badge">关于宠物</h3>
+    <p>
+      出于过敏方面的考虑，谢绝携带宠物。
+    </p>
+
+    <h3 class="badge">关于增加住客</h3>
+    <p>
+      请勿邀请预订人数以外的客人。<br>
+      如有特殊情况，请事先联系我们，我们会调整预订内容。
+    </p>
+
+    <h3 class="badge">关于物品损坏</h3>
+    <p>
+      如不慎损坏物品，请立即与我们联系。<br>
+      轻微的损坏通常不会收费。<br>
+      如为电视屏幕等高额损坏，我们会在退房前与您商议费用后再决定。
+    </p>
+
+    <h3 class="badge">关于例外处理</h3>
+    <p>
+      对这些规则的例外，均须事先获得书面同意。敬请理解与配合。
+    </p>
+
+    <!-- 緊急時 -->
+    <div class="emergency-card">
+      <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">
+        紧急情况的应对
+      </h3>
+      <p>
+        遇到紧急情况（急救・报警・消防）时，请立即拨打以下号码。<br>
+        报案时，请告知本指南封面上记载的地址。
+      </p>
+      <ul class="emergency-numbers">
+        <li><strong>报警：</strong>110</li>
+        <li><strong>急救：</strong>119</li>
+        <li><strong>消防：</strong>119</li>
+      </ul>
+    </div>
+
+  </div>
+</details>
+
+
+    <!-- 周辺案内（落合エリア） -->
+<details>
+  <summary><i class="fa-solid fa-utensils"></i> 周边指南</summary>
+  <div class="content">
+    <ul>
+      <li>
+        <i class="fa-solid fa-store"></i>
+        <strong>LAWSON 新宿上落合一丁目店</strong> — 便利店<br>
+        東京都新宿区上落合1-16-3
+        <a href="https://www.google.com/maps/search/?api=1&query=Lawson+Shinjuku+Kamiochiai+1-chome" target="_blank"
+          rel="noopener">地图</a>
+      </li>
+      <li>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <strong>maruetsu petit 中落合店</strong> — 超市<br>
+        東京都新宿区中落合1-6-13
+        <a href="https://www.google.com/maps/search/?api=1&query=Maruetsu+Petit+Naka-Ochiai" target="_blank"
+          rel="noopener">地图</a>
+      </li>
+      <li>
+        <i class="fa-solid fa-wine-glass"></i>
+        <strong>やきとり日高（中井站前）</strong> — 居酒屋<br>
+        東京都新宿区中落合1-20-15
+        <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Hidaka+Nakai+Ekimae" target="_blank"
+          rel="noopener">地图</a>
+      </li>
+    </ul>
+    <p class="note">※步行时间仅供参考。以上店铺均在本住宿的步行范围内。</p>
+  </div>
+</details>
+
+<!-- お問い合わせ・サポート -->
+<details>
+  <summary><i class="fa-solid fa-comment-dots"></i> 咨询・支持</summary>
+  <div class="content">
+    <p>
+      入住期间如有任何疑问，请通过预订网站的消息功能，或以下方式与我们联系。
+    </p>
+    <ul>
+      <li><strong>房东直通（24小时对应）：</strong> +81 80-4370-9211</li>
+      <li><strong>紧急情况：</strong> 火灾・急救・报警 — <strong>110 / 119</strong></li>
+    </ul>
+  </div>
+</details>
+
+
+    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">© 2025 SUMIKA STAY OCHIAI</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
+      if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
+    }));
+  </script>
+</body>
+
+</html>

@@ -577,6 +577,18 @@ body::after {
 </head>
 
 <body>
+<nav class="wb-lang" aria-label="Language"><span aria-current="page">English</span><a href="../nakai.jp/" hreflang="ja">日本語</a><a href="../nakai-cn/" hreflang="zh">中文</a></nav>
+<style>
+.wb-lang{position:sticky;top:0;z-index:9999;display:flex;justify-content:center;gap:.35rem;
+  padding:.45rem .6rem;background:#0f172a;box-shadow:0 1px 6px rgba(0,0,0,.25);
+  font-family:Inter,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans SC",sans-serif}
+.wb-lang a,.wb-lang span{display:inline-block;padding:.28rem .85rem;border-radius:999px;
+  font-size:.82rem;font-weight:600;line-height:1.4;text-decoration:none;color:#cbd5e1;
+  border:1px solid transparent;transition:background .15s,color .15s}
+.wb-lang a:hover,.wb-lang a:focus{background:rgba(255,255,255,.14);color:#fff}
+.wb-lang span[aria-current]{background:#fff;color:#0f172a}
+@media(max-width:380px){.wb-lang a,.wb-lang span{padding:.28rem .6rem;font-size:.76rem}}
+</style>
   <header>
     <h1>Welcome to SUMIKA STAY NAKAI</h1>
     <p class="subheading">Here’s everything you need to know about your stay with us.</p>
@@ -1240,7 +1252,7 @@ body::after {
 
         <!-- Quiet hours -->
         <h3 class="badge">Quiet time: 10pm–8am</h3>
-        <p>Please respect our residential community. Between <strong>9pm and 8am</strong>, keep noise to a minimum.</p>
+        <p>Please respect our residential community. Between <strong>10pm and 8am</strong>, keep noise to a minimum.</p>
 
         <!-- Shoes -->
         <h3 class="badge">Please take off your shoes</h3>

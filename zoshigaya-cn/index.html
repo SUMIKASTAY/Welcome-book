@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎入住 Zoshigaya（杂司谷）</title>
+  <!-- Google Fonts & Font Awesome for modern typography & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Create overlay
+      const overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay hidden";
+      const overlayImg = document.createElement("img");
+      overlay.appendChild(overlayImg);
+      document.body.appendChild(overlay);
+
+      // Add click event to all images
+      document.querySelectorAll("img").forEach(img => {
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+          overlayImg.src = img.src;
+          overlay.classList.remove("hidden");
+        });
+      });
+
+      // Close when clicking outside or on X
+      overlay.addEventListener("click", () => {
+        overlay.classList.add("hidden");
+      });
+    });
+  </script>
+
+  <style>
+    :root {
+      --primary: #0d9488;
+      /* teal */
+      --accent: #f97316;
+      /* orange */
+      --bg-overlay: rgba(202, 202, 202, 0.4);
+      /* brighten overlay */
+      --text: #1e293b;
+      /* slate-800 */
+      --surface: #ffffff;
+      /* card background */
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ---------- GLOBAL BACKGROUND IMAGE (PC & SP 共通) ---------- */
+body {
+  line-height: 1.6;
+  color: var(--text);
+
+  /* 背景＋オーバーレイを直接指定 */
+  background-image:
+    linear-gradient(rgba(202, 202, 202, 0.4), rgba(202, 202, 202, 0.4)),
+    url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* PCは固定 */
+}
+
+/* ---------- 擬似要素は完全に無効化（PC/SP 両方） ---------- */
+body::before,
+body::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* ---------- SP（スマホ）は背景固定するとガクつくので scroll に変更 ---------- */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+
+    /* ---------- HERO ---------- */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      /* ここを追加 ↓ */
+      flex-direction: column;
+      /* ← 縦並びにする */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+      /* （任意）タイトルとサブの間隔 */
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+      margin: 0;
+    }
+
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+      margin: 0;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ---------- COLLAPSIBLE SECTIONS ---------- */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      color: var(--primary);
+      transition: transform .2s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .content h3 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    ul {
+      margin-left: 1.25rem;
+    }
+
+    ol {
+      margin-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* -------- Images & Grid -------- */
+    details img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem
+    }
+
+    .grid-2 img {
+      max-height: 260px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .grid-2 img {
+        max-height: 220px
+      }
+    }
+
+    /* ---- Airport Flow ---- */
+    .steps-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0
+    }
+
+    .step-box {
+      background: #eef2f7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .step-box i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: .35rem
+    }
+
+    .step-box p {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.35
+    }
+
+    .arrow-vert {
+      font-size: 1.5rem;
+      color: var(--text)
+    }
+
+    .branch-note {
+      margin: .75rem 0 .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--primary)
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .75rem
+    }
+
+    .option-card {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .option-card .sub {
+      font-size: .8rem;
+      color: var(--text)
+    }
+
+    .option-card i {
+      font-size: 1.75rem;
+      color: var(--primary)
+    }
+
+    @media(max-width:600px) {
+      .steps-flow .step-box {
+        max-width: 100%
+      }
+
+      .arrow-vert {
+        display: none
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ---- Check-in images & notes ---- */
+    .check-photos img {
+      max-height: 280px;
+      object-fit: cover
+    }
+
+    @media(max-width:600px) {
+      .check-photos img {
+        max-height: 220px
+      }
+    }
+
+    .caption {
+      text-align: center;
+      font-size: .85rem;
+      margin-top: .35rem
+    }
+
+    .access-code {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      margin: .5rem 0
+    }
+
+    .sub-steps {
+      margin-left: 1.1rem
+    }
+
+    .note {
+      font-size: .9rem;
+      opacity: .85
+    }
+
+
+
+    /* ---- Appliance detail layout ---- */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+      align-items: start
+    }
+
+    @media(max-width:700px) {
+      .row-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .appliance-figure img {
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    @media(max-width:600px) {
+      .appliance-figure img {
+        max-height: 220px
+      }
+    }
+
+    .wifi-list {
+      margin-left: 1.1rem
+    }
+
+    /* ---- House Rules layout ---- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: .75rem 0
+    }
+
+    @media(max-width:700px) {
+      .rules-table {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem
+    }
+
+    .rule-img {
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px
+    }
+
+    .small-note {
+      font-size: .9rem;
+      opacity: .9
+    }
+
+    .emergency-card {
+      border-left: 4px solid var(--accent);
+      background: #fff7ed;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem
+    }
+
+    .emergency-numbers {
+      margin-left: 1.25rem
+    }
+
+    .content h4 {
+      margin: .75rem 0 .25rem;
+      font-size: 1rem;
+      font-weight: 700
+    }
+
+    .washlet-guide ol {
+      margin-left: 1.25rem
+    }
+
+    .washlet-guide ol li {
+      margin: .25rem 0
+    }
+
+    /* === Mobile fixes: stop overlap between hero and first card === */
+    @media (max-width: 640px) {
+
+      /* ヒーローを少し高く＆余白を増やす */
+      header {
+        padding: 1rem;
+      }
+
+      /* カードを引き上げない（負のマージンを無効化） */
+      .container {
+        margin: 0 auto 2rem;
+        /* -4rem → 0 に */
+      }
+
+      /* 見出しを少しだけ小さくして収まり良く */
+      header h1 {
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+        line-height: 1.15;
+      }
+
+      header .subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-top: .5rem;
+      }
+    }
+
+    /* ===== Lightbox base ===== */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+
+    .lightbox-overlay.hidden {
+      display: none;
+    }
+
+    .lightbox-overlay:after {
+      content: "✕";
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .shorts-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%;
+      /* ← 9:16 の正しい縦長比率 */
+      height: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .shorts-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 56.25%;
+      /* ← 9:16 に対応する幅（縦長動画の正しい幅） */
+      height: 100%;
+      transform: translateX(-50%);
+      /* 中央寄せ */
+    }
+
+    /* YouTube動画のレイアウト調整（PC・SP共通） */
+    .video-wrapper {
+      max-width: 420px;
+      /* PC時の最大幅 */
+      margin: 1rem auto 1.5rem;
+      /* 中央寄せ */
+    }
+
+    /* プレーヤー自体は 16:9 にする */
+    .video-wrapper iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      /* ← ここを 9/16 ではなく 16/9 に */
+      height: auto;
+    }
+
+    /* スマホでは幅いっぱいでOK */
+    @media (max-width: 768px) {
+      .video-wrapper {
+        max-width: 100%;
+      }
+    }
+  
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<nav class="wb-lang" aria-label="Language"><a href="../zoshigaya/" hreflang="en">English</a><span aria-current="page">中文</span></nav>
+<style>
+.wb-lang{position:sticky;top:0;z-index:9999;display:flex;justify-content:center;gap:.35rem;
+  padding:.45rem .6rem;background:#0f172a;box-shadow:0 1px 6px rgba(0,0,0,.25);
+  font-family:Inter,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans SC",sans-serif}
+.wb-lang a,.wb-lang span{display:inline-block;padding:.28rem .85rem;border-radius:999px;
+  font-size:.82rem;font-weight:600;line-height:1.4;text-decoration:none;color:#cbd5e1;
+  border:1px solid transparent;transition:background .15s,color .15s}
+.wb-lang a:hover,.wb-lang a:focus{background:rgba(255,255,255,.14);color:#fff}
+.wb-lang span[aria-current]{background:#fff;color:#0f172a}
+@media(max-width:380px){.wb-lang a,.wb-lang span{padding:.28rem .6rem;font-size:.76rem}}
+</style>
+
+  <header>
+    <h1>欢迎入住 Zoshigaya（杂司谷）</h1>
+    <p class="subheading">这里汇总了您入住期间需要了解的全部信息。</p>
+  </header>
+
+  <div class="container">
+
+    <!-- How to get here (Access & Map) -->
+    <details>
+      <summary><i class="fa-solid fa-map-signs"></i> 如何前往（交通与地图）</summary>
+      <div class="content">
+        <h3 class="badge">地址</h3>
+        <p>Tokyo Toshima City Zōshigaya 2-chōme-22-16 Zōshigaya <strong>〒171-0032</strong></p>
+        <p><a href="https://maps.app.goo.gl/XL1dNTbaZUuGbR8h6" target="_blank">在 Google 地图中打开</a></p>
+
+        <h3 class="badge">标识</h3>
+        <div class="grid-2">
+          <figure>
+            <img src="../zoshigaya/howtoget here1.jpg" alt="建筑正面">
+            <figcaption style="text-align:center;font-size:.85rem">本建筑 — 请以停车位为标识
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="../zoshigaya/howtoget here2.jpg" alt="银色垃圾箱">
+            <figcaption style="text-align:center;font-size:.85rem">停车位处的银色垃圾箱</figcaption>
+          </figure>
+        </div>
+        <ul style="margin-top:1rem">
+          <li>停车场内的**银色垃圾箱**</li>
+
+
+          <li>备案编号： <strong>M130056625</strong></li>
+        </ul>
+
+        <h3 class="badge">从羽田机场前往</h3>
+        <img src="../zoshigaya/haneda.png" alt="前往方式">
+
+        <p>所有路线均可使用 IC 卡（Suica/PASMO）。如果重视舒适和简便， <strong>从羽田乘出租车</strong> 是最简单的方式。</p>
+
+        <h3 class="badge">视频指南</h3>
+
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/dmOzQvB89o8" title="前往方式" frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+
+
+      </div>
+    </details>
+
+
+    <!-- Check-in /out Guide -->
+    <details>
+      <summary><i class="fa-solid fa-door-open"></i> 入住／退房指南</summary>
+      <div class="content">
+        <p style="font-style:italic;margin-bottom:.5rem">使用密码即可进入</p>
+        <div class="grid-2 check-photos">
+          <figure>
+            <img src="../zoshigaya/entrance_passcode.jpg" alt="带名牌的邮箱正面">
+            <figcaption class="caption">请输入密码</figcaption>
+          </figure>
+        </div>
+
+        <h3>入室密码</h3>
+        <div class="access-code">1122</div>
+        <ul class="sub-steps">
+          <li>请按右下方的「Unlock」按钮，
+            进入建筑内。</li>
+        </ul>
+        <p class="note">如果您深夜到达，请在出行前记下此密码。</p>
+        <h3>入住</h3>
+        <ol>
+          <ol>
+            <li>到达时间为 <strong>16:00</strong>.</li>
+            <li>进入时请使用密码。</li>
+
+
+          </ol>
+          <h3>备注</h3>
+
+          <p>入住时间为下午4点。有时可以安排提前入住，如计划提早到达请与我们联系，
+            我们会尽力配合（很抱歉无法保证）。</p>
+        </ol>
+        <h3>退房</h3>
+        <ol>
+          <ol>
+            <li>请在此时间前离开： <strong>10:00</strong>.</li>
+            <li>请关闭照明／空调／家电，并将垃圾分类投入室内的垃圾桶。</li>
+            <li>请关好门（离开前请务必确认已上锁）。</li>
+          </ol>
+
+
+          <h3>备注</h3>
+
+          <p>退房时间严格为上午10点。如需延迟退房，我们会尽力配合，
+            但请注意必须事先告知我们。</p>
+        </ol>
+
+        <h3>退房前</h3>
+
+        <p>出发前，如能配合以下事项，
+          我们将不胜感激：</p>
+
+
+        <ol>
+          <li>床铺保持原样即可，无需拆下床单。</li>
+          <li>用过的毛巾请放在淋浴间内。</li>
+          <li>请倒掉所有垃圾（分类方法将在后面说明）</li>
+          <li>请将所有家具和物品放回原位。</li>
+          <li>请确认空调及其他电器已关闭。</li>
+          <li>请确认所有门窗均已上锁。</li>
+        </ol>
+
+      </div>
+    </details>
+
+    <!-- Appliance instructions -->
+    <details>
+      <summary><i class="fa-solid fa-screwdriver-wrench"></i> 家电使用说明</summary>
+      <div class="content">
+        <!-- WIFI INFO -->
+        <h3 class="badge">Wi-Fi 信息</h3>
+        <div class="row-2">
+          <div>
+            <p>房内共有 <strong>1个 Wi-Fi 网络</strong> 可供使用。</p>
+            <ul class="wifi-list">
+              <li>
+                <strong>Wi-Fi 名称 (SSID)：</strong> welcome<br>
+                <strong>密码：</strong> tokyo1234
+              </li>
+            </ul>
+            <p class="note">
+              Wi-Fi 信息也标示在墙上的 <strong>猫咪 Wi-Fi 提示牌</strong> 上。
+            </p>
+          </div>
+
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/wifi_cat_sign.jpg" alt="带猫咪插画的 Wi-Fi 提示牌">
+            <figcaption class="caption">Wi-Fi 信息（位于墙面）</figcaption>
+          </figure>
+        </div>
+
+
+        <!-- TELEVISION -->
+        <h3 class="badge">电视 (TV) 使用说明</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/tv_remote.jpg" alt="电视遥控器">
+            <figcaption class="caption">电源 / 频道 / 音量控制</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>开启 / 关闭</strong>
+                <br>请按 <strong>红色电源键</strong> （位于遥控器上方）。
+              </li>
+
+              <li><strong>切换频道</strong>
+                <br>请使用 <strong>▲ / ▼ 按钮</strong> （“チャンネル”旁边）。
+              </li>
+
+              <li><strong>调节音量</strong>
+                <br>请使用 <strong>＋ / － 按钮</strong> （“音量”旁边）。
+              </li>
+
+              <li><strong>方向键</strong>
+                <br>如有需要，可用中央的大方向键（← ↑ → ↓）操作菜单。
+              </li>
+            </ol>
+
+            <p class="note">
+              📺 如有需要，可使用您本人的账号登录各类视频服务。<br>
+              <strong>退房前请务必退出登录。</strong>
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 如果电视打不开，请确认电源线是否插好，并按一下
+          电视机身上的电源键。
+        </p>
+
+
+
+        <!-- WASHING MACHINE -->
+        <h3 class="badge">洗衣机（自动投放洗涤剂）</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/washing_machine.jpg" alt="洗衣机的操作面板">
+            <figcaption class="caption">电源 → 模式 → 启动</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>打开机门</strong> ，放入衣物。<br>
+                <small>*最大容量：10 kg*</small>
+              </li>
+
+              <li>
+                <strong>长按电源键</strong> （①）开机。
+              </li>
+
+              <li>
+                <strong>选择模式</strong> （使用模式键 ②）：
+                <ul>
+                  <li><strong>洗い（洗涤）</strong> — 仅洗涤</li>
+                  <li><strong>すすぎ＋脱水（漂洗＋脱水）</strong> — 漂洗与脱水</li>
+                  <li><strong>脱水＋乾燥（脱水＋烘干）</strong> — 脱水与烘干</li>
+                  <li><strong>洗濯＋乾燥（洗涤＋烘干）</strong> — 洗涤到烘干一次完成（推荐）</li>
+                </ul>
+              </li>
+
+              <li>
+                选好模式后， <strong>按 START / PAUSE</strong> （③）即可开始。
+              </li>
+            </ol>
+
+            <p class="note">
+              🧴 <strong>无需自行投放洗涤剂。</strong><br>
+              洗衣机会自动投放洗涤剂。
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 *视衣物的量，烘干可能需要更长时间。*
+          ⚠ *线屑过滤网满了请清理，另外请勿往滚筒里塞得过满。*
+        </p>
+
+
+
+        <!-- AIR CONDITIONER -->
+        <h3 class="badge">空调 (AC)</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <!-- お好きな方の画像ファイル名に変更してください -->
+            <img src="../zoshigaya/ac_remote1.jpg" alt="空调遥控器">
+            <figcaption class="caption">空调遥控器示例（您房间的遥控器外观可能相似）</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>电源 ON / OFF</strong><br>
+                请按 <strong>運転 / 停止</strong> 或 <strong>停止</strong> 按钮（通常为黄色或红色）。
+              </li>
+
+              <li><strong>选择模式</strong><br>
+                请从以下主要按钮中选择：
+                <ul>
+                  <li><strong>冷房</strong> – 制冷（夏季降温用）</li>
+                  <li><strong>暖房</strong> – 制热（冬季取暖用）</li>
+                  <li><strong>除湿 / ドライ</strong> – 除湿 / 干燥（去除湿气，并轻微降温）</li>
+                  <li><strong>自動</strong> – 自动（空调会自动选择最合适的模式）</li>
+                </ul>
+              </li>
+
+              <li><strong>设定温度</strong><br>
+                请使用 <strong>温度 ▲ / ▼</strong> 用这些按钮调节温度。
+                <br><small>推荐： <strong>24–27 °C</strong> （夏季）， <strong>20–23 °C</strong> （冬季）。</small>
+              </li>
+
+              <li><strong>调节风量</strong><br>
+                请按 <strong>風量</strong> （风量）键改变风的强弱。
+              </li>
+
+              <li><strong>调节风向</strong><br>
+                请使用 <strong>風向 上下 / 左右</strong> 按钮，让风向上下或左右移动。
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 使用空调时请关好门窗，以提高效率。<br>
+              ⚠ 离开房间或外出时，请务必 <strong>关闭</strong> 空调。
+            </p>
+          </div>
+        </div>
+
+
+        <!-- VACUUM CLEANER -->
+        <h3 class="badge">吸尘器</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/vacuum_cleaner.jpg" alt="标有按钮说明的手持吸尘器">
+            <figcaption class="caption">
+              电源键（红圈）与集尘盒开关（蓝框）
+            </figcaption>
+          </figure>
+          <div>
+            <ol>
+              <li><strong>开启 / 关闭</strong> — 请按上方的圆形 <strong>电源键</strong> （红圈标示处）。</li>
+              <li><strong>请使用</strong> — 请在地板或地毯上轻轻推动吸尘器。
+                请勿吸取水或非常潮湿的区域。</li>
+              <li><strong>清理集尘盒</strong> — 清扫结束后，请先确认吸尘器已 <strong>关闭</strong>，
+                然后按下 <strong>蓝框处的卡扣</strong> 打开集尘盒，将灰尘倒入垃圾桶。</li>
+              <li><strong>关好并放回</strong> — 请将集尘盒盖紧，并把吸尘器放回原位。</li>
+            </ol>
+            <p class="note">如果感觉吸力变弱，请检查并清空集尘盒。</p>
+          </div>
+        </div>
+
+        <!-- MICROWAVE OVEN -->
+        <h3 class="badge">微波炉（SHARP）</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/microwave_oven.jpg" alt="标有按钮说明的微波炉">
+            <figcaption class="caption">
+              模式切换（加热 / 解冻）与定时旋钮
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>打开机门</strong> ，将食物或饮料放在炉内的盘子上。</li>
+              <li><strong>选择模式</strong>:
+                <ul style="margin-top: .3rem;">
+                  <li><strong>500W</strong> — 常规加热（<em>推荐</em>)</li>
+                  <li><strong>解冻（Defrost）</strong> — 用于冷冻食品</li>
+                </ul>
+                <small>请按 <strong>模式键</strong> （照片中标出）来切换模式。</small>
+              </li>
+              <li><strong>转动定时旋钮</strong> 设定加热时间。<br>
+                <small>*例：加热饮料 1–2 分钟，饭菜 3–5 分钟。</small>
+              </li>
+              <li>微波炉会在 <strong>自动开始**</strong> 转动旋钮后。</li>
+              <li>时间到后，会 <strong>响铃并停止</strong>。取出食物时请小心。</li>
+            </ol>
+
+            <p class="note">
+              ⚠ 请 <strong>不要将金属容器、铝箔或密闭容器</strong> 放入
+              微波炉内。
+              请只使用可用于微波炉的餐具。
+            </p>
+          </div>
+        </div>
+
+        <!-- RICE COOKER -->
+        <h3 class="badge">电饭煲（Tiger IH）</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/rice_cooker.jpg" alt="标有按钮说明的电饭煲">
+            <figcaption class="caption">
+              开始键（炊飯）与取消（取消）／保温（保温）
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>打开上盖</strong> ，取出内胆。</li>
+              <li><strong>放入米和水</strong> 到内胆中。<br>
+                <small>
+                  例：1杯米（180 ml）＋ 加水至刻度“1”。<br>
+                  *此为 <strong>免洗米（無洗米）的刻度</strong>.
+                </small>
+              </li>
+              <li>如果内胆外侧沾湿，请擦干后再放回电饭煲。</li>
+              <li>请将上盖完全盖好。</li>
+              <li><strong>按“炊飯”（开始）</strong> 键开始煮饭。</li>
+              <li>煮饭约需 <strong>40–50 分钟</strong>。完成后会自动切换到
+                <strong>保温模式（保温）</strong> 。
+              </li>
+            </ol>
+
+            <p><strong>煮好之后：</strong></p>
+            <ul class="wifi-list">
+              <li>请使用 <strong>保温（Warm）</strong> 如果打算稍后再吃，可按此键保温。</li>
+              <li>请按 <strong>取消（Cancel）</strong> 可停止任何运行中的程序。</li>
+            </ul>
+
+            <p class="note">
+              ⚠ 请勿将内胆直接放在灶台上，也不要装着水放进水槽。<br>
+              请务必清洗并擦干后再放回。
+            </p>
+          </div>
+        </div>
+        <!-- FLOOR HEATING -->
+        <h3 class="badge">地暖 </h3>
+        <p>本住宅配有地暖系统。请按以下说明操作。
+
+        </p>
+
+        <!-- FLOOR HEATING -->
+        <h4>① 地暖控制器（客厅）</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/floor_heating.jpg" alt="地暖控制器">
+            <figcaption class="caption">开关按钮与温度控制</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>按“運転/停止1”或“運転/停止2”</strong> 即可开启地暖。</li>
+              <li>调节温度的方法：
+                <ul>
+                  <li>长按 <strong>“設定”键（蓝圈处）</strong> 进入设定模式。</li>
+                  <li>请使用 <strong>▲ / ▼ 按钮</strong> 调节温度。</li>
+                  <li>长按 <strong>再次长按“設定”键</strong> 保存设定。</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="note">地暖升温需要一些时间。不需要时请关闭。</p>
+          </div>
+        </div>
+
+        <!-- GAS STOVE & SMALL OVEN -->
+        <h3 class="badge">燃气灶与小烤箱使用说明</h3>
+        <p>使用灶具时请仔细按照以下步骤操作。<br>
+          <span style="color:red;font-weight:bold;">⚠ 使用后请务必关火。切勿让灶具处于
+            无人看管的状态。</span>
+        </p>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/gas_stove.jpg" alt="燃气灶与小烤箱的操作部">
+            <figcaption class="caption">
+              长按点火，再按一次熄火
+            </figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>请将锅具</strong> 稳稳地放在炉头上。</li>
+
+              <li><strong>按下旋钮</strong> 并保持约 <strong>3 秒</strong> 即可点火。
+                <ul>
+                  <li>左炉头 → 左旋钮</li>
+                  <li>右炉头 → 右旋钮</li>
+                </ul>
+              </li>
+
+              <li><strong>调节火力大小</strong> （转动旋钮）。</li>
+
+              <li>要熄火时， <strong>再次按下旋钮</strong> 直到火焰熄灭。</li>
+            </ol>
+
+            <p class="note">
+              🔥 *如果点不着火，请松开后再试一次。*
+              请确认炉头周围没有水或油。
+            </p>
+          </div>
+        </div>
+
+        <!-- SMALL OVEN -->
+        <h4>小烤箱 / 烧烤</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/gas_stove.jpg" alt="小烤箱的操作部（蓝圈处）" style="opacity:.9;">
+            <figcaption class="caption">轻轻拉开烤盘</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>请轻轻向前拉出烤盘。</li>
+              <li>放入食物（如有需要请使用锡纸）。</li>
+              <li><strong>使用烤箱旋钮</strong> （中央面板）加热。</li>
+              <li>长按旋钮点火（与灶具相同）。</li>
+              <li>加热过程中请随时留意 — <strong>它升温非常快。</strong></li>
+              <li>再次按下旋钮即可关闭。</li>
+            </ol>
+
+            <p class="note">
+              ⚠ 请谨慎使用 — 这个小烤箱升温极快，食物很容易烤焦。<br>
+              推荐时间： <strong>3–5 分钟，并全程留意。</strong>
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 <strong>煮好之后：</strong><br>
+          – 关闭所有火源<br>
+          – 确认没有残留的燃气味<br>
+          – 待灶具冷却后清理洒落的污渍
+        </p>
+        <!-- DISHWASHER -->
+        <h3 class="badge">洗碗机</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/dishwasher.jpg" alt="洗碗机的操作面板">
+            <figcaption class="caption">模式 / 烘干 / 启动（长按）</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>打开洗碗机</strong> ，放入餐具。<br>
+                <small>*放入前请先清除较大的食物残渣。*</small>
+              </li>
+
+              <li><strong>长按电源键</strong> （スタート / 電源切）开机。<br>
+                <small>*需要长按才能启动。*</small>
+              </li>
+
+              <li><strong>选择模式</strong> （使用“コース”模式键）：
+                <ul>
+                  <li><strong>標準</strong> — 标准清洗（推荐）</li>
+                  <li><strong>念入り</strong> — 强力清洗</li>
+                  <li><strong>予約</strong> — 定时 / 延时</li>
+                  <li><strong>乾燥</strong> — 仅烘干</li>
+                </ul>
+              </li>
+
+              <li><strong>按启动键</strong> 开始清洗程序。</li>
+
+              <li>清洗结束后，洗碗机会自动停止。<br>
+                可以稍微打开机门排出蒸汽，有助于烘干。</li>
+            </ol>
+
+            <p class="note">
+              🧽 洗涤剂：如需洗涤剂，请加入投放槽内。
+              多数餐具用标准程序即可洗净。
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          ⚠ <strong>请勿清洗木质餐具、菜刀及易损物品。</strong><br>
+          💡 为达到最佳效果，请勿放得过满，碗类请开口朝下摆放。
+        </p>
+
+        <!-- WATER HEATER PANEL -->
+        <h3 class="badge">热水器面板</h3>
+        <span style="color:red;font-weight:bold;">⚠️ 请勿关闭热水器开关</span> — 必须保持
+        开启状态，才能供应热水和取暖。
+        <div class="row-2">
+
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/water_heater_1.jpg" alt="热水器的操作面板">
+            <figcaption class="caption">主要操作：电源与温度</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>
+                <strong>电源开关（運転）</strong><br>
+                此按钮用于开启／关闭热水器。<br>
+                <span class="note">
+                  ⚠ 请 <strong>请勿关闭</strong> 入住期间的热水器。
+                  一旦关闭，将没有热水。
+                </span>
+              </li>
+
+              <li>
+                <strong>温度调节（給湯 温度調節）</strong><br>
+                请使用 <strong>▲ / ▼ 按钮</strong> 用于更改热水的温度。<br>
+                推荐设定： <strong>40–43&nbsp;°C</strong> （淋浴和泡澡用）。
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 如果水温过热或过冷，请在此面板调节，而不是调节淋浴龙头。
+            </p>
+          </div>
+
+        </div>
+
+        <!-- WATER HEATING -->
+        <h4>② 热水器（淋浴／浴缸用热水）</h4>
+        <p><span style="color:red;font-weight:bold;">⚠️ 请勿关闭主电源开关（運転）。</span></p>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/bathroom panel.jpg" alt="热水器面板 1">
+            <figcaption class="caption">主操作面板（浴室）</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li>要使用热水， <strong>请确认“運転（电源）”旁边的绿灯亮着</strong>.</li>
+              <li>调节温度的方法：
+                <ul>
+                  <li><strong>▲ 上</strong> 提高温度</li>
+                  <li><strong>▼ 下</strong> 降低温度</li>
+                </ul>
+              </li>
+              <li>推荐温度： <strong>40–43 °C</strong>.</li>
+            </ol>
+            <p class="note">如果绿灯没亮，请按“運転”将其打开。</p>
+          </div>
+        </div>
+
+
+        <p class="note">
+          💡 <strong>小贴士：</strong><br>
+          – 淋浴前请务必确认水温。<br>
+          – 如果没有热水，请确认绿灯是否亮着。<br>
+          – 使用后请关闭地暖以节约能源。
+        </p>
+        <!-- BATHROOM SHOWER -->
+        <h3 class="badge">淋浴 / 浴室水龙头</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/bathroom_shower.jpg" alt="标有说明的淋浴龙头">
+            <figcaption class="caption">温度与出水口的控制</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>转动右侧的旋钮</strong> 来选择：
+                <ul>
+                  <li>🛁 <strong>浴缸放水</strong> （用于向浴缸放水）</li>
+                  <li>🚿 <strong>淋浴</strong> （一般淋浴使用）</li>
+                </ul>
+              </li>
+
+              <li><strong>转动左侧的旋钮</strong> 调节水温。</li>
+
+              <li><strong>重要：</strong>
+                要将温度设定到 <strong>40 °C</strong>以上时，必须：
+                <ol class="sub-steps">
+                  <li>按住旋钮上的小安全按钮</li>
+                  <li>按住的同时继续转动旋钮</li>
+                </ol>
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 提示：推荐的淋浴水温为 <strong>38–41 °C</strong>.<br>
+              ⚠ 调到 40 °C 以上时请注意，水可能会非常烫。
+            </p>
+          </div>
+        </div>
+
+        <!-- SMART TOILET -->
+        <h3 class="badge">智能马桶</h3>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/toilet_panel.jpg" alt="智能马桶操作面板">
+            <figcaption class="caption">冲洗 / 停止 / 水温 / 强度</figcaption>
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>停止（关闭 / STOP）</strong><br>
+                请按 <strong>止</strong> 按此键可停止全部功能。
+              </li>
+
+              <li><strong>清洗臀部</strong><br>
+                请按 <strong>おしり</strong> 键。<br>
+                <small>*喷嘴会喷出温水进行清洗。*</small>
+              </li>
+
+              <li><strong>妇洗 / 柔和清洗（女性用 / ビデ）</strong><br>
+                请按 <strong>ビデ</strong> 键。
+              </li>
+
+              <li><strong>调节清洗强度</strong><br>
+                请使用 <strong>＋ / −</strong> 用这些按钮让水流更强或更柔和。
+              </li>
+
+              <li><strong>调节水温</strong><br>
+                请按 <strong>温水温度</strong> 按此键可更改水温。
+              </li>
+
+              <li><strong>调节座圈温度</strong><br>
+                请按 <strong>便座温度</strong> 按此键可调节马桶座圈的温度。
+              </li>
+            </ol>
+
+            <p class="note">
+              💡 经过一小段时间后会自动停止。
+              ⚠ 请勿站在马桶座圈上。
+            </p>
+          </div>
+        </div>
+
+        <!-- LIGHTING REMOTE CONTROLS -->
+        <h3 class="badge">照明遥控器</h3>
+        <p>部分房间的照明遥控器不同，但基本用法相同：
+          <strong>电源 ON/OFF、全亮、调亮、调暗。</strong>
+        </p>
+
+        <!-- ROOM 1 LIGHT -->
+        <h4>房间 1 – 照明遥控器</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/light_remote1.jpg" alt="照明遥控器 1">
+            <figcaption class="caption">电源 / 全亮 / 调亮 / 调暗</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>电源</strong> – 按绿色的 <strong>电源键</strong> 键开关灯。</li>
+              <li><strong>全亮（全灯）</strong> – 按中央的 <strong>全灯</strong> 键可达到最大亮度。
+              </li>
+              <li><strong>调亮（明）</strong> – 按上方的按键使房间更亮。</li>
+              <li><strong>调暗（暗）</strong> – 按下方的按键调暗灯光。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROOM 2 LIGHT -->
+        <h4>房间 2 – 照明遥控器（TOSHIBA）</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/light_remote2.jpg" alt="照明遥控器 2">
+            <figcaption class="caption">全亮 / 调光 / 关灯</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>开灯（点灯）</strong> – 按中央的 <strong>点灯</strong> 键。</li>
+              <li><strong>全亮（全灯）</strong> – 按最上方的 <strong>全灯</strong> 键。</li>
+              <li><strong>调亮（明）</strong> – 按圆环上半部（明）。</li>
+              <li><strong>调暗（暗）</strong> – 按圆环下半部（暗）。</li>
+              <li><strong>关灯（消灯）</strong> – 按 <strong>消灯</strong> 键即可关灯。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROOM 3 LIGHT -->
+        <h4>房间 3 – 照明遥控器（IRIS OHYAMA）</h4>
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/light_remote3.jpg" alt="照明遥控器 3">
+            <figcaption class="caption">全亮 / 调光 / 关灯</figcaption>
+          </figure>
+
+          <div>
+            <ul class="wifi-list">
+              <li><strong>开灯 / 全亮（点灯・全灯）</strong> – 按标有
+                <strong>点灯 / 全灯</strong>.
+              </li>
+              <li><strong>调亮（明るく）</strong> – 按 <strong>明るく</strong> 键。</li>
+              <li><strong>调暗（暗く）</strong> – 按 <strong>暗く</strong> 键。</li>
+              <li><strong>关灯（消灯）</strong> – 按 <strong>消灯</strong> 键即可关灯。</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="note">
+          💡 提示：如果灯没有反应，请将遥控器直接对准吸顶灯再试一次。
+        </p>
+
+        <!-- WASHBASIN AMENITIES -->
+        <h3 class="badge">洗漱台用品</h3>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../zoshigaya/washbasin_items.jpg" alt="镜柜内的牙刷和杯子">
+            <figcaption class="caption">
+              镜柜内已备好牙刷与杯子
+            </figcaption>
+          </figure>
+
+          <div>
+            <p>
+              我们在洗漱台的镜柜内准备了 <strong>干净的牙刷套装</strong> 和 <strong>杯子</strong> 。
+              请打开镜柜的柜门取用。
+            </p>
+
+            <ul>
+              <li>每位客人1套</li>
+              <li>放在镜柜内的各层隔板上</li>
+              <li>入住期间可自由使用</li>
+            </ul>
+
+            <p class="note">
+              💡 用过的牙刷可以带走，请随意。
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </details>
+
+
+    <!-- House Rules -->
+    <details>
+      <summary><i class="fa-solid fa-house-user"></i> 住宿规则</summary>
+      <div class="content">
+         <!-- Garbage rules (I) -->
+        <h3 class="badge">垃圾投放规则</h3>
+        <p>日本的垃圾规则较难理解，我们已将其简化。请将垃圾分成
+          <strong>3类</strong> ，分别装入不同的塑料袋，再按下述方式投放到停车场的银色垃圾箱内。如果垃圾未妥善分类，或散落在地板上及房间各处，可能会加收清洁费或处理费。
+        </p>
+        <div class="rules-table">
+          <div class="col">
+            <div class="thead">1. 可燃垃圾</div>
+            <ul>
+              <li>厨余垃圾</li>
+              <li>纸屑和纸杯</li>
+              <li>纸巾</li>
+              <li>饮料纸盒</li>
+              <li>纸尿裤（污物请先冲入马桶）</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">2. 不可燃垃圾</div>
+            <ul>
+              <li>杯面容器和便当盒</li>
+              <li>零食袋和塑料袋</li>
+              <li>泡沫托盘和泡沫塑料</li>
+              <li>硬质塑料（保鲜盒、衣架）</li>
+              <li>喷雾罐（用完后打孔再丢弃）</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">3. 可回收垃圾</div>
+            <ul>
+              <li>塑料瓶（PET）</li>
+              <li>易拉罐</li>
+              <li>玻璃瓶</li>
+              <li>请先倒空内容物</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="sorting-figure">
+          <img src="../zoshigaya/garbage_sorting.jpg" alt="垃圾分类方法：可燃、不可燃、可回收" class="sorting-img">
+          <figcaption class="caption">请按这3类分开，并分别使用不同的袋子。</figcaption>
+        </figure>
+        <figure class="appliance-figure">
+          <img src="../zoshigaya/howtoget here2.jpg" alt="停车场的银色垃圾箱" class="rule-img">
+          <figcaption class="caption">停车场的白色垃圾箱</figcaption>
+        </figure>
+
+       <!-- Garbage rules (II) -->
+        <h3 class="badge">垃圾投放 II</h3>
+        <p class="small-note">除上述规则外，请勿将用过的行李箱或大件物品留在
+          室内。如遗留未经许可的物品，我们可能会要求您承担相关费用。若垃圾混装严重（例如厨余与易拉罐混在一起），回收公司可能会拒收，或加收处理费用。</p>
+        
+          <h3 class="badge">厨房的使用</h3>
+<p>使用厨房后，请将用过的餐具、器皿和炊具清洗干净并放回原位。感谢您的配合，让下一位客人也能使用干净的厨房。</p>
+        <!-- Quiet hours -->
+        <h3 class="badge">安静时间：22:00–8:00</h3>
+        <p>本住宿位于住宅区，敬请体谅。 <strong>22:00 至 8:00</strong>期间，请将噪音控制到最低。</p>
+
+        <!-- Shoes -->
+        <h3 class="badge">请脱鞋</h3>
+        <p>请勿穿鞋进入室内。</p>
+
+        <!-- Smoking -->
+        <h3 class="badge">吸烟规则</h3>
+        <p>本住宿 <strong>全面禁烟</strong> — 室内禁止吸烟及使用电子烟。</p>
+        <p class="small-note">4楼的露台设有指定吸烟区。请勿在
+          道路上吸烟 — 这在东京是被严格禁止的。</p>
+
+        <h3 class="badge">院内没有停车场。</h3>
+        <p>自驾前来时，请使用附近的收费停车场。</p>
+
+        <h3 class="badge">安保</h3>
+        <p>出于治安考虑，并依照地方政府的指导，入口处设有监控摄像头。</p>
+
+        <!-- Pets / Guests / Breakages / Exceptions -->
+        <h3 class="badge">宠物</h3>
+        <p>我们很喜欢动物，但出于过敏方面的考虑，本住宿谢绝携带宠物。</p>
+
+        <h3 class="badge">增加住客</h3>
+        <p>请勿带来预订人数以外的客人。不允许超过最大可住人数。
+        </p>
+
+        <h3 class="badge">物品损坏</h3>
+        <p>如损坏了任何物品，请立即告知我们。轻微的问题通常不会收费。较大的问题
+          （例如电视屏幕），我们会在退房前与您商定费用，以免产生意外。</p>
+
+        <h3 class="badge">书面例外</h3>
+        <p>对这些规则的任何例外，均须事先获得同意。感谢配合！</p>
+
+        <!-- Emergency (from the images) -->
+        <div class="emergency-card">
+          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">紧急情况的应对
+          </h3>
+          <p>如需紧急服务（急救、报警、消防），请立即拨打电话。请按本指南
+            首页记载的内容告知您所在的位置。</p>
+          <ul class="emergency-numbers">
+            <li><strong>报警：</strong> 110</li>
+            <li><strong>急救：</strong> 119</li>
+            <li><strong>消防：</strong> 119</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- Neighborhood Guide (Zoshigaya Area) -->
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> 周边指南</summary>
+      <div class="content">
+        <ul>
+          <li>
+            <i class="fa-solid fa-store"></i>
+            <strong>Bell Sage 目白公寓区</strong> — 附近的便利店<br>
+            2-18-20 Takada, Toshima-ku, Tokyo 171-0033
+            <a href="https://maps.app.goo.gl/8eP36z6LiDmhmWxBA" target="_blank" rel="noopener">地图</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <strong>maruetsu petit 杂司谷2丁目店</strong> — 超市<br>
+            2-3-3 Zoshigaya, Toshima-ku
+            <a href="https://maps.app.goo.gl/XcgbcKZQwiXcupnS6" target="_blank" rel="noopener">地图</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-wine-glass"></i>
+            <strong>山太郎 饭团与猪肉汤</strong> — 休闲日式小餐馆<br>
+            2-10-7 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/h63WdaEV1ivfM5Y68" target="_blank" rel="noopener">地图</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-utensils"></i>
+            <strong>Mo’s Cafe</strong> — 温馨的当地咖啡馆<br>
+            2-5-18 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/X3GGQoMUJHXadbRw9" target="_blank" rel="noopener">地图</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-landmark"></i>
+            <strong>香山咖啡（杂司谷店）</strong> — 复古纯喫茶风格的咖啡馆<br>
+            3-19-5 Zoshigaya, Toshima-ku, Tokyo 171-0032
+            <a href="https://maps.app.goo.gl/Eo9mvitRgspcba629" target="_blank" rel="noopener">地图</a>
+          </li>
+        </ul>
+        <p class="note">* 所有地点大约都在步行10分钟范围内。</p>
+      </div>
+    </details>
+
+    <!-- Access to Major Sightseeing Spots -->
+    <details>
+      <summary><i class="fa-solid fa-train-subway"></i> 前往主要景点的交通</summary>
+      <div class="content">
+        <ul class="access-list">
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_meiji_shrine.jpg" alt="从杂司谷前往明治神宫的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>明治神宫 / 原宿</strong><br>
+              从 <strong>杂司谷站</strong> 乘副都心线至
+              <strong>明治神宫前‘原宿’站</strong> – 约 <strong>14 分钟</strong>，无需换乘。
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_ikebukuro.jpg" alt="从杂司谷前往池袋的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>池袋</strong><br>
+              从 <strong>杂司谷站</strong> 乘副都心线至
+              <strong>池袋站</strong> – 约 <strong>2 分钟</strong>，无需换乘。
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_shinjuku.jpg" alt="从杂司谷前往新宿的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>新宿</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>新宿三丁目站</strong> – 约 <strong>6 分钟</strong>，无需换乘。
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_shibuya.jpg" alt="从杂司谷前往涩谷的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>涩谷</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>涩谷站</strong> – 约 <strong>17 分钟</strong>，无需换乘。
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_tokyo_tower.jpg" alt="从杂司谷前往东京塔的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>东京塔</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>中目黑</strong>，再换乘日比谷线至
+              <strong>神谷町站</strong> – 约 <strong>30 分钟</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_sky_tree.jpg" alt="从杂司谷前往东京晴空塔的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>东京晴空塔（押上）</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>涩谷</strong>，再换乘半藏门线至
+              <strong>押上站</strong> – 约 <strong>45 分钟</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_nakameguro.jpg" alt="从杂司谷前往中目黑的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>中目黑</strong><br>
+              副都心线，从 <strong>杂司谷站</strong> 至
+              <strong>中目黑站</strong> – 约 <strong>20 分钟</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_asakusa.jpg" alt="从杂司谷前往浅草的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>浅草 / 浅草寺</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>东新宿</strong>，换乘大江户线至
+              <strong>上野御徒町</strong>，再换乘银座线至
+              <strong>浅草站</strong> – 全程约 <strong>30 分钟</strong> 。
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_ueno.jpg" alt="从杂司谷前往上野的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>上野 / 上野动物园与阿美横丁</strong><br>
+              都电荒川线，从 <strong>鬼子母神前</strong> 至
+              <strong>大冢</strong>，再换乘 JR 山手线至
+              <strong>上野站</strong> – 约 <strong>25 分钟</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_akihabara.jpg" alt="从杂司谷前往秋叶原的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>秋叶原</strong><br>
+              都电荒川线，从 <strong>鬼子母神前</strong> 至
+              <strong>大冢</strong>，再换乘 JR 山手线至
+              <strong>秋叶原站</strong> – 约 <strong>30 分钟</strong>.
+            </div>
+          </li>
+
+          <li class="access-item">
+            <figure class="access-figure">
+              <img src="../zoshigaya/access_ginza.jpg" alt="从杂司谷前往银座的路线图">
+            </figure>
+            <div class="access-text">
+              <strong>银座</strong><br>
+              副都心线，从 <strong>杂司谷</strong> 至
+              <strong>新宿三丁目</strong>，再换乘丸之内线至
+              <strong>银座站</strong> – 约 <strong>20 分钟</strong>.
+            </div>
+          </li>
+
+        </ul>
+        <p class="note">
+          * 所需时间为大致参考，会因时段和换乘情况有所不同。
+        </p>
+      </div>
+    </details>
+
+
+
+    <!-- Contact & Support -->
+    <details>
+      <summary><i class="fa-solid fa-comment-dots"></i> 咨询与支持</summary>
+      <div class="content">
+        <p>入住期间如有任何疑问，请通过预订 App 的消息功能与我们联系</p>
+        <ul>
+          <li><strong>紧急情况：</strong> 消防、急救、报警 — 拨打 110 / 119</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
+      if (d.open) { document.querySelectorAll('details').forEach(o => o !== d && o.removeAttribute('open')); }
+    }));
+  </script>
+</body>
+
+</html>

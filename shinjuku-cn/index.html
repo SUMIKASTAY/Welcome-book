@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUMIKA SHINJUKU 使用指南</title>
+
+  <!-- Google フォント & Font Awesome（アイコン用） -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #0d9488; /* メインカラー（ティール） */
+      --accent: #f97316; /* アクセント（オレンジ） */
+      --bg-overlay: rgba(202, 202, 202, 0.4); /* 背景の薄いオーバーレイ */
+      --text: #1e293b; /* 文字色（濃いグレー） */
+      --surface: #ffffff; /* カード背景色 */
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ===== 背景全体の設定 ===== */
+    body {
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* 背景画像レイヤー */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      z-index: -2;
+    }
+
+    /* 読みやすさ向上のための薄いオーバーレイ */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--bg-overlay);
+      z-index: -1;
+    }
+
+    /* ===== ヒーロー（冒頭の大きな背景） ===== */
+    header {
+      background: url('hero.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .35rem;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+      font-weight: 800;
+    }
+
+    header .subheading {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+    }
+
+    /* ===== 共通レイアウト ===== */
+    .container {
+      max-width: 800px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ===== 開閉式セクション ===== */
+    details {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      color: var(--primary);
+      transition: transform .2s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .content h3 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.125rem;
+      color: var(--primary);
+    }
+
+    ul, ol {
+      margin-left: 1.25rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== 画像＆グリッド ===== */
+    details img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .grid-2 img {
+      max-height: 260px;
+      object-fit: cover;
+    }
+
+    @media(max-width:600px) {
+      .grid-2 img { max-height: 220px; }
+    }
+
+    /* ===== 空港 → 宿までのガイド ===== */
+    .steps-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .step-box {
+      background: #eef2f7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-box i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: .35rem;
+    }
+
+    .arrow-vert {
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .branch-note {
+      margin: .75rem 0 .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .75rem;
+    }
+
+    .option-card {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    @media(max-width:600px) {
+      .steps-flow .step-box { max-width: 100%; }
+      .arrow-vert { display: none; }
+      .option-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== チェックイン画像 ===== */
+    .check-photos img {
+      max-height: 280px;
+      object-fit: cover;
+    }
+
+    @media(max-width:600px) {
+      .check-photos img { max-height: 220px; }
+    }
+
+    .caption {
+      text-align: center;
+      font-size: .85rem;
+      margin-top: .35rem;
+    }
+
+    .access-code {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      margin: .5rem 0;
+    }
+
+    /* ===== モバイル調整 ===== */
+    @media (max-width: 640px) {
+      header {
+        min-height: 60vh;
+        padding: calc(2.5rem + env(safe-area-inset-top)) 1rem 6rem;
+      }
+      .container { margin: 0 auto 2rem; }
+      header h1 { font-size: clamp(1.9rem, 8.5vw, 2.8rem); }
+      header .subheading { font-size: clamp(1rem, 4vw, 1.15rem); }
+    }
+  
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+  </style>
+</head>
+
+
+<body>
+<nav class="wb-lang" aria-label="Language"><a href="../kita-shinjuku/" hreflang="en">English</a><a href="../shinjuku-jp/" hreflang="ja">日本語</a><span aria-current="page">中文</span></nav>
+<style>
+.wb-lang{position:sticky;top:0;z-index:9999;display:flex;justify-content:center;gap:.35rem;
+  padding:.45rem .6rem;background:#0f172a;box-shadow:0 1px 6px rgba(0,0,0,.25);
+  font-family:Inter,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans SC",sans-serif}
+.wb-lang a,.wb-lang span{display:inline-block;padding:.28rem .85rem;border-radius:999px;
+  font-size:.82rem;font-weight:600;line-height:1.4;text-decoration:none;color:#cbd5e1;
+  border:1px solid transparent;transition:background .15s,color .15s}
+.wb-lang a:hover,.wb-lang a:focus{background:rgba(255,255,255,.14);color:#fff}
+.wb-lang span[aria-current]{background:#fff;color:#0f172a}
+@media(max-width:380px){.wb-lang a,.wb-lang span{padding:.28rem .6rem;font-size:.76rem}}
+</style>
+
+  <header>
+    <h1>SUMIKA SHINJUKU 使用指南</h1>
+    <p class="subheading">这里汇总了您入住期间需要的信息。</p>
+  </header>
+
+  <div class="container">
+
+    <!-- アクセス・地図 -->
+    <details>
+      <summary><i class="fa-solid fa-map-signs"></i> 交通・路线（地图）</summary>
+      <div class="content">
+        <h3 class="badge">地址</h3>
+        <p>東京都新宿区北新宿 1-8-7 <strong>169-0074</strong></p>
+        <p><a href="https://goo.gl/maps/t6GAG8WgRQSqBwpY7" target="_blank">在 Google 地图中打开</a></p>
+
+        <h3 class="badge">建筑标识</h3>
+        <div class="grid-2">
+          <figure>
+            <img src="../shinjuku-jp/howtoget here1.jpg" alt="建筑外观">
+            <figcaption style="text-align:center;font-size:.85rem">
+              建筑外观（以停车位为标识）
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="../shinjuku-jp/howtoget here2.jpg" alt="银色垃圾箱">
+            <figcaption style="text-align:center;font-size:.85rem">
+              建筑前方有一个大型银色垃圾箱
+            </figcaption>
+          </figure>
+        </div>
+        <ul style="margin-top:1rem">
+          <li>停车场内有 <strong>大型银色垃圾箱</strong> 。</li>
+          <li>进入巷子后， <strong>右侧第二栋建筑</strong> 即为本住宿。</li>
+          <li>邮箱名牌标识：<strong>SUMIKA STAY</strong></li>
+          <li>备案编号：<strong>M130004224</strong></li>
+        </ul>
+
+        <h3 class="badge">从成田・羽田机场前往</h3>
+
+        <!-- 共通フロー → ルート分岐 -->
+        <div class="steps-flow">
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <i class="fa-solid fa-bus"></i>
+            <p>乘坐利木津巴士<br>
+              <small>
+                成田 / 羽田 → 新宿站<br>
+                <a href="https://www.limousinebus.co.jp/en/timetable/" target="_blank">
+                  时刻表可在此确认
+                </a>
+              </small>
+            </p>
+          </div>
+          <i class="fa-solid fa-arrow-down-long arrow-vert"></i>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <i class="fa-solid fa-train-subway"></i>
+            <p>
+              <strong>新宿站</strong> 到达
+            </p>
+          </div>
+        </div>
+
+        <div class="branch-note">第3步请从以下任选一种您方便的方式：</div>
+
+        <div class="option-grid">
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-train"></i>
+            <p>
+              <strong>JR 中央・总武线</strong><br>
+              至大久保站
+            </p>
+            <p class="sub">之后，<strong>步行约2〜3分钟</strong></p>
+          </div>
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-taxi"></i>
+            <p>
+              <strong>直接乘出租车</strong><br>
+              至本住宿
+            </p>
+            <p class="sub">参考：<strong>约600日元 / 约5 USD</strong></p>
+          </div>
+          <div class="option-card">
+            <span class="step-num">3</span>
+            <i class="fa-solid fa-person-walking-luggage"></i>
+            <p>
+              <strong>从新宿站步行</strong><br>
+              直接步行前往
+            </p>
+            <p class="sub">参考：<strong>步行约13分钟</strong></p>
+          </div>
+        </div>
+
+        <p>
+          视体力和行李量而定，<strong>从新宿站乘出租车</strong> 最为轻松，推荐使用。
+          任何一条路线均可使用 IC 卡（Suica / PASMO 等）。
+        </p>
+        <p>
+          长途飞行后，尤其推荐<strong>从新宿站乘出租车</strong>，会更加舒适。
+        </p>
+      </div>
+    </details>
+
+   <!-- チェックイン /チェックアウトガイド -->
+    <details>
+      <summary><i class="fa-solid fa-door-open"></i>入住 / 退房指南</summary>
+      <div class="content">
+        <p style="font-style:italic;margin-bottom:.5rem">在触摸面板上输入密码即可进入。</p>
+        <div class="grid-2 check-photos">
+          <figure>
+            <img src="../shinjuku-jp/entrance_mailbox_location.jpg" alt="玄关与邮箱的位置">
+            <figcaption class="caption">玄关</figcaption>
+          </figure>
+          <figure>
+            <img src="../shinjuku-jp/entrance_passcode.jpg" alt="标有 SUMIKA STAY 的邮箱正面">
+            <figcaption class="caption">密码</figcaption>
+          </figure>
+        </div>
+
+        <h3>密码</h3>
+        <div class="access-code">1122</div>
+        <ul class="sub-steps">
+          <li>请按右下方的开锁按钮</li>
+        </ul>
+        <p class="note">建议提前保存此页面的截图</p>
+
+        <h3>关于入住</h3>
+        <ol>
+          <ol>
+            <li>可入住时间为 <strong>15:00（下午3点）以后</strong> 。</li>
+            <li>请使用上述密码进入</li>
+           
+          </ol>
+
+          <h3>关于入住的说明</h3>
+          <p>
+            通常的入住时间为<strong>15:00</strong>。<br>
+            视客房准备情况，有时也可提前入住。
+            如计划提早到达，请事先发送消息与我们沟通。
+            （无法保证一定可以，敬请谅解。）
+          </p>
+        </ol>
+
+        <h3>关于退房</h3>
+        <ol>
+          <ol>
+            <li>退房时间为 <strong>11:00（上午11点）之前</strong> 。</li>
+            <li>请关闭照明・空调・家电的电源，并将垃圾分类投入室内的垃圾桶。</li>
+            <li>请将钥匙放回邮箱，确认玄关门已锁好后再离开。</li>
+          </ol>
+
+          <h3>关于退房的说明</h3>
+          <p>
+            退房时间为<strong>原则上为 11:00 之前</strong>。<br>
+            如需延迟退房，请事先与我们联系，
+          我们会在可能的范围内配合，但视当天的预订情况有时无法接受，敬请谅解。
+          </p>
+        </ol>
+
+        <h3>退房前希望您配合的事项</h3>
+        <p>
+          出发前，如能配合以下几点，我们将不胜感激。
+        </p>
+
+        <ol>
+          <li>床铺请保持原样（无需拆下床单）。</li>
+          <li>用过的毛巾请集中放在淋浴间（浴室）内。</li>
+          <li>请按分类规则整理垃圾（详见「垃圾投放规则」一项）。</li>
+          <li>移动过的家具和用品，请尽量放回原位。</li>
+          <li>请确认空调和家电的电源均已关闭。</li>
+          <li>请确认玄关・窗户・阳台门等均已上锁。</li>
+        </ol>
+
+      </div>
+    </details>
+    <!-- 家電の使い方 -->
+    <details>
+      <summary><i class="fa-solid fa-screwdriver-wrench"></i> 家电使用方法</summary>
+      <div class="content">
+
+        <!-- Wi-Fi -->
+        <h3 class="badge">Wi-Fi 说明</h3>
+        <div class="row-2">
+          <div>
+            <p>室内备有 <strong>2台便携 Wi-Fi</strong> ，请按以下信息使用：</p>
+            <ul class="wifi-list">
+              <li>
+                <strong>Wi-Fi 1</strong><br>
+                SSID：<strong>Sumika wifi</strong><br>
+                密码：<strong>sumikastay</strong>
+              </li>
+              <li>
+                <strong>Wi-Fi 2</strong><br>
+                SSID：<strong>Rakuten-C94E</strong><br>
+                密码：<strong>LN3R9GTMT4QSP5KX</strong>
+              </li>
+            </ul>
+            <p class="note">
+              如需快速连接，可扫描 Wi-Fi 路由器上标注的
+              <strong>二维码自动连接</strong>。（二维码连接仅支持 Wi-Fi 2）
+            </p>
+          </div>
+
+          <figure class="appliance-figure">
+            <img src="../shinjuku-jp/QRcode.jpg" alt="带二维码的便携 Wi-Fi">
+            <figcaption class="caption">Wi-Fi 2 支持二维码连接</figcaption>
+          </figure>
+        </div>
+
+        <!-- TV・Fire TV Stick -->
+        <h3 class="badge">电视 / Amazon Fire TV</h3>
+        <div class="row-2">
+          <div>
+            <p>
+              室内的电视可自由使用。<br>
+              <strong>遥控器放在餐桌上</strong>。
+            </p>
+            <p>
+              可通过 Amazon Fire TV，
+              <strong>使用您本人的账号登录各类视频服务</strong>。
+              观看后请务必<strong>退出登录</strong>。
+            </p>
+          </div>
+        </div>
+
+        <!-- 給湯（お湯が出ない場合） -->
+        <h3 class="badge">热水・供热水设置（重要）</h3>
+        <p>
+          如果没有热水，可能是供热水面板的电源已关闭。
+          供热水面板位于 <strong>2楼厨房的墙面</strong> 和 <strong>1楼浴室</strong> 两处。
+        </p>
+
+        <!-- 洗濯機・乾燥機 -->
+        <h3 class="badge">洗衣机・烘干机</h3>
+        <p>1楼浴室内备有<strong>洗衣机・烘干机（SHARP）</strong>。</p>
+
+        <h3 class="badge">洗涤・烘干的使用方法（SHARP）</h3>
+        <figure class="appliance-figure">
+          <img src="../shinjuku-jp/laundry appliance.jpg" alt="洗衣机与烘干机的操作面板">
+          <figcaption class="caption">操作面板（示例：SHARP）</figcaption>
+        </figure>
+
+        <ol>
+          <li>将衣物放入洗衣机。<br>
+              <small>※最大容量：<strong>洗涤 10kg</strong> / <strong>烘干 6kg</strong></small>
+          </li>
+
+          <li>投入洗涤剂。<br>
+              <small>※约1杯的量即可。</small>
+          </li>
+
+          <li>
+            选择模式：<br>
+            <strong>洗涤（洗濯） / 烘干（乾燥） / 洗涤烘干（洗濯 + 乾燥）</strong><br>
+            <small>※容易缩水的衣物请避免使用烘干功能。</small>
+          </li>
+
+          <li>
+            选择程序（基本保持 <strong>标准（標準）</strong> 即可）。<br>
+            <strong>启动（START）</strong> 按此键即可开始。
+          </li>
+
+          <li>
+            所需时间：<br>
+            ・仅洗涤：<strong>约40〜60分钟</strong><br>
+            ・洗涤＋烘干：<strong>约120〜180分钟</strong>
+          </li>
+        </ol>
+
+        <!-- ウォシュレット -->
+        <h3 class="badge">智能马桶盖（温水冲洗坐便器）</h3>
+
+        <figure class="appliance-figure">
+          <img src="../shinjuku-jp/washlet_panel.jpg" alt="智能马桶盖的操作面板">
+          <figcaption class="caption">智能马桶盖操作面板（示例）</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>臀部冲洗（おしり / ワイド）</strong> … 常规冲洗。</li>
+          <li><strong>妇洗（ビデ / ワイド / スーパー）</strong> … 柔和冲洗。</li>
+          <li><strong>水压调节（弱 / 強）</strong></li>
+          <li><strong>坐圈温度</strong> 的调节</li>
+          <li><strong>热水温度</strong> 的调节</li>
+          <li><strong>喷嘴清洁（ノズルそうじ）</strong> … 自动清洁喷嘴。</li>
+        </ul>
+
+        <p class="note">
+          使用后请务必按 <strong>停止（STOP）</strong> 按钮。<br>
+          请根据个人喜好调节水温・坐圈温度等后使用。
+        </p>
+
+        <!-- 風呂の自動お湯はりパネル -->
+        <h3 class="badge">浴缸（洗澡）操作面板</h3>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../shinjuku-jp/bathroom panel.jpg" alt="浴室的供热水面板">
+          </figure>
+
+          <div>
+            <ol>
+              <li><strong>开启电源</strong> — <strong>运转（ON/OFF）</strong> 按此键即可开始。</li>
+              <li><strong>自动放水</strong> — <strong>自动（AUTO）</strong> 按下后，会按设定的水量和温度自动放好洗澡水。</li>
+              <li><strong>追加加热</strong> — 水变凉时，可按 <strong>追加加热（おいだき）</strong> 键重新加热。</li>
+            </ol>
+
+            <ul>
+              <li><strong>预约放水</strong> — 设定定时器，在指定时间烧好洗澡水。</li>
+              <li><strong>音量</strong> — 语音提示的音量调节。</li>
+              <li><strong>时钟设置</strong> — 当前时间的调整。</li>
+            </ul>
+
+            <p class="note">
+              浴缸内没有热水时，请勿使用 <strong>追加加热</strong> 。<br>
+              基本上只需按下 <strong>自动（AUTO）</strong> 即可安全使用。
+            </p>
+          </div>
+        </div>
+
+        <!-- エアコン -->
+        <h3 class="badge">空调使用方法</h3>
+
+        <div class="row-2">
+          <figure class="appliance-figure">
+            <img src="../shinjuku-jp/ac_remote.jpg" alt="空调遥控器">
+          </figure>
+
+          <div>
+            <ul>
+              <li><strong>开启电源</strong> — 按绿色的 <strong>运转 / 停止</strong> 按钮。</li>
+              <li><strong>关闭电源</strong> — 按黄色的 <strong>停止</strong> 按钮。</li>
+              <li>
+                <strong>模式切换</strong>：<br>
+                ・<strong>制冷（蓝色）</strong><br>
+                ・<strong>制热（红色）</strong><br>
+                ・<strong>自动（绿色）</strong>
+              </li>
+              <li><strong>温度调节</strong> — 温度按钮（▲ / ▼）</li>
+            </ul>
+
+            <p class="note">
+              制热时，出风可能需要几分钟，请稍候。<br>
+              外出时请务必关闭电源。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </details>
+    <!-- ハウスルール -->
+    <details>
+      <summary><i class="fa-solid fa-house-user"></i> 住宿规则</summary>
+      <div class="content">
+
+        <!-- ごみ出しルール ① -->
+        <h3 class="badge">垃圾投放规则</h3>
+        <p>
+          日本的垃圾分类规则较为复杂，本住宿已简化为
+          <strong>只需分成3类</strong>即可。<br>
+          请分别装入不同的袋子，投放到建筑前的<strong>银色垃圾箱</strong>内。
+        </p>
+
+        <div class="rules-table">
+          <div class="col">
+            <div class="thead">① 可燃垃圾</div>
+            <ul>
+              <li>厨余垃圾</li>
+              <li>纸屑・纸杯</li>
+              <li>纸巾</li>
+              <li>饮料纸盒</li>
+              <li>纸尿裤（污物请先冲入马桶）</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">② 不可燃垃圾</div>
+            <ul>
+              <li>杯面・便利店便当的容器</li>
+              <li>零食袋・塑料袋</li>
+              <li>泡沫托盘・泡沫塑料</li>
+              <li>硬质塑料（保鲜盒・衣架等）</li>
+              <li>喷雾罐（用完后打孔再丢弃）</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">③ 可回收垃圾（玻璃瓶・易拉罐・塑料瓶）</div>
+            <ul>
+              <li>塑料瓶（PET）</li>
+              <li>易拉罐</li>
+              <li>玻璃瓶</li>
+              <li>请倒空内容物后再投放</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="sorting-figure">
+          <img src="../shinjuku-jp/garbage_sorting.jpg" alt="垃圾分类表：可燃垃圾・不可燃垃圾・可回收垃圾" class="sorting-img">
+          <figcaption class="caption">请按上述3类分开，分别装入不同的袋子。</figcaption>
+        </figure>
+
+        <figure class="appliance-figure">
+          <img src="../shinjuku-jp/dustbox_parking.jpg" alt="停车场的银色垃圾箱" class="rule-img">
+          <figcaption class="caption">建筑前的银色垃圾箱</figcaption>
+        </figure>
+
+        <!-- ごみ出しルール ② -->
+        <h3 class="badge">垃圾投放 ②（注意事项）</h3>
+        <p class="small-note">
+          除上述以外的物品（行李箱・大件物品・大型垃圾等），请勿留在室内。<br>
+          如有遗留不需要的物品，我们可能会收取处理费用。<br>
+      若分类严重不到位（例如厨余与易拉罐混装等），可能会被拒收，或需额外收取处理费用。
+        </p>
+
+        <!-- 静音時間 -->
+        <h3 class="badge">请保持安静的时间（22:00〜8:00）</h3>
+        <p>
+          周边为住宅区，<strong>22点〜次日8点</strong>期间请注意控制声响。
+        </p>
+
+        <!-- 土足禁止 -->
+        <h3 class="badge">请勿穿鞋进入室内</h3>
+        <p>在室内请脱鞋。</p>
+
+        <!-- 禁煙 -->
+        <h3 class="badge">关于吸烟</h3>
+        <p>
+          室内<strong>全面禁烟</strong>（含电子烟）。
+        </p>
+        <p class="small-note">
+          停车场可以吸烟，但请使用随身烟灰缸。<br>
+          根据东京都区条例，禁止在道路上吸烟。
+        </p>
+
+        <!-- ペット -->
+        <h3 class="badge">关于携带宠物</h3>
+        <p>由于过敏原因，谢绝携带宠物。</p>
+
+        <!-- 追加ゲスト -->
+        <h3 class="badge">禁止未经许可增加住宿人数</h3>
+        <p>
+          请勿携带预订人数以外的同行者。<br>
+          如有特殊情况，请务必事先与我们联系。
+        </p>
+
+        <!-- 破損 -->
+        <h3 class="badge">关于物品损坏</h3>
+        <p>
+          万一损坏了室内用品，请立即与我们联系。<br>
+          轻微的损坏大多不会收费。如为电视屏幕等高价物品，
+          我们会在退房前说明费用，并在双方同意的基础上处理。
+        </p>
+
+        <!-- 例外 -->
+        <h3 class="badge">关于例外情况</h3>
+        <p>
+          如有特殊需求或需要例外处理，请事先与我们沟通，我们会灵活应对。
+        </p>
+
+        <!-- 緊急時 -->
+        <div class="emergency-card">
+          <h3 class="badge" style="background:transparent;color:inherit;margin:0 0 .5rem 0">
+            紧急情况的应对
+          </h3>
+
+          <p>
+            遇到紧急情况（急救・火灾・犯罪等），请不要犹豫，立即拨打电话。<br>
+            届时请告知本住宿的地址（记载于指南开头）。
+          </p>
+
+          <ul class="emergency-numbers">
+            <li><strong>报警：</strong>110</li>
+            <li><strong>急救车：</strong>119</li>
+            <li><strong>消防：</strong>119</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- 周辺ガイド -->
+    <details>
+      <summary><i class="fa-solid fa-utensils"></i> 周边指南（附近的店铺）</summary>
+      <div class="content">
+
+        <ul>
+          <li>
+            <i class="fa-solid fa-store"></i>
+            <strong>7-Eleven 北新宿1丁目店</strong>（步行约2分钟 / 24小时营业）
+            <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Kita-Shinjuku+1-chome" target="_blank">
+              地图
+            </a>
+          </li>
+
+          <li>
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+            <strong>ヒジカタ薬局（Hijikata 药房）</strong>（步行约1分钟 / 药品・日用品）
+            <a href="https://www.google.com/maps/search/?api=1&query=Hijikata+Pharmacy+Shinjuku" target="_blank">
+              地图
+            </a>
+          </li>
+
+          <li>
+            <strong>磯丸水産 大久保站前店</strong>（步行约4分钟 / 人气海鲜居酒屋）
+            <a href="https://maps.app.goo.gl/J4Fj95ck3h6Mepj86" target="_blank">
+              地图
+            </a>
+          </li>
+        </ul>
+
+        <p class="note">
+          ※步行时间和营业时间等仅供参考。详情请查看链接中的地图。
+        </p>
+      </div>
+    </details>
+
+    <!-- 連絡先 -->
+    <details>
+      <summary><i class="fa-solid fa-comment-dots"></i> 咨询・支持</summary>
+      <div class="content">
+        <p>
+          入住期间如有任何疑问或问题，
+          请通过预订平台（Airbnb 等）发送消息与我们联系。<br>
+          此外，也可通过以下方式联系我们。
+        </p>
+
+        <ul>
+          <li><strong>房东直通（24小时对应）：</strong> +81 80-4370-9211</li>
+          <li><strong>紧急情况：</strong> 报警・急救・消防 — 110 / 119</li>
+        </ul>
+      </div>
+    </details>
+
+    <footer style="text-align:center;margin:4rem 0 2rem;font-size:.875rem">
+      © 2025 SUMIKA SHINJUKU
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('details').forEach(d => 
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document.querySelectorAll('details').forEach(o => 
+            o !== d && o.removeAttribute('open')
+          );
+        }
+      })
+    );
+  </script>
+</body>
+
+</html>
