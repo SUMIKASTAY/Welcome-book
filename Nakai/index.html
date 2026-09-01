@@ -533,6 +533,46 @@ body::after {
         max-width: 100%;
       }
     }
+  
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
   </style>
 </head>
 
@@ -1150,27 +1190,44 @@ body::after {
         <!-- Garbage rules (I) -->
         <h3 class="badge">Garbage disposal rules</h3>
         <p>We understand that garbage rules in Japan can be confusing, so we made it simple. Separate the garbage into
-          <strong>2 categories</strong> using different plastic bags, then put them in the silver dust box in the
+          <strong>3 categories</strong> using different plastic bags, then put them in the silver dust box in the
           parking lot as below.
         </p>
         <div class="rules-table">
           <div class="col">
-            <div class="thead">Burnable Garbage</div>
+            <div class="thead">1. Burnable Garbage</div>
             <ul>
               <li>Kitchen waste</li>
-              <li>Paper scraps</li>
-              <li>Clothing, etc.</li>
+              <li>Waste paper &amp; paper cups</li>
+              <li>Tissue paper</li>
+              <li>Beverage cartons</li>
+              <li>Diapers (flush waste in the toilet first)</li>
             </ul>
           </div>
           <div class="col">
-            <div class="thead">Recyclable Garbage</div>
+            <div class="thead">2. Non-burnable Garbage</div>
             <ul>
-              <li>Plastic bottles</li>
-              <li>Container jars & cans</li>
-              <li>Aerosol spray cans, etc.</li>
+              <li>Instant ramen cups &amp; bento containers</li>
+              <li>Snack bags &amp; plastic bags</li>
+              <li>Foam trays &amp; styrofoam</li>
+              <li>Hard plastic (containers, hangers)</li>
+              <li>Spray cans (use them up, then make a hole)</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">3. Recyclable Garbage</div>
+            <ul>
+              <li>Plastic (PET) bottles</li>
+              <li>Cans</li>
+              <li>Glass bottles</li>
+              <li>Please empty the contents first</li>
             </ul>
           </div>
         </div>
+        <figure class="sorting-figure">
+          <img src="garbage_sorting.jpg" alt="How to sort your garbage: burnable, non-burnable and recyclable" class="sorting-img">
+          <figcaption class="caption">Please sort your garbage into these 3 categories and use a separate bag for each.</figcaption>
+        </figure>
         <figure class="appliance-figure">
           <img src="60024.jpg" alt="Silver dust box in front of the house" class="rule-img">
           <figcaption class="caption">Silver dust box in front of the house</figcaption>
@@ -1179,7 +1236,7 @@ body::after {
         <!-- Garbage rules (II) -->
         <h3 class="badge">Garbage disposal II</h3>
         <p class="small-note">Except for the rules above, please do not leave used luggage or any big items in the
-          house. If you leave items that are not permitted, we may ask you to pay for the costs incurred.</p>
+          house. If you leave items that are not permitted, we may ask you to pay for the costs incurred. If garbage is badly mixed (for example kitchen waste together with cans), the collection company may refuse to take it or charge an extra disposal fee.</p>
 
         <!-- Quiet hours -->
         <h3 class="badge">Quiet time: 10pm–8am</h3>

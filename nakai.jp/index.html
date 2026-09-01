@@ -524,7 +524,47 @@
                 max-width: 100%;
             }
         }
-    </style>
+    
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+  </style>
 </head>
 
 <body>
@@ -924,33 +964,50 @@
             <div class="content">
                 <!-- ゴミのルール -->
                 <h3 class="badge">ゴミの分別ルール</h3>
-                <p>日本のゴミ出しルールは複雑ですが、ここではシンプルにしています。ゴミを<strong>2つのカテゴリー</strong>に分けて別々のビニール袋に入れ、駐車場にある銀色のダストボックスに入れてください。
+                <p>日本のゴミ出しルールは複雑ですが、ここではシンプルにしています。ゴミを<strong>3つのカテゴリー</strong>に分けて別々のビニール袋に入れ、駐車場にある銀色のダストボックスに入れてください。
                 </p>
                 <div class="rules-table">
-                    <div class="col">
-                        <div class="thead">燃えるゴミ (Burnable)</div>
-                        <ul>
-                            <li>生ゴミ</li>
-                            <li>紙くず</li>
-                            <li>衣類など</li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <div class="thead">資源ゴミ (Recyclable)</div>
-                        <ul>
-                            <li>ペットボトル</li>
-                            <li>瓶・缶</li>
-                            <li>スプレー缶など</li>
-                        </ul>
-                    </div>
+                  <div class="col">
+                    <div class="thead">① 可燃ごみ（燃えるごみ）</div>
+                    <ul>
+                      <li>生ごみ</li>
+                      <li>紙くず・紙コップ</li>
+                      <li>ティッシュ</li>
+                      <li>飲料の紙パック</li>
+                      <li>おむつ（汚物はトイレに流してから）</li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <div class="thead">② 不燃ごみ（燃えないごみ）</div>
+                    <ul>
+                      <li>カップ麺・コンビニ弁当の容器</li>
+                      <li>お菓子の袋・ビニール袋</li>
+                      <li>発泡トレー・発泡スチロール</li>
+                      <li>硬プラスチック（保存容器・ハンガーなど）</li>
+                      <li>スプレー缶（使い切って穴を開けてから）</li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <div class="thead">③ 資源ごみ（ビン・カン・ペットボトル）</div>
+                    <ul>
+                      <li>ペットボトル</li>
+                      <li>カン</li>
+                      <li>ビン</li>
+                      <li>中身を空にしてから出してください</li>
+                    </ul>
+                  </div>
                 </div>
+                <figure class="sorting-figure">
+                  <img src="garbage_sorting.jpg" alt="ごみの分別表：可燃ごみ・不燃ごみ・資源ごみ" class="sorting-img">
+                  <figcaption class="caption">上記3種類に分別し、それぞれ別の袋に入れてください。</figcaption>
+                </figure>
                 <figure class="appliance-figure">
                     <img src="60024.jpg" alt="駐車場のダストボックス" class="rule-img">
                     <figcaption class="caption">駐車場にある、銀のダストボックスです。</figcaption>
                 </figure>
 
                 <h3 class="badge">ゴミ出しに関する注意</h3>
-                <p class="small-note">上記のルール以外に、不用になったスーツケースや粗大ゴミを室内に残さないでください。許可されていない物品を残された場合、処分費用を請求させていただくことがあります。
+                <p class="small-note">上記のルール以外に、不用になったスーツケースや粗大ゴミを室内に残さないでください。許可されていない物品を残された場合、処分費用を請求させていただくことがあります。分別が著しく不十分な場合（生ごみと缶などが混ざっている等）は、回収されない、または追加の処分費用をご請求することがあります。
                 </p>
 
                 <!-- 静かにすべき時間 -->

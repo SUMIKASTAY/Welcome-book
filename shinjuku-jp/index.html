@@ -259,6 +259,46 @@
       header h1 { font-size: clamp(1.9rem, 8.5vw, 2.8rem); }
       header .subheading { font-size: clamp(1rem, 4vw, 1.15rem); }
     }
+  
+    /* --- 3-way garbage separation (updated 2026-09) --- */
+    .rules-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: .75rem 0;
+    }
+
+    @media(max-width:900px) {
+      .rules-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rules-table .col {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: .75rem;
+      background: #f8fafc;
+    }
+
+    .rules-table .thead {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+
+    .sorting-figure {
+      margin: .75rem 0;
+    }
+
+    .sorting-figure img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
   </style>
 </head>
 
@@ -624,29 +664,45 @@
         <h3 class="badge">ごみ出しルール</h3>
         <p>
           日本のごみ分別ルールは少し複雑なため、当施設ではわかりやすく
-          <strong>2種類に分けるだけ</strong>でOKです。<br>
+          <strong>3種類に分けるだけ</strong>でOKです。<br>
           それぞれ別の袋にまとめ、建物前の<strong>シルバーのダストボックス</strong>へ捨ててください。
         </p>
 
         <div class="rules-table">
           <div class="col">
-            <div class="thead">可燃ごみ</div>
+            <div class="thead">① 可燃ごみ（燃えるごみ）</div>
             <ul>
               <li>生ごみ</li>
-              <li>紙くず</li>
-              <li>衣類など</li>
+              <li>紙くず・紙コップ</li>
+              <li>ティッシュ</li>
+              <li>飲料の紙パック</li>
+              <li>おむつ（汚物はトイレに流してから）</li>
             </ul>
           </div>
-
           <div class="col">
-            <div class="thead">資源ごみ</div>
+            <div class="thead">② 不燃ごみ（燃えないごみ）</div>
+            <ul>
+              <li>カップ麺・コンビニ弁当の容器</li>
+              <li>お菓子の袋・ビニール袋</li>
+              <li>発泡トレー・発泡スチロール</li>
+              <li>硬プラスチック（保存容器・ハンガーなど）</li>
+              <li>スプレー缶（使い切って穴を開けてから）</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="thead">③ 資源ごみ（ビン・カン・ペットボトル）</div>
             <ul>
               <li>ペットボトル</li>
-              <li>瓶・缶</li>
-              <li>スプレー缶など</li>
+              <li>カン</li>
+              <li>ビン</li>
+              <li>中身を空にしてから出してください</li>
             </ul>
           </div>
         </div>
+        <figure class="sorting-figure">
+          <img src="garbage_sorting.jpg" alt="ごみの分別表：可燃ごみ・不燃ごみ・資源ごみ" class="sorting-img">
+          <figcaption class="caption">上記3種類に分別し、それぞれ別の袋に入れてください。</figcaption>
+        </figure>
 
         <figure class="appliance-figure">
           <img src="dustbox_parking.jpg" alt="駐車場のシルバーごみボックス" class="rule-img">
@@ -657,7 +713,8 @@
         <h3 class="badge">ごみ出し ②（注意事項）</h3>
         <p class="small-note">
           上記以外の荷物（スーツケース・大きな物・粗大ごみなど）は、室内に置いていかないでください。<br>
-          不要物を残置された場合、処理費用を請求する場合がございます。
+          不要物を残置された場合、処理費用を請求する場合がございます。<br>
+      分別が著しく不十分な場合（生ごみと缶などが混ざっている等）は、回収されない、または追加の処分費用をご請求することがあります。
         </p>
 
         <!-- 静音時間 -->
